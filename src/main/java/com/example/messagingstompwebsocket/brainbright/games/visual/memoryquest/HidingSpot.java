@@ -1,7 +1,7 @@
 package com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.DragEvent;
+//import javafx.event.EventHandler;
+//import javafx.scene.input.DragEvent;
 
 import java.io.Serializable;
 
@@ -63,8 +63,5 @@ public class HidingSpot implements Serializable {
         this.hiddenObject = hiddenObject;
     }
 
-    public void setOnDragOver(EventHandler<DragEvent> onDragOver) {
-
-    }
 }
 
