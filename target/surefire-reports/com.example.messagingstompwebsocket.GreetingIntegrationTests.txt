@@ -1,9 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.messagingstompwebsocket.GreetingIntegrationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 8.697 s <<< FAILURE! - in com.example.messagingstompwebsocket.GreetingIntegrationTests
-getGreeting  Time elapsed: 0.002 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
-Caused by: java.net.BindException: Address already in use: bind
-
