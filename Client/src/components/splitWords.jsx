@@ -13,22 +13,39 @@ export default function ClientComponent() {
     const socket = socketIOClient(ENDPOINT);
     socket.on("all_split_words", data => {
       setSplitWords(data.splitWords);
-      // splitWordArray.map((item) => {
-      //   splitWord += item;
-      // });
-
     });
-    socket.on("result", data => {
-      setResult(data);
-      console.log(data);
-
-    });
-
-    console.log(splitWordArray);
-    socket.emit("chat", splitWordArray);
 
   }, []);
 
+  function GetButtonContent(e) {
+    if (splitWordArray.length < 2)
+      splitWordArray = [...splitWordArray, e.target.innerHTML];
+    else {
+      splitWordArray = [];
+      splitWordArray = [...splitWordArray, e.target.innerHTML];
+    }
+    const socket = socketIOClient(ENDPOINT);
+
+    if (splitWordArray.length === 2) {
+      splitWordArray.map((item) => {
+        splitWord += item;
+      });
+      socket.emit("chat", splitWord);
+      console.log(splitWord);
+      splitWord = '';
+      socket.on("result", data => {
+        setResult(data);
+      });
+    }
+
+  }
+
+  function showResult(result) {
+    let text = 'Waiting for your clicks';
+    if (result !== undefined)
+      text = result ? 'You are correct' : 'You are wrong';
+    return text;
+  }
 
   return (
     <div className="row">
@@ -54,21 +71,22 @@ export default function ClientComponent() {
         <div className="row">
           {
             splitWords.map((item) =>
-              <div className="col-md-3">
+              <div className="col-md-3" key={item.word}>
                 <button className="btn btn-primary text-center" onClick={GetButtonContent}>{item.firstPart}</button>
               </div>
             )
           }
           {
             splitWords.map((item) =>
-              <div className="col-md-3">
-                <button className="btn btn-primary mb-3">{item.secondPart}</button>
+              <div className="col-md-3" key={item.word}>
+                <button className="btn btn-primary mb-3" onClick={GetButtonContent}>{item.secondPart}</button>
               </div>
             )
           }
 
         </div>
         <div className="row">
+          <span></span>
           <span>Incorrect pair:</span>
           <div className="button-class">
             <button className="btn">Clear</button>
@@ -78,7 +96,7 @@ export default function ClientComponent() {
       <div className="col-md-2">
         <div className="row">
           Round:
-                <div className="col-md-12">1</div>
+        <div className="col-md-12">{showResult(result)}</div>
           <div className="col-md-12">2</div>
         </div>
 
@@ -88,12 +106,4 @@ export default function ClientComponent() {
   )
 }
 
-function GetButtonContent(e) {
-  if (splitWordArray.length < 2)
-    splitWordArray = [...splitWordArray, e.target.innerHTML];
-  else {
-    splitWordArray = [];
-    splitWordArray = [...splitWordArray, e.target.innerHTML];
-  }
-  console.log(splitWordArray);
-}
+
