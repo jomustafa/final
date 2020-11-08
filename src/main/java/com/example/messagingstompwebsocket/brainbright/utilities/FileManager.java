@@ -365,7 +365,6 @@ public class FileManager {
 //        questMaps = new HashMap<>();
         List<String> list;
         for (String s : FILES) {
-        	System.out.println("hello");
             switch (s) {
                 case WORD_SEARCH_GR:
                     list = countries_gr;
@@ -512,7 +511,6 @@ public class FileManager {
             } catch (IOException e) {
 
                 try {
-                    System.out.println(s.substring(3));
                     inputStream = getClass().getResourceAsStream(s.substring(3));
                     ByteArrayOutputStream result = new ByteArrayOutputStream();
                     byte[] buffer = new byte[1024];

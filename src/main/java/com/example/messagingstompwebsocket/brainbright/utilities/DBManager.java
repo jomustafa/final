@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 public class DBManager {
 
     //    private final txtFilePath = "scores/score.txt";
-    private final String URL = "jdbc:mysql://localhost:3306/test?serverTimezone=Europe/Rome";
+    private final String URL = "jdbc:postgresql://ec2-34-248-165-3.eu-west-1.compute.amazonaws.com:5432/d2ih864edca7sk?password=e57009808053709e25db6252f59e36590116990fe479cf0e1218efa854715eea&sslmode=require&user=zaahtcslbtazop";
     private static final String FILE_HEADER_PLAYER = "GAME,POINTS,DATE,COMPLETION TIME,LEVEL,COMPLETION PROGRESS,MISSED CLICKS";
     private static final String FILE_HEADER_GAME = "PLAYER,POINTS,DATE,COMPLETION TIME,LEVEL,COMPLETION PROGRESS,MISSED CLICKS";
 
@@ -37,7 +37,7 @@ public class DBManager {
 
     public DBManager() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        	Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException ex) {
             System.out.println("Cannot find db driver: " + ex.getMessage());
         }
@@ -68,10 +68,7 @@ public class DBManager {
         bundle = ResourceBundle.getBundle("language", locale);
 
         try {
-        	Properties prop = new Properties();
-            prop.put("user", "root");
-            prop.put("password", "");
-            conn = DriverManager.getConnection(URL, prop);
+            conn = DriverManager.getConnection(URL);
 //            execute("create table PLAYERS (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PLAYER VARCHAR(100) UNIQUE, PRIMARY KEY (ID))");
 //            execute("create table GAMES (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), GAME VARCHAR(100) UNIQUE, PRIMARY KEY (ID))");
 //            execute("create table SCORES (DATE DATE NOT NULL, POINTS INTEGER NOT NULL, GAME INTEGER NOT NULL REFERENCES GAMES(ID), PLAYER INTEGER NOT NULL REFERENCES PLAYERS(ID), COMPETION_TIME INTEGER NOT NULL, LEVEL INTEGER NOT NULL, COMPLETION_PROGRESS DOUBLE NOT NULL, MISSED_CLICKS INTEGER NOT NULL)");
