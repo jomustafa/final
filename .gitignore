@@ -1,2 +1,5 @@
 Client/node_modules/
+target
+frontend/
 target/
+target/*
