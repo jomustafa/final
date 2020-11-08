@@ -1,0 +1,7 @@
+.mainFxmlClass {
+    -fx-background-color: #FFFFFF;
+}
+.list-cell 
+{
+  -fx-font: 16pt "Comic Sans MS";
+}

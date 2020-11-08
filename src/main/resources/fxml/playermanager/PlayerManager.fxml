@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane id="AnchorPane" fx:id="wrapper" prefHeight="768.0" prefWidth="1366.0" styleClass="mainFxmlClass"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="brainbright.gui.playermanager.PlayerManagerController">
+    <stylesheets>
+        <URL value="@playermanager.css"/>
+    </stylesheets>
+    <children>
+        <Label fx:id="logo" alignment="CENTER" layoutX="459.0" layoutY="14.0" prefWidth="448.0" text="Brain Bright"
+               textAlignment="CENTER" textFill="blue">
+            <font>
+                <Font size="48.0"/>
+            </font>
+        </Label>
+        <ListView fx:id="playersList" layoutX="482.0" layoutY="238.0" prefHeight="305.0" prefWidth="408.0"/>
+        <Label fx:id="selectPlayerLB" alignment="CENTER" layoutX="542.0" layoutY="164.0" prefHeight="56.0"
+               prefWidth="289.0">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Label>
+        <Button  fx:id="backToLanguage" focusTraversable="false" layoutX="250.0" layoutY="673.0"
+                mnemonicParsing="false" onAction="#handleBackToLanguage" prefHeight="44.0" prefWidth="200.0" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" fx:id="x2"/>
+            </font>
+        </Button>
+        <Button fx:id="exitApp" focusTraversable="false" layoutX="620.0" layoutY="673.0" mnemonicParsing="false"
+                onAction="#handleExitAppAction" prefHeight="44.0" prefWidth="134.0" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" fx:id="x2"/>
+            </font>
+        </Button>
+        <Button id="add" fx:id="addPlayer" focusTraversable="false" font="$x2" layoutX="271.0" layoutY="352.0"
+                mnemonicParsing="false" onAction="#handleAddPlayerAction" prefHeight="81.0"
+                prefWidth="177.9998779296875" textAlignment="CENTER" wrapText="true"/>
+        <Button id="add" fx:id="choosePlayer" disable="true" focusTraversable="false" font="$x2" layoutX="925.0"
+                layoutY="338.0" mnemonicParsing="false" onAction="#handleChoosePlayerAction" prefHeight="95.0"
+                prefWidth="178.0" textAlignment="CENTER" wrapText="true"/>
+        <Button id="add" fx:id="renamePlayer" disable="true" focusTraversable="false" font="$x2" layoutX="661.0"
+                layoutY="577.0" mnemonicParsing="false" onAction="#handleRenamePlayerAction" prefHeight="44.0"
+                prefWidth="209.0" textAlignment="CENTER"/>
+
+
+        <Button id="add" fx:id="deletePlayer" disable="true" focusTraversable="false" font="$x2" layoutX="504.0"
+                layoutY="577.0" mnemonicParsing="false" onAction="#handleDeletePlayerAction" prefHeight="44.0"
+                prefWidth="151.0" textAlignment="CENTER"/>
+        <Label alignment="CENTER" layoutX="481.0" layoutY="81.0" prefHeight="56.0" prefWidth="408.0"
+               text="Created by INVENT, CITY College" textFill="#9f9f9f" wrapText="true">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

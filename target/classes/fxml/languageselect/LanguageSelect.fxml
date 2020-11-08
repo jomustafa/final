@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane id="AnchorPane" fx:id="wrapper" prefHeight="768.0" prefWidth="1366.0" styleClass="mainFxmlClass"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="brainbright.gui.languageselect.LanguageSelectController">
+    <stylesheets>
+        <URL value="@languageselect.css"/>
+    </stylesheets>
+    <children>
+        <Label fx:id="logo" alignment="CENTER" layoutX="459.0" layoutY="14.0" prefWidth="448.0" text="Brain Bright"
+               textAlignment="CENTER" textFill="blue">
+            <font>
+                <Font size="48.0"/>
+            </font>
+        </Label>
+        <Button fx:id="exitApp" focusTraversable="false" layoutX="620.0" layoutY="673.0" mnemonicParsing="false"
+                onAction="#handleExitAppAction" prefHeight="44.0" prefWidth="134.0" textAlignment="CENTER" visible="false">
+            <font>
+                <Font size="20.0" fx:id="x2"/>
+            </font>
+        </Button>
+        <Button fx:id="locale_EN" text="EN" focusTraversable="false" font="$x2" layoutX="200.0" layoutY="350.0"
+                mnemonicParsing="false" onAction="#handlelocaleEN" prefHeight="90.0" prefWidth="250.0"/>
+        <Button fx:id="locale_Arab" text="AR" focusTraversable="false" font="$x2" layoutX="550.0" layoutY="350.0"
+                mnemonicParsing="false" onAction="#handlelocaleARAB" prefHeight="90.0" prefWidth="250.0"/>
+        <Button fx:id="locale_GR" text="GR" focusTraversable="false" font="$x2" layoutX="880.0" layoutY="350.0"
+                mnemonicParsing="false" onAction="#handlelocaleGR" prefHeight="90.0" prefWidth="250.0"/>
+
+        <Label alignment="CENTER" layoutX="481.0" layoutY="81.0" prefHeight="56.0" prefWidth="408.0"
+               text="Created by INVENT, CITY College" textFill="#9f9f9f" wrapText="true">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

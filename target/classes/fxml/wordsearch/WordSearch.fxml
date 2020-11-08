@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--THIS IS THE GAME "ΚΡΥΠΤΟΛΕΞΟ"-->
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="wrapper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brainbright.gui.wordsearch.WordSearchController">
+   <children>
+       <Pane fx:id="box" layoutX="277.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" />
+       <AnchorPane id="AnchorPane" fx:id="gridPane" layoutX="381.0" layoutY="46.0" prefHeight="652.0" prefWidth="731.0">
+          <children>
+              <GridPane fx:id="grid" layoutX="14.0" layoutY="13.0">
+                  <columnConstraints>
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0"/>
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints />
+                      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" />
+                  </rowConstraints>
+              </GridPane>
+          </children>
+       </AnchorPane>
+       <Pane fx:id="hidePanel" layoutX="24.0" layoutY="14.0" prefHeight="724.0" prefWidth="349.0">
+          <children>
+              <Button fx:id="exit" contentDisplay="CENTER" focusTraversable="false" layoutX="184.0" layoutY="603.0" mnemonicParsing="false" onAction="#handleExitAction" prefHeight="40.0" prefWidth="97.0" textAlignment="CENTER">
+                  <font>
+                      <Font name="System Bold" size="16.0" fx:id="x2" />
+                  </font>
+              </Button>
+              <Button fx:id="help" contentDisplay="CENTER" focusTraversable="false" font="$x2" layoutX="132.0" layoutY="503.0" mnemonicParsing="false" onAction="#displayHelpAction" prefHeight="40.0" prefWidth="169.0" textAlignment="CENTER" />
+              <Button fx:id="restart" contentDisplay="CENTER" focusTraversable="false" font="$x2" layoutX="132.0" layoutY="553.0" mnemonicParsing="false" onAction="#handleRestartAction" prefHeight="40.0" prefWidth="169.0" textAlignment="CENTER" textFill="#1d2885" />
+              <Button fx:id="pause" contentDisplay="CENTER" focusTraversable="false" font="$x2" layoutX="37.0" layoutY="553.0" mnemonicParsing="false" onAction="#handlePauseAction" prefHeight="40.0" prefWidth="88.0" textAlignment="CENTER" />
+              <Button id="restart" fx:id="returnBack" contentDisplay="CENTER" focusTraversable="false" font="$x2" layoutX="46.0" layoutY="603.0" mnemonicParsing="false" onAction="#handleReturnAction" prefHeight="40.0" prefWidth="132.0" textAlignment="CENTER" />
+              <Label alignment="CENTER" layoutX="1.0" layoutY="650.0" prefHeight="56.0" prefWidth="341.0" text="Created by INVENT, CITY College" textFill="#9f9f9f" wrapText="true">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </Label>
+              <Button font="$x2" layoutX="108.0" layoutY="700.0" mnemonicParsing="false" onAction="#hideButtons" prefWidth="50.0" text="[X]" />
+              <Button font="$x2" layoutX="162.0" layoutY="700.0" mnemonicParsing="false" onAction="#viewButtons" prefWidth="50.0" text="[ ]" />
+          </children>
+       </Pane>
+       <ProgressIndicator fx:id="completion" layoutX="12.0" layoutY="297.0" prefHeight="111.0" prefWidth="105.0" progress="0.0" />
+       <Label fx:id="found" alignment="CENTER" contentDisplay="CENTER" layoutX="1148.0" layoutY="61.0" prefWidth="169.0">
+           <font>
+               <Font size="20.0" fx:id="x5" />
+           </font>
+       </Label>
+       <Label fx:id="wordsLeftLB" id="found" alignment="CENTER" contentDisplay="CENTER" font="$x5" layoutX="1148.0" layoutY="29.0" prefWidth="169.0" />
+       <GridPane fx:id="labelGrid" layoutX="1112.0" layoutY="107.0" prefHeight="634.0" prefWidth="240.0">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="240.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+       </GridPane>
+       <Label fx:id="progressLB" id="playerLabel" layoutX="12.0" layoutY="244.0" prefHeight="26.0" prefWidth="105.0">
+           <font>
+               <Font size="18.0" fx:id="x3" />
+           </font>
+       </Label>
+       <!--<Label id="playerLabel" font="$x3" layoutX="182.0" layoutY="244.0" prefHeight="26.0" prefWidth="64.0" text="ΣΚΟΡ:" />-->
+       <!--<Label id="playerLabel" fx:id="score" alignment="CENTER" font="$x3" layoutX="241.0" layoutY="244.0" prefHeight="26.0" prefWidth="59.0" />-->
+       <Label fx:id="LevelLB" id="playerLabel" font="$x3" layoutX="140.0" layoutY="327.0" prefHeight="51.0" prefWidth="180.0" wrapText="true" />
+       <Label id="playerLabel" fx:id="levelLabel" alignment="CENTER" font="$x3" layoutX="318.0" layoutY="339.0" prefHeight="26.0" prefWidth="30.0" />
+       <!--<ProgressBar fx:id="timer" layoutX="14.0" layoutY="154.0" prefHeight="40.0" prefWidth="352.0000999999975" progress="0.0">-->
+           <!--<effect>-->
+               <!--<ColorAdjust hue="-0.7786259541984732" saturation="0.5" />-->
+           <!--</effect>-->
+       <!--</ProgressBar>-->
+       <Label fx:id="total" alignment="CENTER" contentDisplay="CENTER" font="$x3" layoutX="117.0" layoutY="108.0" prefHeight="26.0" prefWidth="248.00009999999747" />
+       <Label fx:id="frameLB" font="$x3" layoutX="14.0" layoutY="108.0" prefHeight="26.0" prefWidth="88.0" />
+       <Label fx:id="playerLabel" alignment="CENTER" contentDisplay="CENTER" font="$x3" layoutX="117.0" layoutY="35.0" prefHeight="67.0" prefWidth="248.0" wrapText="true" />
+       <Label fx:id="playerLB" id="playerLabel" font="$x3" layoutX="12.0" layoutY="49.0" prefHeight="26.000099999997474" prefWidth="105.0" />
+   </children>
+</AnchorPane>

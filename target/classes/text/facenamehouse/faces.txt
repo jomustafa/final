@@ -1,0 +1,6 @@
+/photographs/face-name-house/faces/young_female_1.jpg
+/photographs/face-name-house/faces/young_female_2.jpg
+/photographs/face-name-house/faces/young_female_3.jpg
+/photographs/face-name-house/faces/old_male_1.jpg
+/photographs/face-name-house/faces/adult_male_2.jpg
+/photographs/face-name-house/faces/young_male_1.jpg

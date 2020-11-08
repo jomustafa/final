@@ -1,0 +1,12 @@
+﻿ΜΑΥΡΟ black true
+ΚΟΚΚΙΝΟ red true
+ΠΡΑΣΙΝΟ green true
+ΜΠΛΕ blue true
+ΜΟΒ purple true
+ΠΟΡΤΟΚΑΛΙ darkorange true
+ΚΑΦΕ saddlebrown true
+ΚΙΤΡΙΝΟ yellow false
+ΓΑΛΑΖΙΟ aqua false
+ΡΟΖ pink false
+ΓΚΡΙ darkgrey false
+ΛΑΧΑΝΙ lime false

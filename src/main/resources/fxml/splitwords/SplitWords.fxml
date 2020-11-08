@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--THIS IS THE GAME "ΑΝΤΙΣΤΟΙΧΙΣΗ"-->
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="wrapper" prefHeight="768.0" prefWidth="1366.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="brainbright.gui.splitwords.SplitWordsController">
+    <stylesheets>
+        <URL value="@splitwords.css"/>
+    </stylesheets>
+    <!--<ProgressBar fx:id="timer" layoutX="32.0" layoutY="159.0" prefHeight="40.0" prefWidth="354.0" progress="0.0">-->
+        <!--<effect>-->
+            <!--<ColorAdjust hue="-0.7786259541984732" saturation="0.5"/>-->
+        <!--</effect>-->
+    <!--</ProgressBar>-->
+    <Pane fx:id="hidePanel" layoutX="24.0" layoutY="14.0" prefHeight="724.0" prefWidth="385.0">
+        <Button fx:id="exit" contentDisplay="CENTER" focusTraversable="false" layoutX="184.0" layoutY="603.0" mnemonicParsing="false" onAction="#handleExitAction" prefHeight="40.0" prefWidth="105.0" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="16.0" fx:id="x2"/>
+            </font>
+        </Button>
+        <Button fx:id="help" contentDisplay="CENTER" focusTraversable="false" font="$x2" layoutX="132.0" layoutY="503.0" mnemonicParsing="false" onAction="#displayHelpAction" prefHeight="40.0" prefWidth="169.0" textAlignment="CENTER" />
+        <Button fx:id="restart" contentDisplay="CENTER" focusTraversable="false" font="$x2" layoutX="132.0" layoutY="553.0" mnemonicParsing="false" onAction="#handleRestartAction" prefHeight="40.0" prefWidth="169.0" textAlignment="CENTER" textFill="#1d2885"/>
+        <Button fx:id="pause" contentDisplay="CENTER" focusTraversable="false" font="$x2" layoutX="37.0" layoutY="553.0" mnemonicParsing="false" onAction="#handlePauseAction" prefHeight="40.0" prefWidth="88.0" textAlignment="CENTER"/>
+        <Button id="restart" fx:id="returnBack" contentDisplay="CENTER" focusTraversable="false" font="$x2" layoutX="46.0" layoutY="603.0" mnemonicParsing="false" onAction="#handleReturnAction" prefHeight="40.0" prefWidth="132.0" textAlignment="CENTER"/>
+        <Label alignment="CENTER" layoutX="1.0" layoutY="650.0" prefHeight="56.0" prefWidth="341.0" text="Created by INVENT, CITY College" textFill="#9f9f9f" wrapText="true">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Button font="$x2" layoutX="108.0" layoutY="700.0" mnemonicParsing="false" onAction="#hideButtons" prefWidth="50.0" text="[X]"/>
+        <Button font="$x2" layoutX="162.0" layoutY="700.0" mnemonicParsing="false" onAction="#viewButtons" prefWidth="50.0" text="[ ]"/>
+    </Pane>
+    <GridPane id="grid" fx:id="splitGrid" layoutX="458.0" layoutY="67.0" prefHeight="407.0" prefWidth="536.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="134.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="134.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+    </GridPane>
+    <Label fx:id="word" alignment="CENTER" contentDisplay="CENTER" layoutX="523.0" layoutY="586.0" prefHeight="40.0" prefWidth="461.0" textAlignment="CENTER">
+        <font>
+            <Font size="26.0"/>
+        </font>
+    </Label>
+    <Label fx:id="bonus" alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="114.0" prefHeight="26.0" prefWidth="245.0" visible="false">
+        <font>
+            <Font size="18.0" fx:id="x1"/>
+        </font>
+    </Label>
+    <!--<Label font="$x1" layoutX="32.0" layoutY="113.0" prefHeight="26.0" prefWidth="88.0" text="ΧΡΟΝΟΣ:" />-->
+    <ProgressIndicator fx:id="completion" layoutX="32.0" layoutY="290.0" prefHeight="111.0" prefWidth="105.0" progress="0.0"/>
+    <Label fx:id="found" alignment="CENTER" contentDisplay="CENTER" layoutX="1134.0" layoutY="79.0" prefWidth="169.0">
+        <font>
+            <Font size="20.0" fx:id="x3"/>
+        </font>
+    </Label>
+    <Label fx:id="wordsFoundLB" id="found" alignment="CENTER" contentDisplay="CENTER" font="$x3" layoutX="1134.0" layoutY="39.0" prefWidth="169.0" />
+    <Label fx:id="playerLabel" alignment="CENTER" contentDisplay="CENTER" font="$x1" layoutX="141.0" layoutY="33.0" prefHeight="67.0" prefWidth="244.99990000000253" wrapText="true"/>
+    <GridPane fx:id="labelGrid" layoutX="1134.0" layoutY="118.0" prefHeight="400.0" prefWidth="169.00009999999747">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+    </GridPane>
+    <Label fx:id="playerLB" id="playerLabel" font="$x1" layoutX="32.0" layoutY="54.0" prefHeight="26.0" prefWidth="105.0"/>
+    <Label fx:id="progressLB" id="playerLabel" font="$x1" layoutX="32.0" layoutY="237.0" prefHeight="26.0" prefWidth="105.0"/>
+    <!--<Label id="playerLabel" font="$x1" layoutX="209.0" layoutY="237.0" prefHeight="26.0" prefWidth="64.0" text="ΣΚΟΡ:" />-->
+    <!--<Label id="playerLabel" fx:id="score" alignment="CENTER" font="$x1" layoutX="268.0" layoutY="237.0" prefHeight="26.0" prefWidth="59.0"/>-->
+    <Label fx:id="LevelLB" id="playerLabel" font="$x1" layoutX="209.0" layoutY="316.0" prefHeight="51.0" prefWidth="132.0" wrapText="true" />
+    <Label id="playerLabel" fx:id="levelLabel" alignment="CENTER" font="$x1" layoutX="341.0" layoutY="341.0" prefHeight="26.0" prefWidth="30.0"/>
+    <Button id="validate" fx:id="reset" contentDisplay="CENTER" disable="true" focusTraversable="false" font="$x2" layoutX="690.0" layoutY="673.0" mnemonicParsing="false" onAction="#handleResetAction" prefHeight="40.0" prefWidth="142.0" textAlignment="CENTER"/>
+</AnchorPane>

@@ -1,0 +1,23 @@
+.mainFxmlClass
+{
+    -fx-background-color: #FFFFFF;
+}
+.list-cell
+{
+    -fx-font: 20pt "Comic Sans MS";
+}
+
+#title
+{
+    -fx-alignment: center;
+    -fx-font-size: 25px;
+}
+
+#warning
+{
+    -fx-alignment: center;
+    -fx-font-size: 18px;
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+
+}
