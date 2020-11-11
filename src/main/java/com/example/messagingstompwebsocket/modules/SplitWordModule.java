@@ -32,7 +32,7 @@ public class SplitWordModule {
 		return (client, data, ackSender) -> {
 			Object[] args = { data.getFirstPart(), data.getSecondPart() };
 			isValid = splitWord.isValidAction(args) == 0 ? false : true;
-			System.out.println(data.getFirstPart() + data.getSecondPart() + isValid + "being sent");
+			System.out.println(data.getFirstPart() + data.getSecondPart() + isValid);
 			namespace.getBroadcastOperations().sendEvent("result", isValid);
 		};
 	}
@@ -48,7 +48,6 @@ public class SplitWordModule {
 
 			log.debug("Client[{}] - Connected to chat module through '{}'", client.getSessionId().toString(), null);
 			namespace.getBroadcastOperations().sendEvent("all_split_words", splitWord);
-			
 
 		};
 	}
