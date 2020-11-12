@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://127.0.0.1:3050";
+const ENDPOINT = "https://brainbright.herokuapp.com:8080";
 
 export default function ClientComponent() {
   const [splitWords, setSplitWords] = useState([]);
