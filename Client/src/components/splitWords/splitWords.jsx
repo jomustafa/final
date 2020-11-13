@@ -116,7 +116,7 @@ export default function ClientComponent() {
 
         </div>
 
-      </div>
+      </div> 
     </div>
   )
 }
