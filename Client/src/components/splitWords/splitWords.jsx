@@ -3,7 +3,7 @@ import splitWordStyle from "./style.css";
 import * as Stomp from "stompjs";
 import SockJS from "sockjs-client";
 
-var socket = new SockJS('http://brainbright.herokuapp.com/brainbright-websocket');
+var socket = new SockJS('https://brainbright.herokuapp.com/brainbright-websocket');
 var stompClient = Stomp.over(socket);
 
 function getSplitWords(client) {
