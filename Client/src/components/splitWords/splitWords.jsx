@@ -19,7 +19,7 @@ function connect() {
   // topics={['/topic/splitwordlist']}
   //   onMessage={(msg) => { console.log(msg); }}
   //   ref={(client) => { this.clientRef = client }} />
-  var socket = new SockJS('http://127.0.0.1:8080/brainbright-websocket');
+  var socket = new SockJS('/brainbright-websocket');
   stompClient = Stomp.over(socket);
   
   stompClient.connect({}, function (frame) {
