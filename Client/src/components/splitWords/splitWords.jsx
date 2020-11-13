@@ -1,59 +1,102 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import splitWordStyle from "./style.css";
-const ENDPOINT = "http://127.0.0.1:3070";
-const socket = socketIOClient(ENDPOINT);
+import * as Stomp from "stompjs";
+import SockJS from "sockjs-client";
+import SockJsClient from 'react-stomp';
+// const ENDPOINT = "http://127.0.0.1:3060";
+// const socket = socketIOClient(ENDPOINT);
+connect();
+
+var stompClient = null;
+var buttonStack = [];
+var splitWords = [];
+
+
+function connect() {
+  // <SockJsClient 
+  // url='http://localhost:8080/brainbright-websocket' 
+  // topics={['/topic/splitwordlist']}
+  //   onMessage={(msg) => { console.log(msg); }}
+  //   ref={(client) => { this.clientRef = client }} />
+  var socket = new SockJS('http://127.0.0.1:8080/brainbright-websocket');
+  stompClient = Stomp.over(socket);
+  
+  stompClient.connect({}, function (frame) {
+    // console.log('Connected: ' + frame);
+    console.log(this, 'CLIENT');
+    // stompClient.subscribe('/topic/validactionresponse', function(splitwords) {
+    // 	// if (!JSON.parse(splitwords.body)) {
+    // 	// 	showResponse("That's wrong!");
+    // 	// } else {
+    // 	// 	showResponse("Correct!");	
+    //   // }
+    //   console.log(splitWords)
+    // });
+    this.subscribe('/topic/splitwordlist', function (result) {
+      // splitWords = JSON.parse(result.body);
+      // initButtons();
+      console.log(result);
+    });
+    getSplitWords(this);
+  });
+}
+
+function getSplitWords(client) {
+  console.log("ayo? getsplitwords");
+  client.send("/app/getsplitwords", {}, null);
+}
 
 export default function ClientComponent() {
-  const [splitWords, setSplitWords] = useState([]);
-  const [result, setResult] = useState();
-  const [splitWord, setSplitWord] = useState('');
-  const [splitWordArray, setSplitWordArray] = useState([]);
-  const [endResult, setEndResult] = useState('');
+  // const [splitWords, setSplitWords] = useState([]);
+  // const [result, setResult] = useState();
+  // const [splitWord, setSplitWord] = useState('');
+  // const [splitWordArray, setSplitWordArray] = useState([]);
+  // const [endResult, setEndResult] = useState('');
 
-  useEffect(() => {
-    socket.on("all_split_words", data => {
-      let array = new Array(24 - data.splitWords.length * 2).fill(' ');
-      data.splitWords.map((item) => {
-        array.splice(Math.floor(Math.random() * 24), 0, item.firstPart);
-        array.splice(Math.floor(Math.random() * 24), 0, item.secondPart);
-      });
-      setSplitWords(array);
-    });
-  }, []);
+  // useEffect(() => {
+  //   socket.on("all_split_words", data => {
+  //     let array = new Array(24 - data.splitWords.length * 2).fill(' ');
+  //     data.splitWords.map((item) => {
+  //       array.splice(Math.floor(Math.random() * 24), 0, item.firstPart);
+  //       array.splice(Math.floor(Math.random() * 24), 0, item.secondPart);
+  //     });
+  //     setSplitWords(array);
+  //   });
+  // }, []);
 
 
-  function GetButtonContent(e) {
+  // function GetButtonContent(e) {
 
-    if (splitWordArray.length >= 2) {
-      setSplitWordArray([]);
-      setSplitWordArray([e.target.innerHTML]);
-    } else {
-      const newArray = splitWordArray;
-      newArray.push(e.target.innerHTML);
-      console.log(splitWordArray.length);
-      setSplitWordArray(newArray);
-    }
+  //   if (splitWordArray.length >= 2) {
+  //     setSplitWordArray([]);
+  //     setSplitWordArray([e.target.innerHTML]);
+  //   } else {
+  //     const newArray = splitWordArray;
+  //     newArray.push(e.target.innerHTML);
+  //     console.log(splitWordArray.length);
+  //     setSplitWordArray(newArray);
+  //   }
 
-    if (splitWordArray.length === 2) {
-      socket.emit("result", splitWordArray.join(''));
-      setSplitWord('');
-      setSplitWordArray([]);
-      socket.on("result", data => {
-        setResult(data);
-        if (data) {
-          setEndResult('You are correct');
-        } else {
-          setEndResult('You are wrong');
-        }
-      });
-    }
-  }
+  //   if (splitWordArray.length === 2) {
+  //     socket.emit("result", splitWordArray.join(''));
+  //     setSplitWord('');
+  //     setSplitWordArray([]);
+  //     socket.on("result", data => {
+  //       setResult(data);
+  //       if (data) {
+  //         setEndResult('You are correct');
+  //       } else {
+  //         setEndResult('You are wrong');
+  //       }
+  //     });
+  //   }
+  // }
 
 
   return (
-    <div className="container-fluid">
-      <div className="row">
+    <div className="container-fluid">test
+      {/* <div className="row">
         <div className="col-md-3">
           <div className="d-flex">
             <div className="player">
@@ -95,7 +138,7 @@ export default function ClientComponent() {
 
         </div>
 
-      </div>
+      </div> */}
     </div>
   )
 }
