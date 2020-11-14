@@ -1,0 +1,8 @@
+.btn-primary {
+    width: auto;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+}
