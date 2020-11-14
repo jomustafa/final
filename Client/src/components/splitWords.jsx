@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "https://brainbright.herokuapp.com:8080";
+const ENDPOINT = "brainbright.herokuapp.com:443";
 
 export default function ClientComponent() {
   const [splitWords, setSplitWords] = useState([]);
@@ -71,17 +71,11 @@ export default function ClientComponent() {
           {
             splitWords.map((item) =>
               <div className="col-md-3" key={item.word}>
-                <button className="btn btn-primary text-center" onClick={GetButtonContent}>{item.firstPart}</button>
-              </div>
-            )
-          }
-          {
-            splitWords.map((item) =>
-              <div className="col-md-3" key={item.word}>
                 <button className="btn btn-primary mb-3" onClick={GetButtonContent}>{item.secondPart}</button>
               </div>
             )
           }
+          
 
         </div>
         <div className="row">

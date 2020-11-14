@@ -20,8 +20,8 @@ public class MessagingStompWebsocketApplication {
     @Bean
     public SocketIOServer socketIOServer() {
         Configuration config = new Configuration();
-        config.setHostname("https://brainbright.herokuapp.com/");
-        config.setPort(8080);
+        config.setHostname("127.0.0.1");
+        config.setPort(3070);
         return new SocketIOServer(config);
     }
 }
