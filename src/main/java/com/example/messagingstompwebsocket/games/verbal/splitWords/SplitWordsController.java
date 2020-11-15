@@ -25,21 +25,10 @@ public class SplitWordsController {
 
 	public SplitWords sws = new SplitWords(1);
 
-	@MessageMapping("/validaction")
-	@SendTo("/topic/validactionresponse")
+	@MessageMapping("/sws_validaction")
+	@SendTo("/topic/sws_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
 		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
-		new Thread(() -> {
-			try {
-				for(int i = 0; i<6; i++) {
-					Thread.sleep(4000);
-					timer();
-				}
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}).start();
 		return sws.isValidAction(args);
 		// return sws.isValidAction(args);
 	}
@@ -50,8 +39,4 @@ public class SplitWordsController {
 		return sws.getSplitWords();
 	}
 
-	@SendTo("/topic/validactionresponse")
-	public int timer() {
-		return 2;
-	}
 }
