@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.brainbright.utilities;
+package com.example.messagingstompwebsocket.utilities;
 
 import java.text.Normalizer;
 import java.util.HashMap;

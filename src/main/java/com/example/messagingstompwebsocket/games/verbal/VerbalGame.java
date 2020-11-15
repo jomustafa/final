@@ -1,8 +1,8 @@
 package com.example.messagingstompwebsocket.games.verbal;
 
 //import com.example.messagingstompwebsocket.brainbright.BrainBright;
-import com.example.messagingstompwebsocket.brainbright.games.Game;
-import com.example.messagingstompwebsocket.brainbright.utilities.FileManager;
+import com.example.messagingstompwebsocket.games.Game;
+import com.example.messagingstompwebsocket.utilities.FileManager;
 
 public abstract class VerbalGame extends Game {
 

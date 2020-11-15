@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.brainbright.games;
+package com.example.messagingstompwebsocket.games;
 
 import java.util.Objects;
 

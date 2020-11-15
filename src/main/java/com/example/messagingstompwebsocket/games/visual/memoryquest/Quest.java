@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest;
+package com.example.messagingstompwebsocket.games.visual.memoryquest;
 
 import java.io.Serializable;
 import java.util.LinkedList;

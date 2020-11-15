@@ -1,7 +1,7 @@
-package com.example.messagingstompwebsocket.brainbright.utilities;
+package com.example.messagingstompwebsocket.utilities;
 
-import  com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest.HidingSpot;
-import  com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest.Quest;
+import  com.example.messagingstompwebsocket.games.visual.memoryquest.HidingSpot;
+import  com.example.messagingstompwebsocket.games.visual.memoryquest.Quest;
 
 import java.util.LinkedList;
 import java.util.List;
