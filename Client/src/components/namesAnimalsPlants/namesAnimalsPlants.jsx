@@ -7,13 +7,16 @@ import SockJS from "sockjs-client";
 var socket = new SockJS('https://brainbright.herokuapp.com/brainbright-websocket');
 var stompClient = Stomp.over(socket);
 
+let submittedFieldID= " ";
 function getNapCharacter(client) {
     client.send("/app/nap_getcharacter", {}, null);
 }
 function isValidAction(event) {
-    if(event.keyCode===13){
-        let word = document.getElementById(event.target.id).value;
-        stompClient.send("/app/nap_validaction", {}, JSON.stringify({ "word": word.toUpperCase(), "type": event.target.id}));
+    if (event.keyCode === 13) {
+        submittedFieldID = event.target.id;
+        console.log(submittedFieldID);
+        let word = document.getElementById(submittedFieldID).value.toUpperCase();
+        stompClient.send("/app/nap_validaction", {}, JSON.stringify({ "word": word, "type": event.target.id }));
     }
 }
 export default function ClientComponent() {
@@ -34,10 +37,20 @@ export default function ClientComponent() {
                 console.log(data.body);
                 setNapCharacter(data.body);
             });
-            
+
             getNapCharacter(this);
-            this.subscribe('/topic/nap_validactionresponse', function(data){
-                console.log(data);
+            this.subscribe('/topic/nap_validactionresponse', function (data) {
+                if (data.body == 0) {
+                    document.getElementById("result").innerHTML = "Incorrect word!";
+                    document.getElementById(submittedFieldID).value = "";
+                } else if (data.body == 1) {
+                    document.getElementById("result").innerHTML = "Correct word!";
+                    document.getElementById(submittedFieldID).disabled = true;
+                    document.getElementById(submittedFieldID).style.backgroundColor = "lightgreen";
+                } else { //data === -1
+                    document.getElementById("result").innerHTML = "You already submitted that word!";
+                    document.getElementById(submittedFieldID).disabled = "lightred";
+                }
             });
         });
     }, []);
@@ -95,8 +108,13 @@ export default function ClientComponent() {
                     <div className="">
                         Menu
             </div>
+
                 </div>
+
                 <div className="col-md-6 text-center all_words">
+                    <div className="starting-character p-2 ">{
+                        "The chosen character is" + napCharacter
+                    }</div>
                     <div className="row">
                         {
                             categories.map((item) =>
@@ -109,18 +127,19 @@ export default function ClientComponent() {
                                 </div>
                             )
                         }
+                        <div className="result p-2" id="result">{
+                            "Waiting to submit a word..."
+                        }</div>
                     </div>
 
-                    <div className="result p-2">{
-                        "The chosen character is" + napCharacter
-                    }</div>
+
                     <div className="mt-3">{endResult}</div>
                     <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3" onClick={clearContent}>Clear</button>
 
                 </div>
                 <div className="col-md-3">
                     <div className="text-center">
-                        <div className="border border-dark">test</div>
+                        <div className="border border-dark">Submitted words</div>
                     </div>
 
                 </div>
