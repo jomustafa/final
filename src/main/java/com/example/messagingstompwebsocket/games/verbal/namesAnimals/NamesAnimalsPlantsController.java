@@ -7,7 +7,7 @@ import java.util.Map;
 @Controller
 public class NamesAnimalsPlantsController {
 	NamesAnimalsPlants nap = new NamesAnimalsPlants(1);
-	Character startingLetter = nap.initToFind();
+	
 	
 	@MessageMapping("/nap_validaction")
 	@SendTo("/topic/nap_validactionresponse")
@@ -20,6 +20,7 @@ public class NamesAnimalsPlantsController {
 	@MessageMapping("/nap_getcharacter")
 	@SendTo("/topic/nap_getcharacterresponse")
 	public Character getCharacter() {
+		Character startingLetter = nap.initToFind();
 		return startingLetter;
 	}
 }
