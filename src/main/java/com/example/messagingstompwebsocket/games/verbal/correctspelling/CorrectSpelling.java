@@ -22,7 +22,7 @@ public class CorrectSpelling extends VerbalGame {
         initLevel();
     }
 
-    private void initToFind() {
+    private void initToFind() { //init the program get the word
         RandomGenerator<String> rg;
         if(Locale.getDefault().getLanguage().equals("en")){
              rg = new RandomGenerator(fileManager.getSimpleShort_en());
@@ -47,7 +47,7 @@ public class CorrectSpelling extends VerbalGame {
         }
     }
 
-    private LinkedList<String> scramble() {
+    private LinkedList<String> scramble() { //scramble words and put in list
         Character firstLetter = " ".charAt(0);
         Character lastLetter = " ".charAt(0);
         String substring = "";
