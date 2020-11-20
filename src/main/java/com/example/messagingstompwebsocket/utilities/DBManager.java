@@ -1,10 +1,10 @@
-package com.example.messagingstompwebsocket.brainbright.utilities;
+package com.example.messagingstompwebsocket.utilities;
 
-import com.example.messagingstompwebsocket.brainbright.games.Player;
-import com.example.messagingstompwebsocket.brainbright.games.Score;
-import com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest.HiddenObject;
-import com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest.HidingSpot;
-import com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest.Quest;
+import com.example.messagingstompwebsocket.games.Player;
+import com.example.messagingstompwebsocket.games.Score;
+import com.example.messagingstompwebsocket.games.visual.memoryquest.HiddenObject;
+import com.example.messagingstompwebsocket.games.visual.memoryquest.HidingSpot;
+import com.example.messagingstompwebsocket.games.visual.memoryquest.Quest;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;

@@ -1,7 +1,7 @@
-package com.example.messagingstompwebsocket.brainbright.utilities;
+package com.example.messagingstompwebsocket.utilities;
 
-import com.example.messagingstompwebsocket.brainbright.games.Player;
-import com.example.messagingstompwebsocket.brainbright.games.visual.Color;
+import com.example.messagingstompwebsocket.games.Player;
+import com.example.messagingstompwebsocket.games.visual.Color;
 
 import java.io.*;
 import java.sql.Blob;
@@ -9,10 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-import com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest.HiddenObject;
-import com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest.HidingSpot;
-import com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest.Quest;
-import com.example.messagingstompwebsocket.brainbright.utilities.GreekLangUtils;
+import com.example.messagingstompwebsocket.games.visual.memoryquest.HiddenObject;
+import com.example.messagingstompwebsocket.games.visual.memoryquest.HidingSpot;
+import com.example.messagingstompwebsocket.games.visual.memoryquest.Quest;
 
 
 import org.nustaq.serialization.FSTConfiguration;

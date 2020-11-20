@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.brainbright.games.visual;
+package com.example.messagingstompwebsocket.games.visual;
 
 public class Color {
 

@@ -56,14 +56,14 @@ export default function ClientComponent() {
 
       setSplitWord('');
       setSplitWordArray([]);
-      stompClient.subscribe('/topic/validactionresponse', function (splitwords) {
+      stompClient.subscribe('/topic/sws_validactionresponse', function (splitwords) {
         if (!JSON.parse(splitwords.body)) {
           setEndResult('You are wrong');
         } else {
           setEndResult('You are correct');
         }
       });
-      stompClient.send("/app/validaction", {}, JSON.stringify({ "firstPart": splitWordArray[0], "secondPart": splitWordArray[1] }));
+      stompClient.send("/app/sws_validaction", {}, JSON.stringify({ "firstPart": splitWordArray[0], "secondPart": splitWordArray[1] }));
     }
   }
 

@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.brainbright.games.visual.memoryquest;
+package com.example.messagingstompwebsocket.games.visual.memoryquest;
 
 //import javafx.event.EventHandler;
 //import javafx.scene.input.DragEvent;

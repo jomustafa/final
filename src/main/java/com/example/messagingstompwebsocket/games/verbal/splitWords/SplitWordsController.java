@@ -22,36 +22,33 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class SplitWordsController {
+	SplitWords sws;
 
-	public SplitWords sws = new SplitWords(1);
-
-	@MessageMapping("/validaction")
-	@SendTo("/topic/validactionresponse")
+	@MessageMapping("/sws_validaction")
+	@SendTo("/topic/sws_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
 		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
-		new Thread(() -> {
-			try {
-				for(int i = 0; i<6; i++) {
-					Thread.sleep(4000);
-					timer();
-				}
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		
+		if(sws.isValidAction(args)==1) {
+			if(sws.isFinished()) {
+				System.out.println("2");
+				return 2;
+			}else {
+				System.out.println("1");
+				return 1;
 			}
-		}).start();
-		return sws.isValidAction(args);
+		}else {
+			System.out.println("0");
+			return 0;
+		}
 		// return sws.isValidAction(args);
 	}
 
 	@MessageMapping("/getsplitwords")
 	@SendTo("/topic/splitwordlist")
 	public LinkedList<SplitWord> getSplitWords() {
+		sws = new SplitWords(1);
 		return sws.getSplitWords();
 	}
 
-	@SendTo("/topic/validactionresponse")
-	public int timer() {
-		return 2;
-	}
 }
