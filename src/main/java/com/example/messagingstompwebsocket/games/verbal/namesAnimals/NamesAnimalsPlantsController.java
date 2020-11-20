@@ -13,14 +13,24 @@ public class NamesAnimalsPlantsController {
 	@SendTo("/topic/nap_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
 		Object[] args = { payload.get("word"), payload.get("type") };
-		return nap.isValidAction(args);
-		// return sws.isValidAction(args);
+		int isValid  = nap.isValidAction(args);
+		
+		if(isValid==1) {
+			if(nap.isFinished()) {
+				return 2;
+			} else {
+				return 1;
+			}
+		} else {
+			return nap.isValidAction(args);
+		}
 	}
 	
 	@MessageMapping("/nap_getcharacter")
 	@SendTo("/topic/nap_getcharacterresponse")
-	public Character getCharacter() {
-		nap = new NamesAnimalsPlants(1);
+	public Character getCharacter(int level) {
+		System.out.print("LEVEL" + level);
+		nap = new NamesAnimalsPlants(level);
 		Character startingLetter = nap.initToFind();
 		return startingLetter;
 	}
