@@ -31,11 +31,14 @@ public class SplitWordsController {
 		
 		if(sws.isValidAction(args)==1) {
 			if(sws.isFinished()) {
+				System.out.println("2");
 				return 2;
 			}else {
+				System.out.println("1");
 				return 1;
 			}
 		}else {
+			System.out.println("0");
 			return 0;
 		}
 		// return sws.isValidAction(args);
