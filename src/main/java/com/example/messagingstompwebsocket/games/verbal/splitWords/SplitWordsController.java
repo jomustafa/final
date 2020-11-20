@@ -29,7 +29,16 @@ public class SplitWordsController {
 	@SendTo("/topic/sws_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
 		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
-		return sws.isValidAction(args);
+		
+		if(sws.isValidAction(args)==1) {
+			if(sws.isFinished()) {
+				return 2;
+			}else {
+				return 1;
+			}
+		}else {
+			return 0;
+		}
 		// return sws.isValidAction(args);
 	}
 
