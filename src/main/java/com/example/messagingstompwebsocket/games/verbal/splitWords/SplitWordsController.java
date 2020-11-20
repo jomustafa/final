@@ -22,8 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class SplitWordsController {
-
-	public SplitWords sws = new SplitWords(1);
+	SplitWords sws;
 
 	@MessageMapping("/sws_validaction")
 	@SendTo("/topic/sws_validactionresponse")
@@ -44,7 +43,8 @@ public class SplitWordsController {
 
 	@MessageMapping("/getsplitwords")
 	@SendTo("/topic/splitwordlist")
-	public LinkedList<SplitWord> getSplitWords() {
+	public LinkedList<SplitWord> getSplitWords(int n) {
+		 sws = new SplitWords(n);
 		return sws.getSplitWords();
 	}
 
