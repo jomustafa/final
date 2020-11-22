@@ -6,20 +6,7 @@ import java.util.Map;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.example.messagingstompwebsocket.Greeting;
-import com.example.messagingstompwebsocket.games.verbal.correctspelling.CorrectSpelling;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class CorrectSpellingController {
@@ -47,8 +34,8 @@ public class CorrectSpellingController {
         return cs.isFinished();
     }
 	
-	@MessageMapping("/getcorrectspellingcheckfinished") //get the old word that was found to put it in "Found Words" list
-	@SendTo("/topic/correctspellingcheckfinished")
+	@MessageMapping("/getcorrectspellingGetword") //get the old word that was found to put it in "Found Words" list
+	@SendTo("/topic/correctspellingGetword")
 	public String getWordToFind() {
 	    return cs.getWordToFind();
 	}
