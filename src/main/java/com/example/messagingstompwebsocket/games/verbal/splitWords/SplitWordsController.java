@@ -26,7 +26,7 @@ public class SplitWordsController {
 	SplitWords sws;
 
 	@MessageMapping("/sws_validaction")
-	@SendToUser("/sws_validactionresponse")
+	@SendToUser("/topic/sws_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
 		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
 		
@@ -46,7 +46,7 @@ public class SplitWordsController {
 	}
 
 	@MessageMapping("/getsplitwords")
-	@SendToUser("/splitwordlist")
+	@SendToUser("/topic/splitwordlist")
 	public LinkedList<SplitWord> getSplitWords() {
 		sws = new SplitWords(1);
 		return sws.getSplitWords();

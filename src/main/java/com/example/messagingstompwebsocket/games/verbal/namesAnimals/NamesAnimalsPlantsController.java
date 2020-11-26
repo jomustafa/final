@@ -11,7 +11,7 @@ public class NamesAnimalsPlantsController {
 	
 	
 	@MessageMapping("/nap_validaction")
-	@SendToUser("/nap_validactionresponse")
+	@SendToUser("/topic/nap_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
 		Object[] args = { payload.get("word"), payload.get("type") };
 		int isValid  = nap.isValidAction(args);
@@ -28,7 +28,7 @@ public class NamesAnimalsPlantsController {
 	}
 	
 	@MessageMapping("/nap_getcharacter")
-	@SendToUser("/nap_getcharacterresponse")
+	@SendToUser("/topic/nap_getcharacterresponse")
 	public Character getCharacter(int level) {
 		System.out.print("LEVEL" + level);
 		nap = new NamesAnimalsPlants(level);
