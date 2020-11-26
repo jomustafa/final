@@ -2,6 +2,7 @@ package com.example.messagingstompwebsocket.games.verbal.namesAnimals;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import java.util.Map;
 @Controller
@@ -10,7 +11,7 @@ public class NamesAnimalsPlantsController {
 	
 	
 	@MessageMapping("/nap_validaction")
-	@SendTo("/topic/nap_validactionresponse")
+	@SendToUser("/nap_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
 		Object[] args = { payload.get("word"), payload.get("type") };
 		int isValid  = nap.isValidAction(args);
@@ -27,7 +28,7 @@ public class NamesAnimalsPlantsController {
 	}
 	
 	@MessageMapping("/nap_getcharacter")
-	@SendTo("/topic/nap_getcharacterresponse")
+	@SendToUser("/nap_getcharacterresponse")
 	public Character getCharacter(int level) {
 		System.out.print("LEVEL" + level);
 		nap = new NamesAnimalsPlants(level);

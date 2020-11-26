@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ public class SplitWordsController {
 	SplitWords sws;
 
 	@MessageMapping("/sws_validaction")
-	@SendTo("/topic/sws_validactionresponse")
+	@SendToUser("/sws_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
 		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
 		
@@ -45,7 +46,7 @@ public class SplitWordsController {
 	}
 
 	@MessageMapping("/getsplitwords")
-	@SendTo("/topic/splitwordlist")
+	@SendToUser("/splitwordlist")
 	public LinkedList<SplitWord> getSplitWords() {
 		sws = new SplitWords(1);
 		return sws.getSplitWords();
