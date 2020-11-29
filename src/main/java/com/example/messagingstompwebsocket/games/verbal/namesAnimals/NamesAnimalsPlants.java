@@ -135,4 +135,7 @@ public class NamesAnimalsPlants extends VerbalGame {
         return 0;
     }
 
+    public int getLevel() {
+    	return level;
+    }
 }

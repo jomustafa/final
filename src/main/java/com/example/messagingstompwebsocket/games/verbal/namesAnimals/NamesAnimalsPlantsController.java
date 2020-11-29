@@ -18,6 +18,7 @@ public class NamesAnimalsPlantsController {
 		
 		if(isValid==1) {
 			if(nap.isFinished()) {
+				System.out.println("Changing Levels message");
 				return 2;
 			} else {
 				return 1;
@@ -29,9 +30,13 @@ public class NamesAnimalsPlantsController {
 	
 	@MessageMapping("/nap_getcharacter")
 	@SendToUser("/topic/nap_getcharacterresponse")
-	public Character getCharacter(int level) {
+	public Character getCharacter(Map<String, String> payload) {
+		int level = Integer.parseInt(payload.get("level"));
+		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
 		System.out.print("LEVEL" + level);
-		nap = new NamesAnimalsPlants(level);
+		if(isNew) {
+			nap = new NamesAnimalsPlants(level);
+		}
 		Character startingLetter = nap.initToFind();
 		return startingLetter;
 	}
