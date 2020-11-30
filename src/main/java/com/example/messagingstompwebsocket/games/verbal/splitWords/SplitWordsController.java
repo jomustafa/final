@@ -47,8 +47,8 @@ public class SplitWordsController {
 
 	@MessageMapping("/getsplitwords")
 	@SendToUser("/topic/splitwordlist")
-	public LinkedList<SplitWord> getSplitWords() {
-		sws = new SplitWords(1);
+	public LinkedList<SplitWord> getSplitWords(int level) {
+		sws = new SplitWords(level);
 		return sws.getSplitWords();
 	}
 
