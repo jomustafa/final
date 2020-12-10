@@ -11,8 +11,9 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class CorrectSpellingController {
+	int level = 1;
+	CorrectSpelling cs = new CorrectSpelling(level);
 
-	public CorrectSpelling cs = new CorrectSpelling(1);
 	//getScrambled
 	//isValidAction
 	//isFinished returns ture if the level is finished
@@ -20,7 +21,18 @@ public class CorrectSpellingController {
 	@MessageMapping("/validactioncorrectspelling")
 	@SendToUser("/topic/validactionresponsecorrectspelling")
 	public int isValidAction(Object[] actions) { //check if the action was valid(checks button if the word is correct, 1 for yes - 0 for no)
-		return cs.isValidAction(actions);
+		if(cs.isValidAction(actions)==1) {
+			if(isFinished()) {
+				level++;
+				cs = new CorrectSpelling(level);
+				return 2;
+			}else {
+				return 1;
+			}
+		}
+		else {
+			return 0;
+		}
     }
 
 	@MessageMapping("/getcorrectspellinglist")
