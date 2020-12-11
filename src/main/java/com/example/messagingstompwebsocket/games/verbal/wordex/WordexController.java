@@ -10,24 +10,24 @@ public class WordexController {
 	Wordex wordex;
 	
 	
-//	@MessageMapping("/nap_validaction")
-//	@SendToUser("/topic/nap_validactionresponse")
-//	public int validAction(Map<String, Object> payload) {
-//		Object[] args = { payload.get("word"), payload.get("type") };
-//		int isValid  = wordex.isValidAction(args);
-//		
-//		if(isValid==1) {
-//			if(wordex.isFinished()) {
-//				System.out.println("Changing Levels message");
-//				return 2;
-//			} else {
-//				return 1;
-//			}
-//		} else {
-//			return wordex.isValidAction(args);
-//		}
-//	}
-	
+	@MessageMapping("/wordex_validaction")
+	@SendToUser("/topic/wordex_validactionresponse")
+	public int validAction(Map<String, Object> payload) {
+		Object[] args = { payload.get("word")};
+		System.out.println("TTTTTTTTTEEEEEEEEEESSSSSSSSSTT " + payload.get("word"));
+		int isValid  = wordex.isValidAction(args); 
+		
+		if(isValid==1) {
+			if(wordex.isFinished()) {
+				System.out.println("Changing Levels message");
+				return 2;
+			} else {
+				return 1;
+			}
+		} else {
+			return wordex.isValidAction(args);
+		}
+	}
 	
 	@MessageMapping("/wordex_get_letters")
 	@SendToUser("/topic/wordex_get_letters")
