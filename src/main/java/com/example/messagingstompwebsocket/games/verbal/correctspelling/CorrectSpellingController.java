@@ -1,5 +1,6 @@
 package com.example.messagingstompwebsocket.games.verbal.correctspelling;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -11,8 +12,6 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class CorrectSpellingController {
-	int level = 1;
-	CorrectSpelling cs = new CorrectSpelling(level);
 
 	//getScrambled
 	//isValidAction
@@ -23,8 +22,6 @@ public class CorrectSpellingController {
 	public int isValidAction(Object[] actions) { //check if the action was valid(checks button if the word is correct, 1 for yes - 0 for no)
 		if(cs.isValidAction(actions)==1) {
 			if(isFinished()) {
-				level++;
-				cs = new CorrectSpelling(level);
 				return 2;
 			}else {
 				return 1;
@@ -37,7 +34,13 @@ public class CorrectSpellingController {
 
 	@MessageMapping("/getcorrectspellinglist")
 	@SendToUser("/topic/correctspellinglist")
-	 public LinkedList<String> getScrambledList() { //get 6 scrambled words
+	 public LinkedList<String> getScrambledList(Map<String, String> payload) { //get 6 scrambled words
+		
+		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
+		if(isNew) {
+			int level = Integer.parseInt(payload.get("level"));
+			cs = new CorrectSpelling(level);
+		}
         return cs.getScrambledList();
     }
 	
@@ -46,7 +49,7 @@ public class CorrectSpellingController {
 	public boolean isFinished() {
         return cs.isFinished();
     }
-	
+
 	@MessageMapping("/getcorrectspellingGetword") //get the old word that was found to put it in "Found Words" list
 	@SendToUser("/topic/correctspellingGetword")
 	public String getWordToFind() {
