@@ -5,10 +5,11 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import SplitWords from "./components/splitWords/splitWords";
+import NamesAnimalsPlants from "./components/namesAnimalsPlants/namesAnimalsPlants"
 
 ReactDOM.render(
   <React.StrictMode>
-    <SplitWords />
+    <NamesAnimalsPlants />
   </React.StrictMode>,
 
   document.getElementById("root")

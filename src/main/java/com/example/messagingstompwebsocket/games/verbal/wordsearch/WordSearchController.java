@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.games.verbal.splitWords;
+package com.example.messagingstompwebsocket.games.verbal.wordsearch;
 
 import java.util.LinkedList;
 import java.util.Map;
@@ -22,16 +22,16 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
-public class SplitWordsController {
-	SplitWords sws;
+public class WordSearchController {
+	WordSearch ws;
 
-	@MessageMapping("/sws_validaction")
-	@SendToUser("/topic/sws_validactionresponse")
-	public int validAction(Map<String, Object> payload) {
-		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
+	@MessageMapping("/ws_validaction")
+	@SendToUser("/topic/ws_validactionresponse")
+	public int validAction(Map<String, Integer> payload) {
+		Integer[] args = { payload.get("startRow"), payload.get("startCol"), payload.get("endRow"), payload.get("endCol")};
 		
-		if(sws.isValidAction(args)==1) {
-			if(sws.isFinished()) {
+		if(ws.isValidAction(args)==1) {
+			if(ws.isFinished()) {
 				System.out.println("2");
 				return 2;
 			}else {
@@ -45,11 +45,23 @@ public class SplitWordsController {
 		// return sws.isValidAction(args);
 	}
 
-	@MessageMapping("/getsplitwords")
-	@SendToUser("/topic/splitwordlist")
-	public LinkedList<SplitWord> getSplitWords(int level) {
-		sws = new SplitWords(level);
-		return sws.getSplitWords();
+	@MessageMapping("/ws_getcountries")
+	@SendToUser("/topic/ws_countries")
+	public LinkedList<String> getCountries(int level) {
+		LinkedList<String> words = new LinkedList<String>();
+		for(Country c : ws.getCountries()) {
+			words.push(c.getName());
+			System.out.println("first: "+c.getStart()+c.getEnd()+" second:"+c.getStart()+c.getEnd());
+		}
+		System.out.println("THIS MANY WORDS" + words.size());
+		return words;
+	}
+	
+	@MessageMapping("/ws_getmatrix")
+	@SendToUser("/topic/ws_matrix")
+	public Character[][] getMatrix(int level) {
+		ws = new WordSearch(level);
+		return ws.getPuzzle();
 	}
 
 }
