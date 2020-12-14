@@ -16,7 +16,7 @@ public class CorrectSpellingController {
 	//getScrambled
 	//isValidAction
 	//isFinished returns ture if the level is finished
-	
+	CorrectSpelling cs;
 	@MessageMapping("/validactioncorrectspelling")
 	@SendToUser("/topic/validactionresponsecorrectspelling")
 	public int isValidAction(Object[] actions) { //check if the action was valid(checks button if the word is correct, 1 for yes - 0 for no)
