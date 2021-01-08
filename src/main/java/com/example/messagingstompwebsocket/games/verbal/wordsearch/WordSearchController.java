@@ -20,28 +20,52 @@ import com.example.messagingstompwebsocket.Greeting;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import java.util.*;
 @Controller
 public class WordSearchController {
 	WordSearch ws;
+	Map<Integer,Integer> previousEntries;
 
+	//Array storing an integer representing the starting number of a previous entry
+	//The number is calculated by using 10*row+column, giving a mapping of 1,2,3...row^2
+	//Used for checking duplicate entries
+	ArrayList<Integer> startingIndex;
+	//Array storing the end of the last one. Both arrays should be checked in case of duplicate entries
+	//dragged in the opposite order
+	ArrayList<Integer> endingIndex;
+	
 	@MessageMapping("/ws_validaction")
 	@SendToUser("/topic/ws_validactionresponse")
-	public int validAction(Map<String, Integer> payload) {
+	public String[] validAction(Map<String, Integer> payload) {
 		Integer[] args = { payload.get("startRow"), payload.get("startCol"), payload.get("endRow"), payload.get("endCol")};
+		String[] response = new String[2];
+		
+		int start = args[0]*10+args[1];
+		int end = args[2]*10+args[3];
+		
+		for(int i = 0; i<startingIndex.size(); i++) {
+			if((start==startingIndex.get(i) && end == endingIndex.get(i)) || (end==startingIndex.get(i) && start == endingIndex.get(i))) {
+				response[0] = "3";
+				return response;
+			}
+		}
 		
 		if(ws.isValidAction(args)==1) {
 			if(ws.isFinished()) {
 				System.out.println("2");
-				return 2;
+				response[0] = "2";
 			}else {
+				startingIndex.add(start);
+				endingIndex.add(end);
 				System.out.println("1");
-				return 1;
+				response[0] = "1";
 			}
+			response[1] = ws.getLastCountryFound().getName();
 		}else {
 			System.out.println("0");
-			return 0;
+			response[0] = "0";
 		}
+		return response;
 		// return sws.isValidAction(args);
 	}
 
@@ -53,7 +77,6 @@ public class WordSearchController {
 			words.push(c.getName());
 			System.out.println("first: "+c.getStart()+c.getEnd()+" second:"+c.getStart()+c.getEnd());
 		}
-		System.out.println("THIS MANY WORDS" + words.size());
 		return words;
 	}
 	
@@ -61,6 +84,8 @@ public class WordSearchController {
 	@SendToUser("/topic/ws_matrix")
 	public Character[][] getMatrix(int level) {
 		ws = new WordSearch(level);
+		startingIndex = new ArrayList<Integer>();
+		endingIndex = new ArrayList<Integer>();
 		return ws.getPuzzle();
 	}
 
