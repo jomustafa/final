@@ -4,11 +4,14 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
+
+import com.example.messagingstompwebsocket.games.verbal.namesAnimals.NamesAnimalsPlants;
+
 import java.util.Map;
 @Controller
 public class WordexController {
 	Wordex wordex;
-	
+
 	
 	@MessageMapping("/wordex_validaction")
 	@SendToUser("/topic/wordex_validactionresponse")
@@ -31,9 +34,12 @@ public class WordexController {
 	
 	@MessageMapping("/wordex_get_letters")
 	@SendToUser("/topic/wordex_get_letters")
-	public Character[] getLetters() {
-		wordex = new Wordex(1);
-		System.out.println(wordex.getLetters());
+	public Character[] getLetters(Map<String, String> payload) {
+		int level = Integer.parseInt(payload.get("level"));
+		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
+		if(isNew) {
+			wordex = new Wordex(level);
+		}
 		return wordex.getLetters();
 	}
 }
