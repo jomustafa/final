@@ -78,7 +78,7 @@ public class HiddenQuests extends Object {
         return objectList;
     }
 
-    public ArrayList chooseRandomObjectsForLevel(int level) {
+    public ArrayList<Object> chooseRandomObjectsForLevel(int level) {
         Object o;
         switch (level) {
             case 1:

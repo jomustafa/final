@@ -15,6 +15,22 @@ public class HiddenObjectController {
 	// isValidAction
 	// isFinished returns ture if the level is finished
 	HiddenQuests ho;
+	
+	@MessageMapping("/getrandomobjects")
+	@SendToUser("/topic/getrandomobjects")
+	public ArrayList<String> getRandomObjects(int level) { // check if the action was valid(checks button if the word is correct,
+				
+		ho = new HiddenQuests(level);
+		ArrayList<String> objNameAndImage = new ArrayList<String>();
+
+		// 1 for yes - 0 for no)
+		for(Object o : ho.chooseRandomObjectsForLevel(level)) {
+			objNameAndImage.add(o.getObjectName());
+			objNameAndImage.add(o.getImagePath());
+		}
+
+		return objNameAndImage;
+	}
 
 	@MessageMapping("/getobjects")
 	@SendToUser("/topic/getobjects")
