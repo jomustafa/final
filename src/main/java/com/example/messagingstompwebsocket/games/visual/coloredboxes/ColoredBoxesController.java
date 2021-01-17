@@ -21,7 +21,11 @@ public class ColoredBoxesController {
 	@SendToUser("/topic/validactionresponsecoloredboxes")
 	public int isValidAction(Object[] actions) { //check if the action was valid(checks button if the word is correct, 1 for yes - 0 for no)
 		if(cb.isValidAction(actions)==1) {
-			return 1;
+			if(isFinished()) {
+				return 2;
+			}else {
+				return 1;
+			}
 		}
 		else {
 			return 0;
@@ -37,7 +41,7 @@ public class ColoredBoxesController {
 			cb = new ColoredBoxes(level);
 		}
 		createCorrect();
-		initColorLabels();
+		//initColorLabels();
 		ArrayList<String> colors = new ArrayList<String>();
 		colors.add(returnCorrectColor());
 		colors.addAll(getButtonColorWin());

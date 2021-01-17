@@ -271,6 +271,8 @@ public class ColoredBoxes extends VisualGame {
 	                bgcolor = "linear-gradient(" + color1 + "  0%, " + color1 + " 50%, " + color2 + " 51%, " + color2 + " 100%)";
 	            }
 	            if (((String) actions[0]).contains(bgcolor)) {
+	            	Color correctColor = getColorFromEng(bgcolor);
+	            	foundColor(correctColor);
 	                found++;
 	                return 1;
 	            }
