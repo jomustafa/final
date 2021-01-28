@@ -41,11 +41,9 @@ public class ColoredBoxesController {
 			cb = new ColoredBoxes(level);
 		}
 		createCorrect();
-		//initColorLabels();
 		ArrayList<String> colors = new ArrayList<String>();
 		colors.add(returnCorrectColor());
 		colors.addAll(getButtonColorWin());
-		System.out.println("correct color: "+returnCorrectColor());
         return colors;	
     }
 
