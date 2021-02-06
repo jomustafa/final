@@ -17,11 +17,4 @@ public class MessagingStompWebsocketApplication {
 		SpringApplication.run(MessagingStompWebsocketApplication.class, args);
 	}
 
-    @Bean
-    public SocketIOServer socketIOServer() {
-        Configuration config = new Configuration();
-        config.setHostname("127.0.0.1");
-        config.setPort(3070);
-        return new SocketIOServer(config);
-    }
 }

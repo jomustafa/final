@@ -18,6 +18,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
+		System.out.println("does this print");
 		registry.addEndpoint("/brainbright-websocket").setAllowedOrigins("*").withSockJS();
 	}
 
