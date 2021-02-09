@@ -1,5 +1,6 @@
 package com.example.messagingstompwebsocket.games.verbal.splitWords;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.messagingstompwebsocket.Greeting;
+import com.example.messagingstompwebsocket.games.Player;
+import com.example.messagingstompwebsocket.utilities.DBManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +27,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class SplitWordsController {
 	SplitWords sws;
-
+	DBManager dbm = new DBManager();
+	String userID;
+	int level;
+	
 	@MessageMapping("/sws_validaction")
 	@SendToUser("/topic/sws_validactionresponse")
 	public int validAction(Map<String, Object> payload) {
@@ -33,6 +39,7 @@ public class SplitWordsController {
 		if(sws.isValidAction(args)==1) {
 			if(sws.isFinished()) {
 				System.out.println("2");
+				dbm.recordScore(userID, "MATCH", 0, 0, level, 0, 0);
 				return 2;
 			}else {
 				System.out.println("1");
@@ -47,7 +54,9 @@ public class SplitWordsController {
 
 	@MessageMapping("/getsplitwords")
 	@SendToUser("/topic/splitwordlist")
-	public LinkedList<SplitWord> getSplitWords(int level) {
+	public LinkedList<SplitWord> getSplitWords(HashMap<Object, Object> payload) {
+		this.userID = (String)payload.get("id");
+		this.level = (int)payload.get("level");
 		sws = new SplitWords(level);
 		return sws.getSplitWords();
 	}

@@ -5,13 +5,24 @@ import java.util.Objects;
 public class Player implements Comparable<Player> {
 
     private final String name;
-
+    private final String id;
+    
     public Player(String name) {
         this.name = name;
+		this.id = "";
+    }
+    
+    public Player(String name, String id) {
+    	this.name = name;
+    	this.id = id;
     }
 
     public String getName() {
         return name;
+    }
+    
+    public String getID() {
+        return id;
     }
 
     @Override
