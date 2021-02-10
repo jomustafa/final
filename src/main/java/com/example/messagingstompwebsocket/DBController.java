@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.messagingstompwebsocket.Greeting;
@@ -25,28 +26,28 @@ public class DBController {
 	DBManager dbm = new DBManager();
 	String userID;
 	int level;
-	
-	  // Aggregate root
-	  // tag::get-aggregate-root[]
-	  @GetMapping("/players")
-	  LinkedList<Player> getPlayers() throws SQLException {
-	    return dbm.getAllPlayers();
-	  }
-	  // end::get-aggregate-root[]
 
-	  @PostMapping("/newplayer")
-	  void newPlayer(@RequestBody Player newPlayer) {
-	    dbm.recordPlayer(newPlayer.getID(), newPlayer.getName());
-	  }
+	// Aggregate root
+	// tag::get-aggregate-root[]
+	@GetMapping("/players")
+	LinkedList<Player> getPlayers() throws SQLException {
+		return dbm.getAllPlayers();
+	}
+	// end::get-aggregate-root[]
 
-	  // Single item
-	  
-	  
-	  @GetMapping("/playerstats")
-	  LinkedList<Score> getPlayerStats(String name, String id, String game) throws SQLException {
-		
-	    return dbm.getScores(name, id, game);
-	  }
+	@PostMapping("/newplayer")
+	void newPlayer(@RequestBody Player newPlayer) {
+		dbm.recordPlayer(newPlayer.getID(), newPlayer.getName());
+	}
+
+	// Single item
+
+	@GetMapping("/playerstats")
+	LinkedList<Score> getPlayerStats(@RequestParam String name, @RequestParam String id, @RequestParam String game)
+			throws SQLException {
+
+		return dbm.getScores(name, id, game);
+	}
 //	  
 //	  @GetMapping("/employees/{id}")
 //	  Employee one(@PathVariable Long id) {

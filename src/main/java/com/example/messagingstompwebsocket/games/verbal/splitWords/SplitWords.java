@@ -27,10 +27,6 @@ public class SplitWords extends VerbalGame {
 		found = 0;
 		initSplitWords();
 		missed = 0;
-//        splitWords.add(new SplitWord("accept"));
-//        splitWords.add(new SplitWord("abroad"));
-//        splitWords.add(new SplitWord("actual"));
-//        splitWords.add(new SplitWord("manage"));
 	}
 
 	@Override
@@ -63,8 +59,11 @@ public class SplitWords extends VerbalGame {
 		if (Locale.getDefault().getLanguage().equals("en")) {
 			rg = new RandomGenerator<>(fileManager.getSplitEasy_en());
 		} else {
+			
 			rg = new RandomGenerator<>(fileManager.getSplitEasy_gr());
 		}
+		
+		System.out.println(Locale.getDefault().getLanguage());
 		for (int i = 0; i < goal; i++) {
 			SplitWord splitWord = new SplitWord(rg.getRandomElement());
 			if (i == 0) {

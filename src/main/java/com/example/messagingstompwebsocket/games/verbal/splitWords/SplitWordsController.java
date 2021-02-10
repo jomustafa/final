@@ -30,6 +30,7 @@ public class SplitWordsController {
 	DBManager dbm = new DBManager();
 	String userID;
 	int level;
+	int score;
 	
 	@MessageMapping("/sws_validaction")
 	@SendToUser("/topic/sws_validactionresponse")
@@ -39,10 +40,12 @@ public class SplitWordsController {
 		if(sws.isValidAction(args)==1) {
 			if(sws.isFinished()) {
 				System.out.println("2");
-				dbm.recordScore(userID, "MATCH", 0, 0, level, 0, 0);
+				score = 100; 
+				dbm.recordScore(userID, "MATCH", score, 0, level, score, sws.getMissed());
 				return 2;
 			}else {
 				System.out.println("1");
+				score += 100/sws.getGoal();
 				return 1;
 			}
 		}else {
@@ -54,9 +57,9 @@ public class SplitWordsController {
 
 	@MessageMapping("/getsplitwords")
 	@SendToUser("/topic/splitwordlist")
-	public LinkedList<SplitWord> getSplitWords(HashMap<Object, Object> payload) {
-		this.userID = (String)payload.get("id");
-		this.level = (int)payload.get("level");
+	public LinkedList<SplitWord> getSplitWords(Map<String, String> payload) {
+		this.userID = payload.get("id");
+		this.level = Integer.parseInt(payload.get("level"));
 		sws = new SplitWords(level);
 		return sws.getSplitWords();
 	}

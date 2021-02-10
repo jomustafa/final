@@ -243,7 +243,7 @@ public class DBManager {
 
 	public LinkedList<Score> getScores(String name, String id, String game) throws SQLException {
 		LinkedList<Score> scores = new LinkedList<>();
-		String SQL = "SELECT DATE, POINTS, COMPLETION_TIME, LEVEL, COMPLETION_PROGRESS, MISSED_CLICKS, PLAYERS.PLAYER FROM SCORES, PLAYERS, GAMES"
+		String SQL = "SELECT DATE, POINTS, COMPLETION_TIME, LEVEL, COMPLETION_PROGRESS, MISSED_CLICKS, PLAYERS.PLAYER, PLAYERS.ID, GAMES.GAME FROM SCORES, PLAYERS, GAMES"
 				+ " WHERE PLAYERS.ID = SCORES.PLAYER" + " AND GAMES.ID = SCORES.GAME";
 		
 		if(!game.equals("")) {
@@ -255,9 +255,15 @@ public class DBManager {
 		}
 		
 		if(!id.equals("")) {
-			SQL += " AND PLAYERS.ID =" + id;
+			try{
+				SQL += " AND PLAYERS.ID ='" + Integer.parseInt(id) + "'";
+			}catch(Exception e) {
+				System.out.println("ID: " + id + "is not a number");
+			}
+			
 		}
 		SQL += ";";
+		System.out.println(SQL);
 		ResultSet results = getDataRecords(SQL);
 		while (results.next()) {
 			Date date = results.getDate("DATE");
@@ -266,7 +272,9 @@ public class DBManager {
 			int lvl = results.getInt("LEVEL");
 			double progress = results.getDouble("COMPLETION_PROGRESS");
 			int missed = results.getInt("MISSED_CLICKS");
+			game = results.getString("GAME");
 			String player = results.getString("PLAYER");
+			id = results.getString("ID");
 			scores.add(new Score(new Player(player, id), date, game, points, comp, lvl, progress, missed));
 		}
 		return scores;
@@ -449,7 +457,7 @@ public class DBManager {
 //            String SQL = "SELECT ID FROM PLAYERS WHERE PLAYER = '" + player + "'";
 //            System.out.println(SQL);
 //            ResultSet results = getDataRecords(SQL);
-			int playerID = Integer.parseInt(player);
+			long playerID = Long.parseLong(player);
 //            while (results.next()) {
 //                playerID = results.getInt("ID");
 //            }
