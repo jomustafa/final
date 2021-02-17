@@ -1,10 +1,8 @@
 package com.example.messagingstompwebsocket.games.verbal.wordsearch;
 
-import java.util.LinkedList;
-import java.util.Map;
-
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,32 +15,32 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.messagingstompwebsocket.Greeting;
+import com.example.messagingstompwebsocket.utilities.DBManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.*;
 @Controller
 public class WordSearchController {
-	WordSearch ws;
-	Map<Integer,Integer> previousEntries;
 
-	//Array storing an integer representing the starting number of a previous entry
-	//The number is calculated by using 10*row+column, giving a mapping of 1,2,3...row^2
-	//Used for checking duplicate entries
-	ArrayList<Integer> startingIndex;
-	//Array storing the end of the last one. Both arrays should be checked in case of duplicate entries
-	//dragged in the opposite order
-	ArrayList<Integer> endingIndex;
+	DBManager dbm = new DBManager();
+
 	
 	@MessageMapping("/ws_validaction")
 	@SendToUser("/topic/ws_validactionresponse")
-	public String[] validAction(Map<String, Integer> payload) {
+	public String[] validAction(SimpMessageHeaderAccessor headerAccessor, Map<String, Integer> payload) {
 		Integer[] args = { payload.get("startRow"), payload.get("startCol"), payload.get("endRow"), payload.get("endCol")};
 		String[] response = new String[2];
 		
 		int start = args[0]*10+args[1];
 		int end = args[2]*10+args[3];
 		
+		WordSearch ws = (WordSearch) headerAccessor.getSessionAttributes().get("game");
+		ArrayList<Integer> startingIndex = (ArrayList<Integer>) headerAccessor.getSessionAttributes().get("startingIndex");
+		ArrayList<Integer> endingIndex = (ArrayList<Integer>) headerAccessor.getSessionAttributes().get("endingIndex");
+		String userID = (String) headerAccessor.getSessionAttributes().get("user");
+
+				
 		for(int i = 0; i<startingIndex.size(); i++) {
 			if((start==startingIndex.get(i) && end == endingIndex.get(i)) || (end==startingIndex.get(i) && start == endingIndex.get(i))) {
 				response[0] = "3";
@@ -54,6 +52,7 @@ public class WordSearchController {
 			if(ws.isFinished()) {
 				System.out.println("2");
 				response[0] = "2";
+				dbm.recordScore(userID, "MATCH", 100, 0, ws.getLevel(), 100, ws.getMissed());
 			}else {
 				startingIndex.add(start);
 				endingIndex.add(end);
@@ -61,7 +60,7 @@ public class WordSearchController {
 				response[0] = "1";
 			}
 			response[1] = ws.getLastCountryFound().getName();
-		}else {
+		}else { 	
 			System.out.println("0");
 			response[0] = "0";
 		}
@@ -71,21 +70,31 @@ public class WordSearchController {
 
 	@MessageMapping("/ws_getcountries")
 	@SendToUser("/topic/ws_countries")
-	public LinkedList<String> getCountries(int level) {
+	public LinkedList<String> getCountries(SimpMessageHeaderAccessor headerAccessor, int level) {
+		WordSearch ws = (WordSearch) headerAccessor.getSessionAttributes().get("game");
 		LinkedList<String> words = new LinkedList<String>();
 		for(Country c : ws.getCountries()) {
 			words.push(c.getName());
-			System.out.println("first: "+c.getStart()+c.getEnd()+" second:"+c.getStart()+c.getEnd());
+			//System.out.println("first: "+c.getStart()+c.getEnd()+" second:"+c.getStart()+c.getEnd());
 		}
 		return words;
 	}
 	
 	@MessageMapping("/ws_getmatrix")
 	@SendToUser("/topic/ws_matrix")
-	public Character[][] getMatrix(int level) {
+	public Character[][] getMatrix(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) {
+		int level = Integer.parseInt(payload.get("level"));
+		WordSearch ws = new WordSearch(level);
 		ws = new WordSearch(level);
-		startingIndex = new ArrayList<Integer>();
-		endingIndex = new ArrayList<Integer>();
+		
+		headerAccessor.getSessionAttributes().put("game", ws);
+		headerAccessor.getSessionAttributes().put("user", payload.get("id"));
+
+		headerAccessor.getSessionAttributes().put("startingIndex", new ArrayList<Integer>());
+		headerAccessor.getSessionAttributes().put("endingIndex", new ArrayList<Integer>());
+//		startingIndex = new ArrayList<Integer>();
+//		endingIndex = new ArrayList<Integer>();
+		
 		return ws.getPuzzle();
 	}
 

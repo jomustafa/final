@@ -19,9 +19,12 @@ public class SplitWords extends VerbalGame {
 	private int found;
 	private final LinkedList<SplitWord> splitWords;
 	private int missed;
-
+	private int level;
+	
+	
 	public SplitWords(int level) {
 		super();
+		this.level = level;
 		initLevel(level);
 		splitWords = new LinkedList<>();
 		found = 0;
@@ -29,6 +32,10 @@ public class SplitWords extends VerbalGame {
 		missed = 0;
 	}
 
+	public int getLevel() {
+		return level;
+	}
+	
 	@Override
 	public boolean isFinished() {
 		return goal == found;

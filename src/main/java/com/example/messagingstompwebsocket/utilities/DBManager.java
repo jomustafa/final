@@ -256,7 +256,7 @@ public class DBManager {
 		
 		if(!id.equals("")) {
 			try{
-				SQL += " AND PLAYERS.ID ='" + Integer.parseInt(id) + "'";
+				SQL += " AND PLAYERS.ID ='" + Long.parseLong(id) + "'";
 			}catch(Exception e) {
 				System.out.println("ID: " + id + "is not a number");
 			}

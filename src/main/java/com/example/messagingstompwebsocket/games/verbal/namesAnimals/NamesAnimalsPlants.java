@@ -14,13 +14,20 @@ public class NamesAnimalsPlants extends VerbalGame {
     private Character letterToFind;
     private final LinkedList<String> foundWords;
     private final int level;
-
+    private int missed;
+    
     public NamesAnimalsPlants(int level) {
         found = 0;
+        missed = 0;
         foundWords = new LinkedList<>();
         this.level = level;
         initLevel();
     }
+    
+    public int getMissed() {
+    	return missed;
+    }
+    
 
     public Character initToFind() {
         RandomGenerator<Character> rg;
@@ -132,6 +139,7 @@ public class NamesAnimalsPlants extends VerbalGame {
                 return 1;
             }
         }
+        missed++;
         return 0;
     }
 
