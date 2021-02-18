@@ -8,7 +8,7 @@ import com.example.messagingstompwebsocket.utilities.RandomGenerator;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import javafx.scene.control.Button;
+//import javafx.scene.control.Button;
 
 public class ColoredBoxes extends VisualGame {
 	   	private int found, numChoices;
@@ -86,43 +86,43 @@ public class ColoredBoxes extends VisualGame {
 	        return correctPick = color;
 	    }
 
-	    public void initColorLabels(LinkedList<Button> buttons) { //matches labels with buttons
-	        boolean check = true;
-	        while (check) {
-	            LinkedList<String> labels = new LinkedList<>();
-	            if (hardMode) {
-	                for (Color c : hardColors) {
-	                    labels.add(c.getGreek());
-	                }
-	            } else {
-	                for (Color c : COLORS) {
-	                    labels.add(c.getGreek());
-	                }
-	            }
-	            Collections.shuffle(labels);
-	            int sizeCheck = labels.size() - goal;
-	            for (int y = 0; y < sizeCheck; y++) {
-	                labels.remove();
-	            }
-	            for (Button b : buttons) {
-	                for (int i = 0; i < labels.size(); i++) {
-	                    if (!b.getStyle().contains(toEnglish(labels.get(i)))) {
-	                        String color = labels.remove(i);
-	                        if (color.contains("/")) {
-	                            String newcolor = color.split("/")[0] + "\n" + color.split("/")[1];
-	                            b.setText(newcolor);
-	                        } else {
-	                            b.setText(color);
-	                        }
-	                        break;
-	                    }
-	                }
-	            }
-	            if (labels.isEmpty()) {
-	                check = false;
-	            }
-	        }
-	    }
+//	    public void initColorLabels(LinkedList<Button> buttons) { //matches labels with buttons
+//	        boolean check = true;
+//	        while (check) {
+//	            LinkedList<String> labels = new LinkedList<>();
+//	            if (hardMode) {
+//	                for (Color c : hardColors) {
+//	                    labels.add(c.getGreek());
+//	                }
+//	            } else {
+//	                for (Color c : COLORS) {
+//	                    labels.add(c.getGreek());
+//	                }
+//	            }
+//	            Collections.shuffle(labels);
+//	            int sizeCheck = labels.size() - goal;
+//	            for (int y = 0; y < sizeCheck; y++) {
+//	                labels.remove();
+//	            }
+//	            for (Button b : buttons) {
+//	                for (int i = 0; i < labels.size(); i++) {
+//	                    if (!b.getStyle().contains(toEnglish(labels.get(i)))) {
+//	                        String color = labels.remove(i);
+//	                        if (color.contains("/")) {
+//	                            String newcolor = color.split("/")[0] + "\n" + color.split("/")[1];
+//	                            b.setText(newcolor);
+//	                        } else {
+//	                            b.setText(color);
+//	                        }
+//	                        break;
+//	                    }
+//	                }
+//	            }
+//	            if (labels.isEmpty()) {
+//	                check = false;
+//	            }
+//	        }
+//	    }
 
 	    public LinkedList<String> getButtonColorWin() { //get all the buttons and words???
 	        LinkedList<String> ls = new LinkedList<>();

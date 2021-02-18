@@ -73,9 +73,6 @@ public class ColoredBoxesController {
         return cb.createNewCorrect();
     }
 	
-	@MessageMapping("/getColoredBoxesInitColorLabels")
-	@SendToUser("/topic/ColoredBoxesInitColorLabels")
-	public void initColorLabels() {}
 
 	@MessageMapping("/getColoredBoxesButtonColorWin")
 	@SendToUser("/topic/ColoredBoxesButtonColorWin")
@@ -106,10 +103,6 @@ public class ColoredBoxesController {
 	public Color getRandomLight() { 
 		return cb.getRandomLight();
 	}
-	
-	@MessageMapping("/getColoredBoxesFoundColor")
-	@SendToUser("/topic/ColoredBoxesFoundColor")	
-	public void foundColor(Color color) {}
 	
 	@MessageMapping("/getColoredBoxesNumChoices")
 	@SendToUser("/topic/ColoredBoxesNumChoices")	 
