@@ -6,53 +6,64 @@ import java.util.Map;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
+import com.example.messagingstompwebsocket.utilities.DBManager;
 
 @Controller
 public class CorrectSpellingController {
-
-	//getScrambled
-	//isValidAction
-	//isFinished returns ture if the level is finished
-	CorrectSpelling cs;
+	
+	// getScrambled
+	// isValidAction
+	// isFinished returns ture if the level is finished
+	DBManager dbm = new DBManager();
 	@MessageMapping("/validactioncorrectspelling")
 	@SendToUser("/topic/validactionresponsecorrectspelling")
-	public int isValidAction(Object[] actions) { //check if the action was valid(checks button if the word is correct, 1 for yes - 0 for no)
-		if(cs.isValidAction(actions)==1) {
-			if(isFinished()) {
+	public int isValidAction(SimpMessageHeaderAccessor headerAccessor, Object[] actions) { // check if the action was valid(checks button if the word is correct,
+													// 1 for yes - 0 for no)
+		CorrectSpelling cs = (CorrectSpelling) headerAccessor.getSessionAttributes().get("game");
+		String userID = (String) headerAccessor.getSessionAttributes().get("user");
+		if (cs.isValidAction(actions) == 1) {
+			if (cs.isFinished()) {
+				dbm.recordScore(userID, "CORRECT SPELLING", 100, 0, cs.getLevel(), 100, cs.getMissed());
 				return 2;
-			}else {
+			} else {
 				return 1;
 			}
-		}
-		else {
+		} else {
 			return 0;
 		}
-    }
+	}
 
 	@MessageMapping("/getcorrectspellinglist")
 	@SendToUser("/topic/correctspellinglist")
-	 public LinkedList<String> getScrambledList(Map<String, String> payload) { //get 6 scrambled words
-		
+	public LinkedList<String> getScrambledList(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) { // get
+																														// 6
+																														// scrambled words
+		CorrectSpelling cs = null;
+		headerAccessor.getSessionAttributes().put("user", payload.get("id"));
 		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
-		if(isNew) {
+		if (isNew) {
 			int level = Integer.parseInt(payload.get("level"));
 			cs = new CorrectSpelling(level);
-		}
-        return cs.getScrambledList();
-    }
-	
-	@MessageMapping("/getcorrectspellingcheckfinished") //check if the level is finished (true for yes, false for no)
-	@SendToUser("/topic/correctspellingcheckfinished")
-	public boolean isFinished() {
-        return cs.isFinished();
-    }
+			headerAccessor.getSessionAttributes().put("game", cs);
 
-	@MessageMapping("/getcorrectspellingGetword") //get the old word that was found to put it in "Found Words" list
+		}
+		return cs.getScrambledList();
+	}
+
+	@MessageMapping("/getcorrectspellingcheckfinished") // check if the level is finished (true for yes, false for no)
+	@SendToUser("/topic/correctspellingcheckfinished")
+	public boolean isFinished(SimpMessageHeaderAccessor headerAccessor) {
+		
+		return ((CorrectSpelling)(headerAccessor.getSessionAttributes().get("game"))).isFinished();
+	}
+
+	@MessageMapping("/getcorrectspellingGetword") // get the old word that was found to put it in "Found Words" list
 	@SendToUser("/topic/correctspellingGetword")
-	public String getWordToFind() {
-	    return cs.getWordToFind();
+	public String getWordToFind(SimpMessageHeaderAccessor headerAccessor) {
+		return ((CorrectSpelling)(headerAccessor.getSessionAttributes().get("game"))).getWordToFind();
 	}
 }

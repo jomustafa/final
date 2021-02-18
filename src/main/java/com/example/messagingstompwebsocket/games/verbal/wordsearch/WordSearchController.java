@@ -52,7 +52,7 @@ public class WordSearchController {
 			if(ws.isFinished()) {
 				System.out.println("2");
 				response[0] = "2";
-				dbm.recordScore(userID, "MATCH", 100, 0, ws.getLevel(), 100, ws.getMissed());
+				dbm.recordScore(userID, "FIND THE WORD", 100, 0, ws.getLevel(), 100, ws.getMissed());
 			}else {
 				startingIndex.add(start);
 				endingIndex.add(end);

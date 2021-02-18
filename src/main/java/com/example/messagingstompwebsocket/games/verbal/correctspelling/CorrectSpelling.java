@@ -13,13 +13,19 @@ public class CorrectSpelling extends VerbalGame {
     private final LinkedList<String> foundWords;
     private LinkedList<String> wordToFindScrambled;
     private static Set<String> permutations;
+    private int missed;
 
     public CorrectSpelling(int level) {
         found = 0;
+        missed = 0;
         foundWords = new LinkedList<>();
         permutations = new HashSet<>();
         this.level = level;
         initLevel();
+    }
+    
+    public int getLevel() {
+    	return level;
     }
 
     private void initToFind() { //init the program get the word
@@ -45,6 +51,10 @@ public class CorrectSpelling extends VerbalGame {
                 }
             }
         }
+    }
+    
+    public int getMissed() {
+    	return missed;
     }
 
     private LinkedList<String> scramble() { //scramble words and put in list
@@ -163,6 +173,7 @@ public class CorrectSpelling extends VerbalGame {
                 return 1;
             }
         }
+        missed++;
         return 0;
     }
 
