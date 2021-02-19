@@ -18,9 +18,10 @@ public class NamesAnimalsPlantsController {
 	public int validAction(Map<String, Object> payload, SimpMessageHeaderAccessor headerAccessor) {
 		
 		NamesAnimalsPlants nap = (NamesAnimalsPlants) headerAccessor.getSessionAttributes().get("nap");
-		String userID = (String) headerAccessor.getSessionAttributes().get("id");
+		String userID = (String) headerAccessor.getSessionAttributes().get("user");
 		
 		Object[] args = { payload.get("word"), payload.get("type") };
+		System.out.println(userID);
 		int isValid  = nap.isValidAction(args);
 		
 		if(isValid==1) {
@@ -44,6 +45,7 @@ public class NamesAnimalsPlantsController {
 		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
 		NamesAnimalsPlants nap = new NamesAnimalsPlants(level);
 		if(isNew) {
+			System.out.println("inside of isnew");
 			headerAccessor.getSessionAttributes().put("nap", nap);
 			headerAccessor.getSessionAttributes().put("user", payload.get("id"));
 		}
