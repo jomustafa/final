@@ -11,22 +11,22 @@ import com.example.messagingstompwebsocket.utilities.DBManager;
 import java.util.Map;
 @Controller
 public class NamesAnimalsPlantsController {
-	DBManager dbm = new DBManager();
 	
 	@MessageMapping("/nap_validaction")
 	@SendToUser("/topic/nap_validactionresponse")
 	public int validAction(Map<String, Object> payload, SimpMessageHeaderAccessor headerAccessor) {
 		
 		NamesAnimalsPlants nap = (NamesAnimalsPlants) headerAccessor.getSessionAttributes().get("nap");
-		String userID = (String) headerAccessor.getSessionAttributes().get("id");
+		String userID = (String) headerAccessor.getSessionAttributes().get("user");
 		
 		Object[] args = { payload.get("word"), payload.get("type") };
+		System.out.println(userID);
 		int isValid  = nap.isValidAction(args);
 		
 		if(isValid==1) {
 			if(nap.isFinished()) {
 				System.out.println("Changing Levels message");
-				dbm.recordScore(userID, "NAMES, ANIMALS, PLANTS", 100, 0, nap.getLevel(), 100, nap.getMissed());
+				DBManager.recordScore(userID, "NAMES, ANIMALS, PLANTS", 100, 0, nap.getLevel(), 100, nap.getMissed());
 				return 2;
 			} else {
 				return 1;
@@ -44,6 +44,7 @@ public class NamesAnimalsPlantsController {
 		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
 		NamesAnimalsPlants nap = new NamesAnimalsPlants(level);
 		if(isNew) {
+			System.out.println("inside of isnew");
 			headerAccessor.getSessionAttributes().put("nap", nap);
 			headerAccessor.getSessionAttributes().put("user", payload.get("id"));
 		}
