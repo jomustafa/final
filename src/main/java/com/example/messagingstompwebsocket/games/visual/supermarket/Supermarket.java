@@ -7,120 +7,134 @@ import java.util.Random;
 import com.example.messagingstompwebsocket.games.visual.hiddenObjects.Object;
 
 public class Supermarket extends Product {
-    private static ArrayList productList;
-    private ArrayList userList = new <Product>ArrayList();
+	private static ArrayList productList;
+	private ArrayList userList = new <Product>ArrayList();
 
-    public Supermarket(int level) {
-        productList = new ArrayList<Product>();
-        fillProductList();
-        chooseRandomProductsForLevel(level);
-    }
+	public Supermarket(int level) {
+		productList = new ArrayList<Product>();
+		fillProductList();
+		chooseRandomProductsForLevel(level);
+	}
 
-    public static void fillProductList() {
+	public static void fillProductList() {
 
-        productList.add(new Product("μήλο", "/photographs/supermarket/apple.png"));
-        productList.add(new Product("ψωμί", "/photographs/supermarket/bread.png"));
-        productList.add(new Product("δημητριακά", "/photographs/supermarket/cereals.png"));
-        productList.add(new Product("τυρί", "/photographs/supermarket/cheese.png"));
-        productList.add(new Product("πατατάκια", "/photographs/supermarket/chips.png"));
-        productList.add(new Product("σοκολάτα", "/photographs/supermarket/chocolate.png"));
-        productList.add(new Product("καφές", "/photographs/supermarket/coffee.png"));
-        productList.add(new Product("αυγά", "/photographs/supermarket/eggs.png"));
-        productList.add(new Product("χυμός", "/photographs/supermarket/juice.png"));
-        productList.add(new Product("κέτσαπ", "/photographs/supermarket/ketchup.png"));
-        productList.add(new Product("πατάτες", "/photographs/supermarket/potato.png"));
-        productList.add(new Product("μακαρόνια", "/photographs/supermarket/spaghetti.png"));
-        productList.add(new Product("μπριζόλα", "/photographs/supermarket/steak.png"));
-        productList.add(new Product("ζάχαρη", "/photographs/supermarket/sugar.png"));
-        productList.add(new Product("ντομάτα", "/photographs/supermarket/tomato.png"));
-        //productList.add(new Product("apple", "/photographs/supermarket/apple.png"));
+//        productList.add(new Product("μήλο", "/photographs/supermarket/apple.png"));
+//        productList.add(new Product("ψωμί", "/photographs/supermarket/bread.png"));
+//        productList.add(new Product("δημητριακά", "/photographs/supermarket/cereals.png"));
+//        productList.add(new Product("τυρί", "/photographs/supermarket/cheese.png"));
+//        productList.add(new Product("πατατάκια", "/photographs/supermarket/chips.png"));
+//        productList.add(new Product("σοκολάτα", "/photographs/supermarket/chocolate.png"));
+//        productList.add(new Product("καφές", "/photographs/supermarket/coffee.png"));
+//        productList.add(new Product("αυγά", "/photographs/supermarket/eggs.png"));
+//        productList.add(new Product("χυμός", "/photographs/supermarket/juice.png"));
+//        productList.add(new Product("κέτσαπ", "/photographs/supermarket/ketchup.png"));
+//        productList.add(new Product("πατάτες", "/photographs/supermarket/potato.png"));
+//        productList.add(new Product("μακαρόνια", "/photographs/supermarket/spaghetti.png"));
+//        productList.add(new Product("μπριζόλα", "/photographs/supermarket/steak.png"));
+//        productList.add(new Product("ζάχαρη", "/photographs/supermarket/sugar.png"));
+//        productList.add(new Product("ντομάτα", "/photographs/supermarket/tomato.png"));
+		productList.add(new Product("Apple", "/photographs/supermarket/apple.png"));
+		productList.add(new Product("Bread", "/photographs/supermarket/bread.png"));
+		productList.add(new Product("Cereals", "/photographs/supermarket/cereals.png"));
+		productList.add(new Product("Cheese", "/photographs/supermarket/cheese.png"));
+		productList.add(new Product("Chips", "/photographs/supermarket/chips.png"));
+		productList.add(new Product("Chocolate", "/photographs/supermarket/chocolate.png"));
+		productList.add(new Product("Coffee", "/photographs/supermarket/coffee.png"));
+		productList.add(new Product("Eggs", "/photographs/supermarket/eggs.png"));
+		productList.add(new Product("Juice", "/photographs/supermarket/juice.png"));
+		productList.add(new Product("Ketchup", "/photographs/supermarket/ketchup.png"));
+		productList.add(new Product("Patato", "/photographs/supermarket/potato.png"));
+		productList.add(new Product("Spaghetti", "/photographs/supermarket/spaghetti.png"));
+		productList.add(new Product("Steak", "/photographs/supermarket/steak.png"));
+		productList.add(new Product("Sugar", "/photographs/supermarket/sugar.png"));
+		productList.add(new Product("Tomato", "/photographs/supermarket/tomato.png"));
 
-    }
+	}
 
-    public String getProductNameAt(ArrayList list, int pos) {
-        Product p = (Product) list.get(pos);
-        return p.getProductName();
-    }
+	public String getProductNameAt(ArrayList list, int pos) {
+		Product p = (Product) list.get(pos);
+		return p.getProductName();
+	}
 
-    public String getProductImageAt(ArrayList list, int pos) {
-        Product p = (Product) list.get(pos);
-        return p.getProductImage();
-    }
+	public String getProductImageAt(ArrayList list, int pos) {
+		Product p = (Product) list.get(pos);
+		return p.getProductImage();
+	}
 
-    public Product getRandomProduct(ArrayList array) {
-        int rnd = new Random().nextInt(array.size());
-        return (Product) array.get(rnd);
-    }
+	public Product getRandomProduct(ArrayList array) {
+		int rnd = new Random().nextInt(array.size());
+		return (Product) array.get(rnd);
+	}
 
-    //added by LJ
-    public ArrayList<Product> getProductList(){
-        return productList;
-    }
-    
-    public ArrayList<Product> chooseRandomProductsForLevel(int level) {
-        Product p;
-        switch (level) {
-            case 1:
-                while (userList.size() != 4) {
-                    p = getRandomProduct(productList);
-                    if (!userList.contains(p)) {
-                        userList.add(p);
-                    }
-                }
-                break;
+	// added by LJ
+	public ArrayList<Product> getProductList() {
+		return productList;
+	}
 
-            case 2:
-                while (userList.size() != 5) {
-                    p = getRandomProduct(productList);
-                    if (!userList.contains(p)) {
-                        userList.add(p);
-                    }
-                }
-                break;
+	public ArrayList<Product> chooseRandomProductsForLevel(int level) {
+		Product p;
+		switch (level) {
+		case 1:
+			while (userList.size() != 4) {
+				p = getRandomProduct(productList);
+				if (!userList.contains(p)) {
+					userList.add(p);
+				}
+			}
+			break;
 
-            case 3:
-                while (userList.size() != 6) {
-                    p = getRandomProduct(productList);
-                    if (!userList.contains(p)) {
-                        userList.add(p);
-                    }
-                }
-                break;
+		case 2:
+			while (userList.size() != 5) {
+				p = getRandomProduct(productList);
+				if (!userList.contains(p)) {
+					userList.add(p);
+				}
+			}
+			break;
 
-            case 4:
-                while (userList.size() != 7) {
-                    p = getRandomProduct(productList);
-                    if (!userList.contains(p)) {
-                        userList.add(p);
-                    }
-                }
-                break;
+		case 3:
+			while (userList.size() != 6) {
+				p = getRandomProduct(productList);
+				if (!userList.contains(p)) {
+					userList.add(p);
+				}
+			}
+			break;
 
-            case 5:
-                while (userList.size() != 8) {
-                    p = getRandomProduct(productList);
-                    if (!userList.contains(p)) {
-                        userList.add(p);
-                    }
-                }
-                break;
+		case 4:
+			while (userList.size() != 7) {
+				p = getRandomProduct(productList);
+				if (!userList.contains(p)) {
+					userList.add(p);
+				}
+			}
+			break;
 
-        }
-        return userList;
-    }
+		case 5:
+			while (userList.size() != 8) {
+				p = getRandomProduct(productList);
+				if (!userList.contains(p)) {
+					userList.add(p);
+				}
+			}
+			break;
 
-    public void printList() {
-        for (int i = 0; i < userList.size(); i++) {
-            System.out.println(getProductNameAt(userList, i));
-        }
-    }
+		}
+		return userList;
+	}
 
-    public ArrayList returnGeneratedList() {
-        return userList;
-    }
+	public void printList() {
+		for (int i = 0; i < userList.size(); i++) {
+			System.out.println(getProductNameAt(userList, i));
+		}
+	}
 
-    public ArrayList returnShuffledProductList() {
-        Collections.shuffle(productList);
-        return productList;
-    }
+	public ArrayList returnGeneratedList() {
+		return userList;
+	}
+
+	public ArrayList returnShuffledProductList() {
+		Collections.shuffle(productList);
+		return productList;
+	}
 }
