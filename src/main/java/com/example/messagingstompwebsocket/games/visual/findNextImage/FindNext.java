@@ -28,7 +28,7 @@ public class FindNext {
     }
 
     private void createGameList(int level) {
-        for (int i = 0; i < (level + 1) * 4 / 2; i++) {
+        for (int i = 0; i < (level + 1) * 2; i++) {
             Random ran = new Random();
             Picture_findnext temp = pictureFindnexts.remove(ran.nextInt(pictureFindnexts.size()));
             listOfPictureFindnexts.add(temp);

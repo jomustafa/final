@@ -17,7 +17,7 @@ public class ColoredBoxes extends VisualGame {
 	    private Color correctPick;
 	    private boolean hardMode;
 	    private Color[] hardColors;
-
+	    private int missed, level;
 	    public ColoredBoxes(int level) { //constructor
 	        super();
 	        initLevel(level);
@@ -27,6 +27,7 @@ public class ColoredBoxes extends VisualGame {
 	        found = 0;
 	        colors = new LinkedList<>();
 	        foundColors = new LinkedList<>();
+	        this.level = level;
 	    }
 
 	    private void initHardColors() { //assuming returns a set of hard colors, needs testing
@@ -62,6 +63,14 @@ public class ColoredBoxes extends VisualGame {
 	        hardColors = tempColors2.toArray(new Color[tempColors2.size()]);
 	    }
 
+	    
+	    public int getMissed() {
+	    	return this.missed;
+	    }
+	    
+	    public int getLevel() {
+	    	return level;
+	    }
 	    public Color createCorrect() { //random color
 	        RandomGenerator<Color> rg;
 	        if (hardMode) {
@@ -277,6 +286,7 @@ public class ColoredBoxes extends VisualGame {
 	                return 1;
 	            }
 	        }
+	        missed++;
 	        return 0;
 	    }
 
