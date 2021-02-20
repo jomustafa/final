@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.games.verbal.anagram;
+/*package com.example.messagingstompwebsocket.games.verbal.anagram;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,4 +76,4 @@ public class AnagramController {
 	}
 	
 
-}
+}*/

@@ -474,6 +474,7 @@ public class FileManager {
 				list = hangmanOccupations_en;
 				break;
 			case SPOTDIFFERENCES:
+				System.out.println("Heress");
 				list = spotdifferences;
 				break;
 

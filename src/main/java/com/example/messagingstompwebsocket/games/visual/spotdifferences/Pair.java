@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Odysseas on 30/10/2018.
  */
-public class Pair extends VisualGame {	
+public class Pair {	
 
     private String name;
     private String imgPath = "";
@@ -185,17 +185,7 @@ public class Pair extends VisualGame {
         return differenceNo;
     }
 
-	@Override
-	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public int isValidAction(Object[] actions) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 }

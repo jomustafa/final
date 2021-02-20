@@ -15,13 +15,12 @@ public class SpotdifferencesController {
     private static final int WIDTH = 25;
     private static final int HEIGHT = 25;
     
-	@MessageMapping("/getspotdifferencesinitlevel") //init
+	@MessageMapping("/getspotdifferencesinitlevel") 
 	@SendToUser("/topic/spotdifferencesinitlevel")
 	public ArrayList<String> initLevelSD(Map<String, String> payload){
 		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
 		if(isNew) {
 			int level = Integer.parseInt(payload.get("level"));
-			System.out.println("level: "+level);
 			sd = new Spotdifferences(level);
 		}
 		
@@ -29,8 +28,6 @@ public class SpotdifferencesController {
 		container.add(getPath());
 		container.add(String.valueOf(getDifferencesNo()));
 		container.add(String.valueOf(getTimeAllowed()));
-	
-		
 		blacklist.removeAll(blacklist); 
         return container;	
 	}
@@ -56,7 +53,6 @@ public class SpotdifferencesController {
     }
 	
 	public boolean checkIfBlackListed(int array[]) {
-		
 		ArrayList<Difference> temp = getDifferences();
 		boolean value = false;
         for(int i = 0;i < temp.size(); i++){
