@@ -28,7 +28,7 @@ public class DBManager {
 	private static final String FILE_HEADER_PLAYER = "GAME,POINTS,DATE,COMPLETION TIME,LEVEL,COMPLETION PROGRESS,MISSED CLICKS";
 	private static final String FILE_HEADER_GAME = "PLAYER,POINTS,DATE,COMPLETION TIME,LEVEL,COMPLETION PROGRESS,MISSED CLICKS";
 
-	private Connection conn;
+	private static Connection conn;
 
 	private ResourceBundle bundle;
 	private Locale locale;
@@ -116,7 +116,7 @@ public class DBManager {
 		}
 	}
 
-	private void insert(String tableName, String columns, String values) {
+	private static void insert(String tableName, String columns, String values) {
 		try {
 			Statement s = conn.createStatement();
 			String query = "INSERT INTO " + tableName + "(" + columns + ")" + " VALUES (" + values + ")";
@@ -128,7 +128,7 @@ public class DBManager {
 		}
 	}
 
-	public ResultSet getDataRecords(String SQL) throws SQLException {
+	public static ResultSet getDataRecords(String SQL) throws SQLException {
 		try {
 			Statement s = conn.createStatement();
 			return s.executeQuery(SQL);
@@ -147,7 +147,7 @@ public class DBManager {
 		return players;
 	}
 
-	public LinkedList<Player> getAllPlayers() throws SQLException {
+	public static LinkedList<Player> getAllPlayers() throws SQLException {
 		LinkedList<Player> players = new LinkedList<Player>();
 		String SQL = "SELECT * FROM PLAYERS";
 		ResultSet results = getDataRecords(SQL);
@@ -194,7 +194,7 @@ public class DBManager {
 		}
 	}
 
-	public LinkedList<String> getGames() throws SQLException {
+	public static LinkedList<String> getGames() throws SQLException {
 		LinkedList<String> games = new LinkedList<>();
 		String SQL = "SELECT * FROM GAMES";
 		ResultSet results = getDataRecords(SQL);
@@ -204,7 +204,7 @@ public class DBManager {
 		return games;
 	}
 
-	private LinkedList<Score> getScores(Player player) throws SQLException {
+	private static LinkedList<Score> getScores(Player player) throws SQLException {
 		LinkedList<Score> scores = new LinkedList<>();
 		String SQL = "SELECT * FROM SCORES, PLAYERS, GAMES WHERE PLAYERS.ID = "
 				+ "SCORES.PLAYER AND GAMES.ID = SCORES.GAME AND " + "PLAYERS.PLAYER = '" + player.getName() + "'";
@@ -241,7 +241,7 @@ public class DBManager {
 		return scores;
 	}
 
-	public LinkedList<Score> getScores(String name, String id, String game) throws SQLException {
+	public static LinkedList<Score> getScores(String name, String id, String game) throws SQLException {
 		LinkedList<Score> scores = new LinkedList<>();
 		String SQL = "SELECT DATE, POINTS, COMPLETION_TIME, LEVEL, COMPLETION_PROGRESS, MISSED_CLICKS, PLAYERS.PLAYER, PLAYERS.ID, GAMES.GAME FROM SCORES, PLAYERS, GAMES"
 				+ " WHERE PLAYERS.ID = SCORES.PLAYER" + " AND GAMES.ID = SCORES.GAME";
@@ -445,7 +445,7 @@ public class DBManager {
 
 	}
 
-	public void recordScore(String player, String game, int points, int compTime, int lvl, double compProg,
+	public static void recordScore(String player, String game, int points, int compTime, int lvl, double compProg,
 			int missedClicks) {
 		try {
 			java.util.Date utilDate = new java.util.Date();
@@ -480,7 +480,7 @@ public class DBManager {
 		}
 	}
 
-	public void recordPlayer(String ID, String name) {
+	public static void recordPlayer(String ID, String name) {
 
 		/*
 		 * INSERT INTO public.players( id, player) VALUES (2, ab);

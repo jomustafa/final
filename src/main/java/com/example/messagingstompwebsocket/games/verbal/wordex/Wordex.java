@@ -21,6 +21,7 @@ public class Wordex extends VerbalGame {
     private final TreeSet<String> wordsFound;
     private final TreeMap<Character, Integer> localVowels;
     private final TreeMap<Character, Integer> localConsonants;
+    private int level;
 
     public Wordex(int level) {
         super();
@@ -30,10 +31,15 @@ public class Wordex extends VerbalGame {
         initLevel(level);
         localVowels = getVowelsPercentage();
         localConsonants = getConsontantsPercentage();
+        this.level = level; 
         addLetters(level);
         wordsFound = new TreeSet<>();
     }
 
+    public int getLevel() {
+    	return level;
+    }
+    
     public Character[] getLetters() {
         return letters;
     }

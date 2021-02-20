@@ -28,7 +28,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class SplitWordsController {
-	DBManager dbm = new DBManager();
 	
 	@MessageMapping("/sws_validaction")
 	@SendToUser("/topic/sws_validactionresponse")
@@ -40,7 +39,7 @@ public class SplitWordsController {
 		if(sws.isValidAction(args)==1) {
 			if(sws.isFinished()) {
 				System.out.println("2");
-				dbm.recordScore(userID, "MATCH", 100, 0, sws.getLevel(), 100, sws.getMissed());
+				DBManager.recordScore(userID, "MATCH", 100, 0, sws.getLevel(), 100, sws.getMissed());
 				return 2;
 			}else {
 				System.out.println("1");

@@ -589,22 +589,22 @@ public class FileManager {
 
 		ResultSet resultSet;
 		List<Quest> questList = new LinkedList<>();
-		try {
-			resultSet = new DBManager().getQuests();
-
-			while (resultSet.next()) {
-				Blob blob = resultSet.getBlob("data_blob");
-				try {
-					questList.add((Quest) conf.asObject(blob.getBytes(1, (int) blob.length())));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			resultSet = DBManager.getQuests();
+//
+//			while (resultSet.next()) {
+//				Blob blob = resultSet.getBlob("data_blob");
+//				try {
+//					questList.add((Quest) conf.asObject(blob.getBytes(1, (int) blob.length())));
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//
+//			}
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 
 		for (int i = 0; i < questList.size(); i++) {
 			Quest quest = questList.get(i);

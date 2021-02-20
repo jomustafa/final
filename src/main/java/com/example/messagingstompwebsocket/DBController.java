@@ -23,7 +23,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController
 public class DBController {
-	DBManager dbm = new DBManager();
 	String userID;
 	int level;
 
@@ -31,13 +30,13 @@ public class DBController {
 	// tag::get-aggregate-root[]
 	@GetMapping("/players")
 	LinkedList<Player> getPlayers() throws SQLException {
-		return dbm.getAllPlayers();
+		return DBManager.getAllPlayers();
 	}
 	// end::get-aggregate-root[]
 
 	@PostMapping("/newplayer")
 	void newPlayer(@RequestBody Player newPlayer) {
-		dbm.recordPlayer(newPlayer.getID(), newPlayer.getName());
+		DBManager.recordPlayer(newPlayer.getID(), newPlayer.getName());
 	}
 
 	// Single item
@@ -46,7 +45,7 @@ public class DBController {
 	LinkedList<Score> getPlayerStats(@RequestParam String name, @RequestParam String id, @RequestParam String game)
 			throws SQLException {
 
-		return dbm.getScores(name, id, game);
+		return DBManager.getScores(name, id, game);
 	}
 //	  
 //	  @GetMapping("/employees/{id}")

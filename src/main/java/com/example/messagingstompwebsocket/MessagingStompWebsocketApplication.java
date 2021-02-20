@@ -9,12 +9,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOServer;
+import com.example.messagingstompwebsocket.utilities.DBManager;
 
 @SpringBootApplication
 public class MessagingStompWebsocketApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MessagingStompWebsocketApplication.class, args);
+		DBManager dbm = new DBManager();
 	}
 
 }
