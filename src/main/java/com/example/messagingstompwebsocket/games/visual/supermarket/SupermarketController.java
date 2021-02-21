@@ -3,6 +3,7 @@ package com.example.messagingstompwebsocket.games.visual.supermarket;
 import java.util.ArrayList;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
@@ -16,15 +17,16 @@ public class SupermarketController {
 
 	DBManager dbm = new DBManager();
 
-	Supermarket sm;
 
 	@MessageMapping("/getrandomproducts")
 	@SendToUser("/topic/getrandomproducts")
-	public ArrayList<String> getRandomProducts(int level) {
+	public ArrayList<String> getRandomProducts(SimpMessageHeaderAccessor headerAccessor, int level) {
 
-		sm = new Supermarket(level);
+		Supermarket sm = (Supermarket) headerAccessor.getSessionAttributes().get("game");
+
 		ArrayList<String> productNameAndImage = new ArrayList<String>();
-
+		System.out.println(sm);
+		System.out.println(level);
 		// 1 for yes - 0 for no)
 		for (Product p : sm.chooseRandomProductsForLevel(level)) {
 			productNameAndImage.add(p.getProductName());
@@ -37,10 +39,11 @@ public class SupermarketController {
 
 	@MessageMapping("/getproducts")
 	@SendToUser("/topic/getproducts")
-	public ArrayList<String> getProducts(int level) { // check if the action was valid(checks button if the word is
+	public ArrayList<String> getProducts(SimpMessageHeaderAccessor headerAccessor, int level) { // check if the action was valid(checks button if the word is
 														// correct,
 
-		sm = new Supermarket(level);
+		Supermarket sm = new Supermarket(level);
+		headerAccessor.getSessionAttributes().put("game", sm);
 		ArrayList<String> productNameAndImage = new ArrayList<String>();
 
 		// 1 for yes - 0 for no)
