@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,57 +24,35 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class AnagramController {
-	Anagram anagram = new Anagram(1);
-	
-	
-	public List<String> getList(int n){
-		List<String> anagramList = new ArrayList<>();
-		List<String> shuffledList = new ArrayList<>();
-		
-		for(int i=0; i<anagram.getWordForLevel().size(); i++) {
-			anagramList.add(anagram.getWordForLevel().get(i));
-			shuffledList.add(anagram.shuffle(anagramList.get(i)));
-		}
-		if(n==0) 
-			return anagramList;
-		else
-			return shuffledList;
-		
-		
-	}
-	
-	@MessageMapping("/anagram_validaction")
-	@SendTo("/topic/anagram_validactionresponse")
-	public int validAction(Map<String, Object> payload) {
-		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
-		
-		if(anagram.isValidAction(args)==1) {
-			if(anagram.isFinished()) {
-				System.out.println("2");
-				return 2;
-			}else {
-				System.out.println("1");
-				return 1;
-			}
-		}else {
-			System.out.println("0");
-			return 0;
-		}
-		// return sws.isValidAction(args);
-	}
-	
+
+//	@MessageMapping("/anagram_validaction")
+//	@SendToUser("/topic/anagram_validactionresponse")
+//	public int validAction(Map<String, Object> payload) {
+//		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
+//		
+//		if(anagram.isValidAction(args)==1) {
+//			if(anagram.isFinished()) {
+//				System.out.println("2");
+//				return 2;
+//			}else {
+//				System.out.println("1");
+//				return 1;
+//			}
+//		}else {
+//			System.out.println("0");
+//			return 0;
+//		}
+//		// return sws.isValidAction(args);
+//	}
+
 	@MessageMapping("/getanagram")
-	@SendTo("/topic/anagramlist")
-	public List<String> getAnagram() {//////////////
-		
-		return getList(0);
+	@SendToUser("/topic/anagramlist")
+	public List<String> getAnagram(int level) {//////////////
+		Anagram anagram = new Anagram(level);
+		System.out.println(level);
+		System.out.println(anagram.getWordForLevel().toString());
+		return anagram.getWordForLevel();
 	}
-	
-	@MessageMapping("/getshuffledlist")
-	@SendTo("/topic/shuffledwordlist")
-	public List<String> getShuffledWord(){
-		return getList(1);
-	}
-	
+
 
 }
