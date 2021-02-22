@@ -29,10 +29,10 @@ public class NamesAnimalsPlants extends VerbalGame {
     }
     
 
-    public Character initToFind() {
+    public Character initToFind(String language) {
         RandomGenerator<Character> rg;
         if (level < 4) {
-            if(Locale.getDefault().getLanguage().equals("en")) {
+            if(language.equals("en")) {
                 rg = new RandomGenerator<>(easyLetters_en);
             }else{
                 rg = new RandomGenerator<>(easyLetters_gr);

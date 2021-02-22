@@ -56,7 +56,8 @@ public class SplitWordsController {
 	@SendToUser("/topic/splitwordlist")
 	public LinkedList<SplitWord> getSplitWords(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) {
 		int level = Integer.parseInt(payload.get("level"));
-		SplitWords sws = new SplitWords(level);
+		String language = payload.get("language");
+		SplitWords sws = new SplitWords(level, language);
 		headerAccessor.getSessionAttributes().put("game", sws);
 		headerAccessor.getSessionAttributes().put("user", payload.get("id"));
 		return sws.getSplitWords();

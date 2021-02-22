@@ -83,8 +83,8 @@ public class WordSearchController {
 	@SendToUser("/topic/ws_matrix")
 	public Character[][] getMatrix(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) {
 		int level = Integer.parseInt(payload.get("level"));
-		WordSearch ws = new WordSearch(level);
-		ws = new WordSearch(level);
+		String language = payload.get("language");
+		WordSearch ws = new WordSearch(level, language);	
 		
 		headerAccessor.getSessionAttributes().put("game", ws);
 		headerAccessor.getSessionAttributes().put("user", payload.get("id"));

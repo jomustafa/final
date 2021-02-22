@@ -22,13 +22,13 @@ public class SplitWords extends VerbalGame {
 	private int level;
 	
 	
-	public SplitWords(int level) {
+	public SplitWords(int level, String language) {
 		super();
 		this.level = level;
 		initLevel(level);
 		splitWords = new LinkedList<>();
 		found = 0;
-		initSplitWords();
+		initSplitWords(language);
 		missed = 0;
 	}
 
@@ -61,12 +61,11 @@ public class SplitWords extends VerbalGame {
 		return missed;
 	}
 
-	private void initSplitWords() {
+	private void initSplitWords(String language) {
 		RandomGenerator<String> rg;
-		if (Locale.getDefault().getLanguage().equals("en")) {
+		if (language.equals("en")) {
 			rg = new RandomGenerator<>(fileManager.getSplitEasy_en());
 		} else {
-			
 			rg = new RandomGenerator<>(fileManager.getSplitEasy_gr());
 		}
 		

@@ -28,11 +28,13 @@ public class CorrectSpelling extends VerbalGame {
     	return level;
     }
 
-    private void initToFind() { //init the program get the word
+    private void initToFind(String language) { //init the program get the word
         RandomGenerator<String> rg;
-        if(Locale.getDefault().getLanguage().equals("en")){
+        System.out.println(language);
+        if(language.equals("en")){
              rg = new RandomGenerator(fileManager.getSimpleShort_en());
         }else{
+        	System.out.println("language");
             rg = new RandomGenerator(fileManager.getSimpleShort_gr());
 
         }
@@ -57,7 +59,7 @@ public class CorrectSpelling extends VerbalGame {
     	return missed;
     }
 
-    private LinkedList<String> scramble() { //scramble words and put in list
+    private LinkedList<String> scramble(String language) { //scramble words and put in list
         Character firstLetter = " ".charAt(0);
         Character lastLetter = " ".charAt(0);
         String substring = "";
@@ -65,7 +67,7 @@ public class CorrectSpelling extends VerbalGame {
         while (check) {
             permutations.clear();
             while (permutations.size() < 6) {
-                initToFind();
+                initToFind(language);
                 firstLetter = wordToFind.charAt(0);
                 lastLetter = wordToFind.charAt(wordToFind.length() - 1);
                 substring = wordToFind.substring(1, wordToFind.length() - 1);
@@ -154,8 +156,8 @@ public class CorrectSpelling extends VerbalGame {
 //        }
 //        return noDuplicates;
 //    }
-    public LinkedList<String> getScrambledList() {
-        return scramble();
+    public LinkedList<String> getScrambledList(String language) {
+        return scramble(language);
     }
 
     @Override

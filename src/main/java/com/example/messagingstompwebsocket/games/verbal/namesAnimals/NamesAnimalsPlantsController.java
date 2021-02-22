@@ -39,16 +39,18 @@ public class NamesAnimalsPlantsController {
 	@MessageMapping("/nap_getcharacter")
 	@SendToUser("/topic/nap_getcharacterresponse")
 	public Character getCharacter(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) {
-
-		int level = Integer.parseInt(payload.get("level"));
 		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
-		NamesAnimalsPlants nap = new NamesAnimalsPlants(level);
+		int level = Integer.parseInt(payload.get("level"));
+		String language = payload.get("language");
+		NamesAnimalsPlants nap = null;
+		headerAccessor.getSessionAttributes().put("user", payload.get("id"));
 		if(isNew) {
-			System.out.println("inside of isnew");
+			nap = new NamesAnimalsPlants(level);
 			headerAccessor.getSessionAttributes().put("nap", nap);
-			headerAccessor.getSessionAttributes().put("user", payload.get("id"));
+		}else {
+			nap = (NamesAnimalsPlants) headerAccessor.getSessionAttributes().get("nap");
 		}
-		Character startingLetter = nap.initToFind();
+		Character startingLetter = nap.initToFind(language);
 		return startingLetter;
 	}
 }

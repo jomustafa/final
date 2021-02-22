@@ -30,6 +30,7 @@ public class SpotdifferencesController {
 			headerAccessor.getSessionAttributes().put("blacklist", blacklist);
 		}
 		
+		System.out.println("inInitLevelSD");
 		ArrayList<String> container = new ArrayList<String>();
 		container.add(sd.getPath());
 		container.add(String.valueOf(sd.getDifferencesNo()));

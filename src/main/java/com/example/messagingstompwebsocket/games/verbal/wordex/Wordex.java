@@ -46,7 +46,7 @@ public class Wordex extends VerbalGame {
 
     @Override
     public boolean isFinished() {
-    	System.out.println(goal + "YAYAYAAYAYY" + wordsFound.size() + "TEEEEEEEESTING");
+//    	System.out.println(goal + "YAYAYAAYAYY" + wordsFound.size() + "TEEEEEEEESTING");
         return goal == wordsFound.size();
     }
 

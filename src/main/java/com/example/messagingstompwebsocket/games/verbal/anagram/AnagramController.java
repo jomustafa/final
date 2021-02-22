@@ -47,11 +47,13 @@ public class AnagramController {
 
 	@MessageMapping("/getanagram")
 	@SendToUser("/topic/anagramlist")
-	public List<String> getAnagram(int level) {//////////////
+	public List<String> getAnagram(Map<String,String> payload) {//////////////
+		int level = Integer.parseInt(payload.get("level"));
+		String language = payload.get("language");
 		Anagram anagram = new Anagram(level);
 		System.out.println(level);
-		System.out.println(anagram.getWordForLevel().toString());
-		return anagram.getWordForLevel();
+		//System.out.println(anagram.getWordForLevel(language).toString());
+		return anagram.getWordForLevel(language);
 	}
 
 

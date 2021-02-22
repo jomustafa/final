@@ -39,7 +39,7 @@ public class CorrectSpellingController {
 	@MessageMapping("/getcorrectspellinglist")
 	@SendToUser("/topic/correctspellinglist")
 	public LinkedList<String> getScrambledList(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) { // get
-																				// scrambled words
+		String language = payload.get("language");																		// scrambled words
 		CorrectSpelling cs = (CorrectSpelling) headerAccessor.getSessionAttributes().get("game");
 		if(headerAccessor.getSessionAttributes().get("user") == null) {
 			headerAccessor.getSessionAttributes().put("user", payload.get("id"));
@@ -47,11 +47,13 @@ public class CorrectSpellingController {
 		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
 		if (isNew) {
 			int level = Integer.parseInt(payload.get("level"));
+			
 			cs = new CorrectSpelling(level);
 			headerAccessor.getSessionAttributes().put("game", cs);
 
-		}
-		return cs.getScrambledList();
+		}	
+		System.out.println(language);
+		return cs.getScrambledList(language);
 	}
 
 	@MessageMapping("/getcorrectspellingcheckfinished") // check if the level is finished (true for yes, false for no)

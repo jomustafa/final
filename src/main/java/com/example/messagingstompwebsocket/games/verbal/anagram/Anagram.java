@@ -83,11 +83,11 @@ public class Anagram extends VerbalGame{
     }
 
 
-    public List<String> getWordForLevel() {
+    public List<String> getWordForLevel(String language) {
         List<String> sayings = null;
         List<String> anagram = null;
 
-        if(Locale.getDefault().getLanguage().equals("en")) {
+        if(language.equals("en")) {
             sayings = FILES.getSayingsList_en();
             anagram = FILES.getAnagramList_en();
         } else {

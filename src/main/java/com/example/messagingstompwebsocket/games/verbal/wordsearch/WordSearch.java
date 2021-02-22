@@ -22,7 +22,7 @@ public class WordSearch extends VerbalGame {
 	private int insertedWords;
 	int level;
 
-	public WordSearch(int level) {
+	public WordSearch(int level, String language) {
 
 		super();
 		this.level = level;
@@ -38,7 +38,7 @@ public class WordSearch extends VerbalGame {
 		missed = 0;
 		lastCountryFound = null;
 		rgCountries = new RandomGenerator<>(countries);
-		if (Locale.getDefault().getLanguage().equals("en")) {
+		if (language.equals("en")) {
 			rgVowels = new RandomGenerator<>(vowels_en);
 			rgConsonants = new RandomGenerator<>(consonants_en);
 		} else {
