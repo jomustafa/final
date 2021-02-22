@@ -1,4 +1,4 @@
-/*package com.example.messagingstompwebsocket.games.verbal.anagram;
+package com.example.messagingstompwebsocket.games.verbal.anagram;
 
 import java.util.LinkedList;
 import java.util.Locale;
@@ -194,4 +194,4 @@ public class Anagram extends VerbalGame{
 	    public int isValidAction(Object[] actions) {
 	        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}*/
+}

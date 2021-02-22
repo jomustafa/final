@@ -9,14 +9,11 @@ import com.example.messagingstompwebsocket.games.pattern.findpatterns.Pattern;
 
 @Controller
 public class ReactionController {
-
-	Reaction reaction;
-	
 	
 	@MessageMapping("/re_getsequence")
 	@SendToUser("/topic/re_sequencelist")
 	public Sequence[] getPatterns(int level) {
-		reaction = new Reaction(level);
+		Reaction reaction = new Reaction(level);
 		return reaction.getSequences();
 	}
 }
