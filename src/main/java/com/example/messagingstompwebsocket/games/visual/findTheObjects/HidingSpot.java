@@ -1,7 +1,7 @@
-package com.example.messagingstompwebsocket.games.visual.memoryquest;
+package com.example.messagingstompwebsocket.games.visual.findTheObjects;
 
-//import javafx.event.EventHandler;
-//import javafx.scene.input.DragEvent;
+import javafx.event.EventHandler;
+import javafx.scene.input.DragEvent;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ public class HidingSpot implements Serializable {
     private double y;
     private int width;
     private int height;
-    private com.example.messagingstompwebsocket.games.visual.findTheObjects.HiddenObject hiddenObject;
+    private HiddenObject hiddenObject;
 
     public HidingSpot(double x, double y, int width, int height){
         this.x = x;
@@ -55,13 +55,15 @@ public class HidingSpot implements Serializable {
         this.height = height;
     }
 
-    public com.example.messagingstompwebsocket.games.visual.findTheObjects.HiddenObject getHiddenObject() {
+    public HiddenObject getHiddenObject() {
         return hiddenObject;
     }
 
-    public void setHiddenObject(com.example.messagingstompwebsocket.games.visual.findTheObjects.HiddenObject hiddenObject2) {
-        this.hiddenObject = hiddenObject2;
+    public void setHiddenObject(HiddenObject hiddenObject) {
+        this.hiddenObject = hiddenObject;
     }
 
-}
+    public void setOnDragOver(EventHandler<DragEvent> onDragOver) {
 
+    }
+}
