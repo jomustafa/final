@@ -39,6 +39,20 @@ public class DBController {
 		DBManager.recordPlayer(newPlayer.getID(), newPlayer.getName());
 	}
 
+	@PostMapping("/deleteplayer")
+	void deletePlayer(@RequestBody Player newPlayer) {
+		try {
+			DBManager.deletePlayer(newPlayer.getID());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@PostMapping("/renameplayer")
+	void renamePlayer(@RequestBody Player newPlayer) {
+		DBManager.renamePlayer(newPlayer);
+	}
 	// Single item
 
 	@GetMapping("/playerstats")

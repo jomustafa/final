@@ -15,8 +15,6 @@ import com.example.messagingstompwebsocket.utilities.DBManager;
 @Controller
 public class SupermarketController {
 
-	DBManager dbm = new DBManager();
-
 
 	@MessageMapping("/getrandomproducts")
 	@SendToUser("/topic/getrandomproducts")

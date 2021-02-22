@@ -1,8 +1,10 @@
 package com.example.messagingstompwebsocket.games.visual.hiddenObjects;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller; 
 
@@ -13,14 +15,14 @@ public class HiddenObjectController {
 
 	// getScrambled
 	// isValidAction
-	// isFinished returns ture if the level is finished
-	HiddenQuests ho;
+	// isFinished returns ture if the level is finishe
 	
 	@MessageMapping("/getrandomobjects")
 	@SendToUser("/topic/getrandomobjects")
-	public ArrayList<String> getRandomObjects(int level) { // check if the action was valid(checks button if the word is correct,
-				
-		ho = new HiddenQuests(level);
+	public ArrayList<String> getRandomObjects(SimpMessageHeaderAccessor headerAccessor, int level) { // check if the action was valid(checks button if the word is correct,
+		
+		
+		HiddenQuests ho = (HiddenQuests) headerAccessor.getSessionAttributes().get("game");
 		ArrayList<String> objNameAndImage = new ArrayList<String>();
 
 		// 1 for yes - 0 for no)
@@ -34,9 +36,14 @@ public class HiddenObjectController {
 
 	@MessageMapping("/getobjects")
 	@SendToUser("/topic/getobjects")
-	public ArrayList<String> getObjects(int level) { // check if the action was valid(checks button if the word is correct,
-				
-		ho = new HiddenQuests(level);
+	public ArrayList<String> getObjects(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) { // check if the action was valid(checks button if the word is correct,
+	
+		int level = Integer.parseInt(payload.get("level"));
+		String userID = payload.get("userID");
+		
+		HiddenQuests ho = new HiddenQuests(level);
+		headerAccessor.getSessionAttributes().put("game", ho);
+		headerAccessor.getSessionAttributes().put("name", userID);
 		ArrayList<String> objNameAndImage = new ArrayList<String>();
 
 		// 1 for yes - 0 for no)
@@ -46,5 +53,12 @@ public class HiddenObjectController {
 		}
 
 		return objNameAndImage;
+	}
+	
+	
+	@MessageMapping("/ho_recordscore")
+	public void recordScore(Map<String,String> payload) {
+		//HIDDEN OBJECTS
+		
 	}
 }

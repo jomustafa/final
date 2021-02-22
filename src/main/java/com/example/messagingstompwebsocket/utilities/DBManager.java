@@ -245,22 +245,22 @@ public class DBManager {
 		LinkedList<Score> scores = new LinkedList<>();
 		String SQL = "SELECT DATE, POINTS, COMPLETION_TIME, LEVEL, COMPLETION_PROGRESS, MISSED_CLICKS, PLAYERS.PLAYER, PLAYERS.ID, GAMES.GAME FROM SCORES, PLAYERS, GAMES"
 				+ " WHERE PLAYERS.ID = SCORES.PLAYER" + " AND GAMES.ID = SCORES.GAME";
-		
-		if(!game.equals("")) {
+
+		if (!game.equals("")) {
 			SQL += " AND GAMES.GAME ='" + game + "'";
 		}
-		
-		if(!name.equals("")) {
-			SQL += " AND PLAYERS.PLAYER ='" + name+ "'";
+
+		if (!name.equals("")) {
+			SQL += " AND PLAYERS.PLAYER ='" + name + "'";
 		}
-		
-		if(!id.equals("")) {
-			try{
+
+		if (!id.equals("")) {
+			try {
 				SQL += " AND PLAYERS.ID ='" + Long.parseLong(id) + "'";
-			}catch(Exception e) {
+			} catch (Exception e) {
 				System.out.println("ID: " + id + "is not a number");
 			}
-			
+
 		}
 		SQL += ";";
 		System.out.println(SQL);
@@ -500,22 +500,14 @@ public class DBManager {
 		insert("GAMES", "GAME", "'" + game + "'");
 	}
 
-	public void deletePlayer(String name) throws SQLException {
-		String SQL = "SELECT ID FROM PLAYERS WHERE PLAYER = '" + name + "'";
+
+	public static void deletePlayer(String id) throws SQLException {
+		String SQL = "DELETE FROM SCORES WHERE PLAYER = " + id;
 		System.out.println(SQL);
-		ResultSet results = getDataRecords(SQL);
-		int id = 0;
-		while (results.next()) {
-			id = results.getInt("ID");
-		}
-		if (id > 0) {
-			SQL = "DELETE FROM SCORES WHERE PLAYER = " + id;
-			System.out.println(SQL);
-			conn.createStatement().executeUpdate(SQL);
-			SQL = "DELETE FROM PLAYERS WHERE ID = " + id;
-			System.out.println(SQL);
-			conn.createStatement().executeUpdate(SQL);
-		}
+		conn.createStatement().executeUpdate(SQL);
+		SQL = "DELETE FROM PLAYERS WHERE ID = " + id;
+		System.out.println(SQL);
+		conn.createStatement().executeUpdate(SQL);
 	}
 
 	public void renamePlayer(String oldName, String newName) {
@@ -538,7 +530,16 @@ public class DBManager {
 		} catch (SQLException s) {
 		}
 	}
-
+	
+	
+	public static void renamePlayer(Player player) {
+		try {
+			String SQL = "UPDATE PLAYERS SET PLAYER = '" + player.getName() + "' WHERE PLAYERS.ID = '" + player.getID()+ "'";
+			System.out.println(SQL);
+			conn.createStatement().executeUpdate(SQL);
+		} catch (SQLException s) {
+		}
+	}
 //    public void addQuests(List<Quests> questLists) {
 //        String sql = "INSERT INTO QUESTS(data_blob) VALUES(?)";
 //
