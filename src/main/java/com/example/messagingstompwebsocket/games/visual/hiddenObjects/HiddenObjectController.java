@@ -16,13 +16,14 @@ public class HiddenObjectController {
 	// getScrambled
 	// isValidAction
 	// isFinished returns ture if the level is finishe
+	HiddenQuests ho;
 	
 	@MessageMapping("/getrandomobjects")
 	@SendToUser("/topic/getrandomobjects")
 	public ArrayList<String> getRandomObjects(SimpMessageHeaderAccessor headerAccessor, int level) { // check if the action was valid(checks button if the word is correct,
 		
 		
-		HiddenQuests ho = (HiddenQuests) headerAccessor.getSessionAttributes().get("game");
+		ho = (HiddenQuests) headerAccessor.getSessionAttributes().get("game");
 		ArrayList<String> objNameAndImage = new ArrayList<String>();
 
 		// 1 for yes - 0 for no)
@@ -36,14 +37,14 @@ public class HiddenObjectController {
 
 	@MessageMapping("/getobjects")
 	@SendToUser("/topic/getobjects")
-	public ArrayList<String> getObjects(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) { // check if the action was valid(checks button if the word is correct,
+	public ArrayList<String> getObjects(SimpMessageHeaderAccessor headerAccessor, int level) { // check if the action was valid(checks button if the word is correct,
 	
-		int level = Integer.parseInt(payload.get("level"));
-		String userID = payload.get("userID");
+//		int level = Integer.parseInt(payload.get("level"));
+//		String userID = payload.get("userID");
 		
 		HiddenQuests ho = new HiddenQuests(level);
 		headerAccessor.getSessionAttributes().put("game", ho);
-		headerAccessor.getSessionAttributes().put("name", userID);
+//		headerAccessor.getSessionAttributes().put("name", userID);
 		ArrayList<String> objNameAndImage = new ArrayList<String>();
 
 		// 1 for yes - 0 for no)
