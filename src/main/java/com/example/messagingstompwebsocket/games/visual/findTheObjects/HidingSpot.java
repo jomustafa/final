@@ -1,8 +1,5 @@
 package com.example.messagingstompwebsocket.games.visual.findTheObjects;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.DragEvent;
-
 import java.io.Serializable;
 
 public class HidingSpot implements Serializable {
@@ -62,8 +59,8 @@ public class HidingSpot implements Serializable {
     public void setHiddenObject(HiddenObject hiddenObject) {
         this.hiddenObject = hiddenObject;
     }
-
-    public void setOnDragOver(EventHandler<DragEvent> onDragOver) {
-
-    }
+//
+//    public void setOnDragOver(EventHandler<DragEvent> onDragOver) {
+//
+//    }
 }

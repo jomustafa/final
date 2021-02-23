@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.messagingstompwebsocket.Greeting;
+import com.example.messagingstompwebsocket.utilities.DBManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,6 +55,16 @@ public class AnagramController {
 		System.out.println(level);
 		//System.out.println(anagram.getWordForLevel(language).toString());
 		return anagram.getWordForLevel(language);
+	}
+
+	@MessageMapping("/anagram_recordscore")
+	public void recordScore(Map<String,String> payload) {
+		System.out.println(payload);
+		String player = payload.get("name");
+		int level = Integer.parseInt(payload.get("level"));
+		int missed = Integer.parseInt(payload.get("missed"));
+		int points = Integer.parseInt(payload.get("points"));
+		DBManager.recordScore(player, "ANAGRAM", points , 0, level, points, missed);
 	}
 
 

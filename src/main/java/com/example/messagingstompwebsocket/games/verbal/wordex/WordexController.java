@@ -22,7 +22,6 @@ public class WordexController {
 		Object[] args = { payload.get("word")};
 		System.out.println("TTTTTTTTTEEEEEEEEEESSSSSSSSSTT " + payload.get("word"));
 		int isValid  = wordex.isValidAction(args); 
-		
 		if(isValid==1) {
 			if(wordex.isFinished()) {
 				DBManager.recordScore(user, "WORDEX", 100, 0, wordex.getLevel(), 100, wordex.getMissed());

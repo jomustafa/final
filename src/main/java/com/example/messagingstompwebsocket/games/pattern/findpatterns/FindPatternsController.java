@@ -20,7 +20,7 @@ public class FindPatternsController {
 		return fp.getPatterns();
 	}
 	
-	@MessageMapping("/recordscore")
+	@MessageMapping("/fp_recordscore")
 	public void recordScore(Map<String,String> payload) {
 		System.out.println(payload);
 		String player = payload.get("name");
