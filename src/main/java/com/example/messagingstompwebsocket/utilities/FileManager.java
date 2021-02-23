@@ -12,6 +12,9 @@ import java.util.*;
 import com.example.messagingstompwebsocket.games.visual.memoryquest.HiddenObject;
 import com.example.messagingstompwebsocket.games.visual.memoryquest.HidingSpot;
 import com.example.messagingstompwebsocket.games.visual.memoryquest.Quest;
+import com.example.messagingstompwebsocket.games.visual.findTheObjects.QuestCollection;
+
+
 
 import org.nustaq.serialization.FSTConfiguration;
 
@@ -30,6 +33,7 @@ public class FileManager {
 //    private static FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
 	private List<Color> colors;
 //    private String[] wordex_EN;
+	private QuestCollection questListCollection = new QuestCollection();
 	private String[] wordex_GR;
 	private static final String FACES = "lib/text/facenamehouse/faces.txt";
 	private static final String FEMALE_NAMES_GR = "lib/text/facenamehouse/femaleNames_gr.txt";
@@ -590,8 +594,9 @@ public class FileManager {
 
 		ResultSet resultSet;
 		List<Quest> questList = new LinkedList<>();
+		questList = questListCollection.generate();
 //		try {
-//			resultSet = DBManager.getQuests();
+//			resultSet = new DBManager().getQuests();
 //
 //			while (resultSet.next()) {
 //				Blob blob = resultSet.getBlob("data_blob");
