@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 
 import com.example.messagingstompwebsocket.games.visual.hiddenObjects.Object;
 import com.example.messagingstompwebsocket.games.visual.memoryquest.HidingSpot;
+import com.example.messagingstompwebsocket.utilities.DBManager;
 
 @Controller
 public class FindTheObjectController {
@@ -26,5 +27,15 @@ public class FindTheObjectController {
 		}
 
 		return objImage;
+	}
+	
+	@MessageMapping("/findobject_recordScore")
+	public void recordScore(Map<String, String> payload) {
+		String player = payload.get("name");
+		int lvl = Integer.parseInt(payload.get("level"));
+		int missedClicks = Integer.parseInt(payload.get("missed"));
+		
+		DBManager.recordScore(player, "FIND OBJECTS", 100, 0, lvl, 100, missedClicks);
+		
 	}
 }

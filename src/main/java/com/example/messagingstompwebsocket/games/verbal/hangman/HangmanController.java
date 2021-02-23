@@ -14,14 +14,35 @@ import com.example.messagingstompwebsocket.utilities.DBManager;
 public class HangmanController {
 
 
+//	@MessageMapping("/hangmanConstructor")
+//	@SendToUser("/topic/gethangmanConstructor")
+//	public ArrayList<String> Hangman(Map<String, String> payload) {
+//
+//		int level = Integer.parseInt(payload.get("level"));
+//		Hangman hg = new Hangman(level);
+//		/*
+//		 * 
+//		 */
+//		
+//		ArrayList<String> words = new ArrayList<String>();
+//		ArrayList<String> container = new ArrayList<String>();
+//		words.addAll(hg.getWordForLevel());
+//		container.add(hg.getWordCategory());
+//		container.add(Integer.toString(hg.getTimeAllowed()));
+//		container.addAll(words);
+//		return container;
+//	}
+
+	
 	@MessageMapping("/hangmanConstructor")
 	@SendToUser("/topic/gethangmanConstructor")
 	public ArrayList<String> Hangman(Map<String, String> payload) {
-
+		int choice = Integer.parseInt(payload.get("category"));
 		int level = Integer.parseInt(payload.get("level"));
 		Hangman hg = new Hangman(level);
 		
 		
+		hg.setChoiceComb(choice);
 		ArrayList<String> words = new ArrayList<String>();
 		ArrayList<String> container = new ArrayList<String>();
 		words.addAll(hg.getWordForLevel());
@@ -29,8 +50,8 @@ public class HangmanController {
 		container.add(Integer.toString(hg.getTimeAllowed()));
 		container.addAll(words);
 		return container;
-	}
-
+    }
+	
 	@MessageMapping("/hangman_recordscore")
 	public void recordScore(Map<String,String> payload) {
 		System.out.println(payload);
