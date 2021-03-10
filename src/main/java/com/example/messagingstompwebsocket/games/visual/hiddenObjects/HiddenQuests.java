@@ -127,6 +127,7 @@ public class HiddenQuests extends Object {
                 break;
 
         }
+        System.out.println(userList.get(0));
         return userList;
     }
 
