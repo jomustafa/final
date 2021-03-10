@@ -1,6 +1,7 @@
 package com.example.messagingstompwebsocket.games.visual.supermarket;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
@@ -52,5 +53,15 @@ public class SupermarketController {
 		}
 
 		return productNameAndImage;
+	}
+
+	@MessageMapping("/supermarket_recordScore")
+	public void recordScore(Map<String, String> payload) {
+		String player = payload.get("name");
+		int lvl = Integer.parseInt(payload.get("level"));
+		int missedClicks = Integer.parseInt(payload.get("missed"));
+
+		DBManager.recordScore(player, "SUPERMARKET", 100, 0, lvl, 100, missedClicks);
+
 	}
 }

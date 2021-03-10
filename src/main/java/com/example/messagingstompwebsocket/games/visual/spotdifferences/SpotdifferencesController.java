@@ -3,6 +3,7 @@ package com.example.messagingstompwebsocket.games.visual.spotdifferences;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.example.messagingstompwebsocket.utilities.DBManager;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
@@ -74,5 +75,15 @@ public class SpotdifferencesController {
         
         return value;
         
+	}
+
+	@MessageMapping("/spotdif_recordscore")
+	public void recordScore(Map<String,String> payload) {
+		//HIDDEN OBJECTS
+		String player = payload.get("name");
+		int lvl = Integer.parseInt(payload.get("level"));
+		int missedClicks = Integer.parseInt(payload.get("missed"));
+
+		DBManager.recordScore(player, "FIND THE DIFFERENCES", 100, 0, lvl, 100, missedClicks);
 	}
 }

@@ -20,7 +20,6 @@ public class WordexController {
 		String user = (String) headerAccessor.getSessionAttributes().get("user");
 		
 		Object[] args = { payload.get("word")};
-		System.out.println("TTTTTTTTTEEEEEEEEEESSSSSSSSSTT " + payload.get("word"));
 		int isValid  = wordex.isValidAction(args); 
 		if(isValid==1) {
 			if(wordex.isFinished()) {
