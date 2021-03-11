@@ -45,7 +45,7 @@ public class NamesAnimalsPlantsController {
 		NamesAnimalsPlants nap = null;
 		headerAccessor.getSessionAttributes().put("user", payload.get("id"));
 		if(isNew) {
-			nap = new NamesAnimalsPlants(level);
+			nap = new NamesAnimalsPlants(level, language);
 			headerAccessor.getSessionAttributes().put("nap", nap);
 		}else {
 			nap = (NamesAnimalsPlants) headerAccessor.getSessionAttributes().get("nap");

@@ -27,9 +27,11 @@ public class WordSearch extends VerbalGame {
 		super();
 		this.level = level;
 		List<String> countries = null;
-		if (Locale.getDefault().getLanguage().equals("en")) {
+		if (language.equals("en")) {
 			countries = fileManager.getCountries_en();
+			System.out.println("in en");
 		} else {
+			System.out.println("in gr");
 			countries = fileManager.getCountries_gr();
 		}
 		insertedWords = 0;
@@ -126,6 +128,7 @@ public class WordSearch extends VerbalGame {
 			String country = rgCountries.getRandomElement();
 			while (isValidLength(country)) {
 				country = rgCountries.getRandomElement();
+
 			}
 			if (i > 0) {
 				while (isValidLength(country) || existsCountry(country, i)) {

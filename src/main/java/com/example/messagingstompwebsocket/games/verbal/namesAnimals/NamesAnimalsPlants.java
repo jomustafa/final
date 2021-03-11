@@ -15,13 +15,15 @@ public class NamesAnimalsPlants extends VerbalGame {
     private final LinkedList<String> foundWords;
     private final int level;
     private int missed;
+    String language;
     
-    public NamesAnimalsPlants(int level) {
+    public NamesAnimalsPlants(int level, String language) {
         found = 0;
         missed = 0;
         foundWords = new LinkedList<>();
         this.level = level;
         initLevel();
+        this.language = language;
     }
     
     public int getMissed() {
@@ -38,7 +40,7 @@ public class NamesAnimalsPlants extends VerbalGame {
                 rg = new RandomGenerator<>(easyLetters_gr);
             }
         } else {
-            if(Locale.getDefault().getLanguage().equals("en")) {
+            if(language.equals("en")) {
                 rg = new RandomGenerator<>(hardLetters_en);
             }else{
                 rg = new RandomGenerator<>(hardLetters_gr);
@@ -82,7 +84,7 @@ public class NamesAnimalsPlants extends VerbalGame {
         List<String> country = null;
 
 
-        if(Locale.getDefault().getLanguage().equals("en")) {
+        if(language.equals("en")) {
             plants = fileManager.getPlants_en();
             animal = fileManager.getAnimals_en();
             occupations = fileManager.getOccupations_en();
@@ -118,7 +120,7 @@ public class NamesAnimalsPlants extends VerbalGame {
                     listType = country;
                     break;
             }
-            if(Locale.getDefault().getLanguage().equals("gr")) {
+            if(language.equals("gr")) {
                 word = GreekLangUtils.latinToGreek(GreekLangUtils.removeDiacritics(word.toUpperCase()));
             }else{
 

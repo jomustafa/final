@@ -68,8 +68,7 @@ public class SplitWords extends VerbalGame {
 		} else {
 			rg = new RandomGenerator<>(fileManager.getSplitEasy_gr());
 		}
-		
-		System.out.println(Locale.getDefault().getLanguage());
+
 		for (int i = 0; i < goal; i++) {
 			SplitWord splitWord = new SplitWord(rg.getRandomElement());
 			if (i == 0) {
