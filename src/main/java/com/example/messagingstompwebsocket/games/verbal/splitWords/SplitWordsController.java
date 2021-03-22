@@ -35,11 +35,16 @@ public class SplitWordsController {
 		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
 		
 		SplitWords sws = (SplitWords) headerAccessor.getSessionAttributes().get("game");
-		String userID = (String) headerAccessor.getSessionAttributes().get("user");
+
+		String userID = "";
+		if (headerAccessor.getSessionAttributes().get("user") != null) {
+			userID = (String) headerAccessor.getSessionAttributes().get("user");
+		}
 		if(sws.isValidAction(args)==1) {
 			if(sws.isFinished()) {
 				System.out.println("2");
-				DBManager.recordScore(userID, "MATCH", 100, 0, sws.getLevel(), 100, sws.getMissed());
+				if(userID != "")
+					DBManager.recordScore(userID, "MATCH", 100, 0, sws.getLevel(), 100, sws.getMissed());
 				return 2;
 			}else {
 				System.out.println("1");
@@ -59,7 +64,9 @@ public class SplitWordsController {
 		String language = payload.get("language");
 		SplitWords sws = new SplitWords(level, language);
 		headerAccessor.getSessionAttributes().put("game", sws);
-		headerAccessor.getSessionAttributes().put("user", payload.get("id"));
+		if(payload.get("id") != null) {
+			headerAccessor.getSessionAttributes().put("user", payload.get("id"));
+		}
 		return sws.getSplitWords();
 	}
 

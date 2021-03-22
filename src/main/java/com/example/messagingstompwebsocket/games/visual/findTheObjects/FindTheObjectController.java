@@ -32,10 +32,11 @@ public class FindTheObjectController {
 	@MessageMapping("/findobject_recordScore")
 	public void recordScore(Map<String, String> payload) {
 		String player = payload.get("name");
-		int lvl = Integer.parseInt(payload.get("level"));
-		int missedClicks = Integer.parseInt(payload.get("missed"));
-		
-		DBManager.recordScore(player, "FIND OBJECTS", 100, 0, lvl, 100, missedClicks);
-		
+		if(player!=null) {
+			int lvl = Integer.parseInt(payload.get("level"));
+			int missedClicks = Integer.parseInt(payload.get("missed"));
+
+			DBManager.recordScore(player, "FIND OBJECTS", 100, 0, lvl, 100, missedClicks);
+		}
 	}
 }

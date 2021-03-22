@@ -37,7 +37,10 @@ public class WordSearchController {
 		WordSearch ws = (WordSearch) headerAccessor.getSessionAttributes().get("game");
 		ArrayList<Integer> startingIndex = (ArrayList<Integer>) headerAccessor.getSessionAttributes().get("startingIndex");
 		ArrayList<Integer> endingIndex = (ArrayList<Integer>) headerAccessor.getSessionAttributes().get("endingIndex");
-		String userID = (String) headerAccessor.getSessionAttributes().get("user");
+
+		String userID = "";
+		if(headerAccessor.getSessionAttributes().get("user") != null)
+			userID = (String) headerAccessor.getSessionAttributes().get("user");
 
 				
 		for(int i = 0; i<startingIndex.size(); i++) {
@@ -51,7 +54,9 @@ public class WordSearchController {
 			if(ws.isFinished()) {
 				System.out.println("2");
 				response[0] = "2";
-				DBManager.recordScore(userID, "FIND THE WORD", 100, 0, ws.getLevel(), 100, ws.getMissed());
+
+				if(userID != "")
+					DBManager.recordScore(userID, "FIND THE WORD", 100, 0, ws.getLevel(), 100, ws.getMissed());
 			}else {
 				startingIndex.add(start);
 				endingIndex.add(end);
@@ -87,7 +92,8 @@ public class WordSearchController {
 		WordSearch ws = new WordSearch(level, language);	
 		
 		headerAccessor.getSessionAttributes().put("game", ws);
-		headerAccessor.getSessionAttributes().put("user", payload.get("id"));
+		if(payload.get("id") != null)
+			headerAccessor.getSessionAttributes().put("user", payload.get("id"));
 
 		headerAccessor.getSessionAttributes().put("startingIndex", new ArrayList<Integer>());
 		headerAccessor.getSessionAttributes().put("endingIndex", new ArrayList<Integer>());

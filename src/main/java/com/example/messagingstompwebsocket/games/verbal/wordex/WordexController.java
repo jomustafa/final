@@ -17,13 +17,16 @@ public class WordexController {
 	@SendToUser("/topic/wordex_validactionresponse")
 	public int validAction(SimpMessageHeaderAccessor headerAccessor, Map<String, Object> payload) {
 		Wordex wordex = (Wordex) headerAccessor.getSessionAttributes().get("game");
-		String user = (String) headerAccessor.getSessionAttributes().get("user");
+		String user = "";
+		if(headerAccessor.getSessionAttributes().get("user") != null)
+			user = (String) headerAccessor.getSessionAttributes().get("user");
 		
 		Object[] args = { payload.get("word")};
 		int isValid  = wordex.isValidAction(args); 
 		if(isValid==1) {
 			if(wordex.isFinished()) {
-				DBManager.recordScore(user, "WORDEX", 100, 0, wordex.getLevel(), 100, wordex.getMissed());
+				if(user!="")
+					DBManager.recordScore(user, "WORDEX", 100, 0, wordex.getLevel(), 100, wordex.getMissed());
 				return 2;
 			} else {
 				return 1;
@@ -42,7 +45,8 @@ public class WordexController {
 		Wordex wordex = null;
 		if(isNew) {
 			wordex = new Wordex(level);
-			headerAccessor.getSessionAttributes().put("user", payload.get("userID"));
+			if(payload.get("userID") != null)
+				headerAccessor.getSessionAttributes().put("user", payload.get("userID"));
 			headerAccessor.getSessionAttributes().put("game", wordex);
 		}
 		return wordex.getLetters();

@@ -23,10 +23,17 @@ public class CorrectSpellingController {
 	public int isValidAction(SimpMessageHeaderAccessor headerAccessor, Object[] actions) { // check if the action was valid(checks button if the word is correct,
 													// 1 for yes - 0 for no)
 		CorrectSpelling cs = (CorrectSpelling) headerAccessor.getSessionAttributes().get("game");
-		String userID = (String) headerAccessor.getSessionAttributes().get("user");
+
+		String userID = "";
+		if (headerAccessor.getSessionAttributes().get("user") != null) {
+			userID = (String) headerAccessor.getSessionAttributes().get("user");
+		}
+
+
 		if (cs.isValidAction(actions) == 1) {
 			if (cs.isFinished()) {
-				DBManager.recordScore(userID, "CORRECT SPELLING", 100, 0, cs.getLevel(), 100, cs.getMissed());
+				if(userID != "")
+					DBManager.recordScore(userID, "CORRECT SPELLING", 100, 0, cs.getLevel(), 100, cs.getMissed());
 				return 2;
 			} else {
 				return 1;
@@ -41,7 +48,7 @@ public class CorrectSpellingController {
 	public LinkedList<String> getScrambledList(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) { // get
 		String language = payload.get("language");																		// scrambled words
 		CorrectSpelling cs = (CorrectSpelling) headerAccessor.getSessionAttributes().get("game");
-		if(headerAccessor.getSessionAttributes().get("user") == null) {
+		if(headerAccessor.getSessionAttributes().get("user") == null && payload.get("id") != null) {
 			headerAccessor.getSessionAttributes().put("user", payload.get("id"));
 		}
 		boolean isNew = Boolean.parseBoolean(payload.get("isNew"));

@@ -61,10 +61,12 @@ public class AnagramController {
 	public void recordScore(Map<String,String> payload) {
 		System.out.println(payload);
 		String player = payload.get("name");
-		int level = Integer.parseInt(payload.get("level"));
-		int missed = Integer.parseInt(payload.get("missed"));
-		int points = Integer.parseInt(payload.get("points"));
-		DBManager.recordScore(player, "ANAGRAM", points , 0, level, points, missed);
+		if(player!=null) {
+			int level = Integer.parseInt(payload.get("level"));
+			int missed = Integer.parseInt(payload.get("missed"));
+			int points = Integer.parseInt(payload.get("points"));
+			DBManager.recordScore(player, "ANAGRAM", points, 0, level, points, missed);
+		}
 	}
 
 
