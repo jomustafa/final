@@ -19,20 +19,23 @@ public class SplitWords extends VerbalGame {
 	private int found;
 	private final LinkedList<SplitWord> splitWords;
 	private int missed;
-
-	public SplitWords(int level) {
+	private int level;
+	
+	
+	public SplitWords(int level, String language) {
 		super();
+		this.level = level;
 		initLevel(level);
 		splitWords = new LinkedList<>();
 		found = 0;
-		initSplitWords();
+		initSplitWords(language);
 		missed = 0;
-//        splitWords.add(new SplitWord("accept"));
-//        splitWords.add(new SplitWord("abroad"));
-//        splitWords.add(new SplitWord("actual"));
-//        splitWords.add(new SplitWord("manage"));
 	}
 
+	public int getLevel() {
+		return level;
+	}
+	
 	@Override
 	public boolean isFinished() {
 		return goal == found;
@@ -58,13 +61,14 @@ public class SplitWords extends VerbalGame {
 		return missed;
 	}
 
-	private void initSplitWords() {
+	private void initSplitWords(String language) {
 		RandomGenerator<String> rg;
-		if (Locale.getDefault().getLanguage().equals("en")) {
+		if (language.equals("en")) {
 			rg = new RandomGenerator<>(fileManager.getSplitEasy_en());
 		} else {
 			rg = new RandomGenerator<>(fileManager.getSplitEasy_gr());
 		}
+
 		for (int i = 0; i < goal; i++) {
 			SplitWord splitWord = new SplitWord(rg.getRandomElement());
 			if (i == 0) {

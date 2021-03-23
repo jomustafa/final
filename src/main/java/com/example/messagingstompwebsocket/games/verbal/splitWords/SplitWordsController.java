@@ -1,10 +1,12 @@
 package com.example.messagingstompwebsocket.games.verbal.splitWords;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,22 +19,32 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.messagingstompwebsocket.Greeting;
+import com.example.messagingstompwebsocket.games.Player;
+import com.example.messagingstompwebsocket.games.verbal.namesAnimals.NamesAnimalsPlants;
+import com.example.messagingstompwebsocket.utilities.DBManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class SplitWordsController {
-	SplitWords sws;
-
+	
 	@MessageMapping("/sws_validaction")
 	@SendToUser("/topic/sws_validactionresponse")
-	public int validAction(Map<String, Object> payload) {
+	public int validAction(SimpMessageHeaderAccessor headerAccessor, Map<String, Object> payload) {
 		Object[] args = { payload.get("firstPart"), payload.get("secondPart") };
 		
+		SplitWords sws = (SplitWords) headerAccessor.getSessionAttributes().get("game");
+
+		String userID = "";
+		if (headerAccessor.getSessionAttributes().get("user") != null) {
+			userID = (String) headerAccessor.getSessionAttributes().get("user");
+		}
 		if(sws.isValidAction(args)==1) {
 			if(sws.isFinished()) {
 				System.out.println("2");
+				if(userID != "")
+					DBManager.recordScore(userID, "MATCH", 100, 0, sws.getLevel(), 100, sws.getMissed());
 				return 2;
 			}else {
 				System.out.println("1");
@@ -47,8 +59,17 @@ public class SplitWordsController {
 
 	@MessageMapping("/getsplitwords")
 	@SendToUser("/topic/splitwordlist")
-	public LinkedList<SplitWord> getSplitWords(int level) {
-		sws = new SplitWords(level);
+	public LinkedList<SplitWord> getSplitWords(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) {
+		int level = Integer.parseInt(payload.get("level"));
+		String language = payload.get("language");
+		if(language==null){
+			language = "gr";
+		}
+		SplitWords sws = new SplitWords(level, language);
+		headerAccessor.getSessionAttributes().put("game", sws);
+		if(payload.get("id") != null) {
+			headerAccessor.getSessionAttributes().put("user", payload.get("id"));
+		}
 		return sws.getSplitWords();
 	}
 

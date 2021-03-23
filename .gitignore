@@ -5,3 +5,4 @@ target
 frontend/
 target/
 target/*
+/.gradle/

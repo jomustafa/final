@@ -10,7 +10,7 @@ public class HidingSpot implements Serializable {
     private double y;
     private int width;
     private int height;
-    private HiddenObject hiddenObject;
+    private com.example.messagingstompwebsocket.games.visual.findTheObjects.HiddenObject hiddenObject;
 
     public HidingSpot(double x, double y, int width, int height){
         this.x = x;
@@ -55,12 +55,12 @@ public class HidingSpot implements Serializable {
         this.height = height;
     }
 
-    public HiddenObject getHiddenObject() {
+    public com.example.messagingstompwebsocket.games.visual.findTheObjects.HiddenObject getHiddenObject() {
         return hiddenObject;
     }
 
-    public void setHiddenObject(HiddenObject hiddenObject) {
-        this.hiddenObject = hiddenObject;
+    public void setHiddenObject(com.example.messagingstompwebsocket.games.visual.findTheObjects.HiddenObject hiddenObject2) {
+        this.hiddenObject = hiddenObject2;
     }
 
 }

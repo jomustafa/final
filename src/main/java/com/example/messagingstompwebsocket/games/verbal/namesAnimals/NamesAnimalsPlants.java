@@ -14,24 +14,33 @@ public class NamesAnimalsPlants extends VerbalGame {
     private Character letterToFind;
     private final LinkedList<String> foundWords;
     private final int level;
-
-    public NamesAnimalsPlants(int level) {
+    private int missed;
+    String language;
+    
+    public NamesAnimalsPlants(int level, String language) {
         found = 0;
+        missed = 0;
         foundWords = new LinkedList<>();
         this.level = level;
         initLevel();
+        this.language = language;
     }
+    
+    public int getMissed() {
+    	return missed;
+    }
+    
 
-    public Character initToFind() {
+    public Character initToFind(String language) {
         RandomGenerator<Character> rg;
         if (level < 4) {
-            if(Locale.getDefault().getLanguage().equals("en")) {
+            if(language.equals("en")) {
                 rg = new RandomGenerator<>(easyLetters_en);
             }else{
                 rg = new RandomGenerator<>(easyLetters_gr);
             }
         } else {
-            if(Locale.getDefault().getLanguage().equals("en")) {
+            if(language.equals("en")) {
                 rg = new RandomGenerator<>(hardLetters_en);
             }else{
                 rg = new RandomGenerator<>(hardLetters_gr);
@@ -75,7 +84,7 @@ public class NamesAnimalsPlants extends VerbalGame {
         List<String> country = null;
 
 
-        if(Locale.getDefault().getLanguage().equals("en")) {
+        if(language.equals("en")) {
             plants = fileManager.getPlants_en();
             animal = fileManager.getAnimals_en();
             occupations = fileManager.getOccupations_en();
@@ -111,7 +120,7 @@ public class NamesAnimalsPlants extends VerbalGame {
                     listType = country;
                     break;
             }
-            if(Locale.getDefault().getLanguage().equals("gr")) {
+            if(language.equals("gr")) {
                 word = GreekLangUtils.latinToGreek(GreekLangUtils.removeDiacritics(word.toUpperCase()));
             }else{
 
@@ -132,6 +141,7 @@ public class NamesAnimalsPlants extends VerbalGame {
                 return 1;
             }
         }
+        missed++;
         return 0;
     }
 
