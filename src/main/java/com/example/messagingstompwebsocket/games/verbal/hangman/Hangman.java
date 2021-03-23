@@ -15,9 +15,11 @@ public class Hangman extends VerbalGame {
     private String wordCategory;
     private int choiceComb = 0; //replaced GameSelectController.choiceComb with this. will get from frontend, total replace: 3
     String file;
+    private String language;
 
-    public Hangman(int level) {
+    public Hangman(int level, String language) {
         this.level = level;
+        this.language = language;
         initLevel();
     }
     
@@ -26,7 +28,7 @@ public class Hangman extends VerbalGame {
     }
 
     private void initLevel() {
-        if (Locale.getDefault().getLanguage().equals("en")) {
+        if (language.equals("en")) {
             int choice = choiceComb;
             switch (level) {
                 case 1:

@@ -39,7 +39,11 @@ public class HangmanController {
 	public ArrayList<String> Hangman(Map<String, String> payload) {
 		int choice = Integer.parseInt(payload.get("category"));
 		int level = Integer.parseInt(payload.get("level"));
-		Hangman hg = new Hangman(level);
+		String language = payload.get("language");
+		if(language==null){
+			language = "gr";
+		}
+		Hangman hg = new Hangman(level, language);
 		
 		
 		hg.setChoiceComb(choice);

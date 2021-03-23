@@ -51,6 +51,9 @@ public class AnagramController {
 	public List<String> getAnagram(Map<String,String> payload) {//////////////
 		int level = Integer.parseInt(payload.get("level"));
 		String language = payload.get("language");
+		if(language==null){
+			language = "gr";
+		}
 		Anagram anagram = new Anagram(level);
 		System.out.println(level);
 		//System.out.println(anagram.getWordForLevel(language).toString());

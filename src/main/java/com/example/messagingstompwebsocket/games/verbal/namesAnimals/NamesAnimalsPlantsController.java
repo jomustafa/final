@@ -50,6 +50,9 @@ public class NamesAnimalsPlantsController {
         boolean isNew = Boolean.parseBoolean(payload.get("isNew"));
         int level = Integer.parseInt(payload.get("level"));
         String language = payload.get("language");
+        if(language==null){
+            language = "gr";
+        }
         NamesAnimalsPlants nap = null;
 
         if (payload.get("id") != null) {

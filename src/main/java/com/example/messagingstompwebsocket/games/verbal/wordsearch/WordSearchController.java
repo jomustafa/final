@@ -89,6 +89,9 @@ public class WordSearchController {
 	public Character[][] getMatrix(SimpMessageHeaderAccessor headerAccessor, Map<String, String> payload) {
 		int level = Integer.parseInt(payload.get("level"));
 		String language = payload.get("language");
+		if(language==null){
+			language = "gr";
+		}
 		WordSearch ws = new WordSearch(level, language);	
 		
 		headerAccessor.getSessionAttributes().put("game", ws);
