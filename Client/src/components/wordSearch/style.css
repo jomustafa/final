@@ -1,0 +1,45 @@
+.all_words {
+    position: relative;
+    top: 50%;
+    transform: translateY(20%);
+}
+
+.result {
+    width: 100%;;
+    border: 1px #57e5ca solid;
+}
+
+#line{
+    stroke:rgb(255,0,0);
+    stroke-width:2;
+}
+
+.btn-light {
+    background-color: #FFF;
+    color: #1e1d62;
+    width: 100%;
+    font-weight: 600;
+    font-style: normal;
+    border: 0;
+    text-decoration: none;
+    height: 48px;
+}
+
+
+
+.btn-light:focus {
+    box-shadow: unset;
+    outline: 0px;
+    border: unset;
+    transition: 0.2s ease;
+}
+
+.col-xs-1,
+.col-sm-1 {
+  position: relative;
+  min-height: 1px;
+}
+
+.col-xs-1 {
+  float: left;
+}

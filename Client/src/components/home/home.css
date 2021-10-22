@@ -1,0 +1,43 @@
+.ReactModal__Content {
+  width: 45%;
+  height: 30%;
+  justify-content: center;
+  left: 25% !important;
+  top: 25% !important;
+}
+.modaal {
+  width: 45%;
+  height: 30%;
+  justify-content: center;
+  left: 25% !important;
+  top: 25% !important;
+}
+.brainBright {
+  color: blue;
+  font-size: 50px;
+}
+
+.cityC {
+  color: gray;
+  font-size: 20px;
+}
+
+.user-names {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5%;
+}
+
+.btn {
+  margin: 1%;
+}
+
+.intro {
+  font-size: xx-large;
+}
+
+.custom-modal-style {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 15%;
+}

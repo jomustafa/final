@@ -1,0 +1,120 @@
+.all_words_fd {
+  padding-top:2%;
+  max-width: fit-content !important;
+}
+
+.result {
+    width: 100%;;
+    border: 1px #57e5ca solid;
+}
+
+.btn-primary {
+    background-color: #57e5ca;
+    color: #1e1d62;
+    width: 100%;
+    font-weight: 600;
+    font-style: normal;
+    border: 0;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.buttonsContainingWords {
+  border-radius: 15px !important;
+}
+.btn-primary:hover {
+    background-color: rgba(87, 229, 202, 0.75);
+    color: #1e1d62;
+    transition: ease-in-out 0.2s;
+}
+
+.btn-primary:active {
+    background-color: #1e1d62;
+    color: #57e5ca;
+}
+
+.btn-primary:focus {
+    background-color: #1e1d62;
+    color: #57e5ca;
+    box-shadow: unset;
+    outline: 0px;
+    border: unset;
+    transition: 0.2s ease;
+}
+
+#colorRandomSpan {
+  font-weight: bold;
+}
+
+#imageContainer {
+  width: 1000px !important;
+  height: 800px !important;
+  flex: none !important;
+  position: relative;
+}
+
+.btn_hangman {
+  background-color: #343c45;
+  color:white;
+  border: 1px solid #252b31;
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin:1px;
+  box-shadow: 1px 3px #888888;
+  text-align: center;
+  font-weight:bold;
+  text-decoration: none;
+}
+
+.btn_hangman:active {
+  background-color:black;
+}
+
+.btn_hangman:disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.btn_hangman:disabled:active {
+  background-color:#343c45;
+}
+
+.btn_hangman_found_char {
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  margin: 2px;
+  border-radius: 0;
+  pointer-events: none;
+}
+
+.btn_unclickable {
+  pointer-events: none;
+}
+
+.bigger_text {
+  font-size: 120%;
+}
+.informationBar {
+  font-weight: bold;
+  position:absolute;
+  top:20%;
+  left:12%;
+}
+#keyboardInterface {
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#wordToBeFound {
+  display:inline;
+  position:absolute;
+  top:40%;
+  left:10%;
+}
+
+.resultrow{
+    height:24px;
+}

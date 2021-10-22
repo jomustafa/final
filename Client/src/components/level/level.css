@@ -1,0 +1,9 @@
+.level-component {
+    margin-bottom: 40px;
+}
+
+.number {
+    font-family: inherit;
+    font-size: 100px;
+    color: #1e1d62;
+}

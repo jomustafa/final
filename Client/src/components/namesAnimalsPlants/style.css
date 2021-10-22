@@ -1,0 +1,27 @@
+.napCharacter{
+    color: red;
+    font-style: bold;
+    display: inline;
+    font-size: larger;
+}
+.starting-character{
+    display: inline;
+    font-size: larger;
+}
+.guideComment{
+    margin-top: 5%;
+    display: inline-block;
+}
+/* .border{
+    height: 25px;
+    width: 120px;
+    margin-left: 50%;
+    margin-top: 5%;
+} */
+.found{
+    font-size:large;
+    margin-top: 20%;
+} 
+.all_words{
+    margin-top: -10%;
+}

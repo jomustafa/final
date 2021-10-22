@@ -1,0 +1,61 @@
+.all_words_fd {
+  padding-top:2%;
+  max-width: fit-content !important;
+}
+
+.result {
+    width: 100%;;
+    border: 1px #57e5ca solid;
+}
+
+.btn-primary {
+    background-color: #57e5ca;
+    color: #1e1d62;
+    width: 100%;
+    font-weight: 600;
+    font-style: normal;
+    border: 0;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.buttonsContainingWords {
+  border-radius: 15px !important;
+}
+.btn-primary:hover {
+    background-color: rgba(87, 229, 202, 0.75);
+    color: #1e1d62;
+    transition: ease-in-out 0.2s;
+}
+
+.btn-primary:active {
+    background-color: #1e1d62;
+    color: #57e5ca;
+}
+
+.btn-primary:focus {
+    background-color: #1e1d62;
+    color: #57e5ca;
+    box-shadow: unset;
+    outline: 0px;
+    border: unset;
+    transition: 0.2s ease;
+}
+
+#colorRandomSpan {
+  font-weight: bold;
+}
+
+#imageContainer {
+  width: 900px !important;
+  height: 700px !important;
+  flex: none !important;
+  position: relative;
+}
+
+
+
+
+.resultrow{
+    height:24px;
+}

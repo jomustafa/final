@@ -1,0 +1,22 @@
+.all_words{
+    position: relative;
+    align-items: center;
+    top: 50%;
+    transform: translateY(20%);
+    padding-top: 100px;
+}
+
+.result {
+    width: 100%;;
+    border: 1px #57e5ca solid;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #1e1d62;
+    background-color: #57e5ca;
+    border-color: #57e5ca;
+}

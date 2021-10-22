@@ -1,0 +1,34 @@
+#levels {
+  height: 80px;
+  width: 80px;
+  font-weight: large;
+  font-size: larger;
+}
+
+.select {
+  font-size: 900;
+  font-weight: normal;
+  margin-top: 20%;
+  margin-bottom: 20px;
+  justify-content: center;
+  display: block;
+}
+
+.game-select {
+  font-weight: 200;
+  color: black;
+  margin: 30px;
+}
+
+.sidebar {
+  margin-left: 10%;
+}
+
+.player {
+  font-weight: 500;
+  font-size: x-large;
+}
+
+.player-name {
+  font-size: x-large;
+}
