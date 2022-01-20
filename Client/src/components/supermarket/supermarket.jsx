@@ -23,6 +23,7 @@ let mistakes = 0;
 let constants;
 
 export default function ClientComponent() {
+    window.alert("The game has started");
     const socket = useRef(new SockJS('/brainbright-websocket'));
     const stompClient = useRef(Stomp.over(socket.current));
     const cookies = new Cookies();
