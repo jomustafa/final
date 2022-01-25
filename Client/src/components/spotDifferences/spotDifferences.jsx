@@ -34,7 +34,6 @@ let constants;
 let found = 0;
 
 export default function ClientComponent() {
-    window.alert("The game has started");
 
     const[howManyFound, setHowManyFound] = useState(0);
     const socket = useRef(new SockJS('/brainbright-websocket'));
@@ -401,7 +400,7 @@ export default function ClientComponent() {
                         {endResult}
                     </div>
                     <button
-                        className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton"
+                        className="btn pl-5 pr-5 pt-2 pb-2 mt-3"
                         onClick={clearContent}
                     >
                         {constants.CLEAR_BTN}
