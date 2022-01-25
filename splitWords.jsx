@@ -23,7 +23,6 @@ let link = window.location.toString();
 let level = Number(link.split("=")[1]);
 
 export default function ClientComponent() {
-  window.alert("The game has started");
   const cookies = new Cookies();
   const socket = useRef(new SockJS('/brainbright-websocket'));
   const stompClient = useRef(Stomp.over(socket.current));
@@ -255,7 +254,7 @@ export default function ClientComponent() {
           }</div>
           <div className="mt-3">{endResult}</div>
           <button
-            className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton"
+            className="btn pl-5 pr-5 pt-2 pb-2 mt-3"
             onClick={clearContent}
           >
             {constants.CLEAR_BTN}
