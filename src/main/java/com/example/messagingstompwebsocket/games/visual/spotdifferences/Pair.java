@@ -34,12 +34,12 @@ public class Pair {
     
 
         addDiffs();
-//        try {
-//
-//            parseCoords();
-//        }catch (Exception exc){
-//            exc.printStackTrace();
-//        }
+        try {
+
+            parseCoords();
+        }catch (Exception exc){
+            exc.printStackTrace();
+       }
     }
 
     private void findPictures() {

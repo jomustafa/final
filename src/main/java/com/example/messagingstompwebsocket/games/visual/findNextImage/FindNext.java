@@ -17,14 +17,14 @@ public class FindNext {
     }
 
     private void iniPictures() {
-        pictureFindnexts.add(new Picture_findnext("barrel", "photographs/findnext/barrel.jpg"));
-        pictureFindnexts.add(new Picture_findnext("paint-brush", "photographs/findnext/paint-brush.jpg"));
-        pictureFindnexts.add(new Picture_findnext("paint-palette", "photographs/findnext/paint-palette.jpg"));
-        pictureFindnexts.add(new Picture_findnext("paint-roller", "photographs/findnext/paint-roller.jpg"));
-        pictureFindnexts.add(new Picture_findnext("paintbrush", "photographs/findnext/paintbrush.jpg"));
+        pictureFindnexts.add(new Picture_findnext("barrel", "photographs/findnext/Barrel1.png"));
+        pictureFindnexts.add(new Picture_findnext("paint-brush", "photographs/findnext/paintbrush1.jpg"));
+        pictureFindnexts.add(new Picture_findnext("paint-palette", "photographs/findnext/paintpalette1.png"));
+        pictureFindnexts.add(new Picture_findnext("paint-roller", "photographs/findnext/paintpalette1.png"));
+        pictureFindnexts.add(new Picture_findnext("paintbrush", "photographs/findnext/paint-brush1.png"));
         pictureFindnexts.add(new Picture_findnext("sqare", "photographs/findnext/sqare.jpg"));
-        pictureFindnexts.add(new Picture_findnext("traffic-cone", "photographs/findnext/traffic-cone.jpg"));
-        pictureFindnexts.add(new Picture_findnext("umbrela", "photographs/findnext/umbrela.jpg"));
+        pictureFindnexts.add(new Picture_findnext("traffic-cone", "photographs/findnext/trafficcone1.jpg"));
+        pictureFindnexts.add(new Picture_findnext("umbrela", "photographs/findnext/umbrella1.png"));
     }
 
     private void createGameList(int level) {
