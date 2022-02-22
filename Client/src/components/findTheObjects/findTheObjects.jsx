@@ -128,7 +128,6 @@ const livingroom5 = {
 }
 
 export default function ClientComponent() {
-
     const cookies = new Cookies();
     const socket = useRef(new SockJS('/brainbright-websocket'));
     const stompClient = useRef(Stomp.over(socket.current));

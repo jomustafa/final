@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="77c256a0-089e-4ca0-9d9a-49a0ce7c9685" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/text/wordsofwonders/wordsofwonders_en.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/text/wordsofwonders/wordsofwonders_gr.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/messagingstompwebsocket/games/verbal/wordsofwonders/Word.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/messagingstompwebsocket/games/verbal/wordsofwonders/WordsOfWonders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/messagingstompwebsocket/games/verbal/wordsofwonders/WordsOfWondersController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/messagingstompwebsocket/games/verbal/wordsofwonders/wordsofwonders_en.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/messagingstompwebsocket/games/verbal/wordsofwonders/wordsofwonders_en.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/messagingstompwebsocket/games/verbal/wordsofwonders/wordsofwonders_gr.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/text/wordsofwonders/wordsofwonders_en.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/text/wordsofwonders/wordsofwonders_gr.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/categories/verbal/verbal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/categories/verbal/verbal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/reaction/reaction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/reaction/reaction.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/sidebar/timer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/sidebar/timer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/splitWords/splitWords.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/splitWords/splitWords.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/messagingstompwebsocket/utilities/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/messagingstompwebsocket/utilities/FileManager.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="22Sj4PAmJbyqaofBJTDyBOza5DV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/text/wordsofwonders" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ardit\OneDrive\Desktop\ccp3300-20-brainbright-web-new\lib\text\wordsofwonders" />
+      <recent name="C:\Users\ardit\OneDrive\Desktop\ccp3300-20-brainbright-web-new\src\main\resources\text\wordsofwonders" />
+      <recent name="C:\Users\ardit\OneDrive\Desktop\ccp3300-20-brainbright-web-new\src\main\java\com\example\messagingstompwebsocket\games\verbal" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="industrial-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.messagingstompwebsocket.MessagingStompWebsocketApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="77c256a0-089e-4ca0-9d9a-49a0ce7c9685" name="Changes" comment="" />
+      <created>1639837692615</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639837692615</updated>
+      <workItem from="1639837696944" duration="40000" />
+      <workItem from="1639837748594" duration="8714000" />
+      <workItem from="1640262775978" duration="4330000" />
+      <workItem from="1640287729892" duration="3340000" />
+      <workItem from="1640606169757" duration="3877000" />
+      <workItem from="1640798265545" duration="3435000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

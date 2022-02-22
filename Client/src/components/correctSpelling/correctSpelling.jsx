@@ -273,7 +273,7 @@ export default function ClientComponent() {
               )
           }</div>
           <div className="mt-3" id="resultPartText">{endResult}</div>
-          <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3" onClick={clearContent}>{constants.CLEAR_BTN}</button>
+          <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton" onClick={clearContent}>{constants.CLEAR_BTN}</button>
 
         </div>
         <div className="col-md-3">

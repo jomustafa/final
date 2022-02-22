@@ -16,46 +16,37 @@ if(cookies.get("language") === "en"){
 }
 
 export const SidebarData = [
+
   {
     title: constants.HOME,
-    path: '/categories',
-    // icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text'
-  },
-  {
-    title: constants.VERBAL,
-    path: '/verbal',
-    // icon: <IoIcons.IoIosPaper />,
-    cName: 'nav-text'
-  },
-  {
-    title: constants.VISUAL,
-    path: '/visual',
-    // icon: <FaIcons.FaCartPlus />,
-    cName: 'nav-text'
-  },
-  {
-    title: constants.PHOTOGRAPHIC,
-    path: '/photographic',
-    // icon: <IoIcons.IoMdPeople />,
-    cName: 'nav-text'
-  },
-  {
-    title: constants.USER,
     path: '/user',
-    // icon: <IoIcons.IoMdPeople />,
+    cName: 'nav-text',
+  },
+  {
+    
+    title: constants.CATEGORIESBAR,
+    path: '/categories',
+    cName: 'nav-text'
+    
+  },
+  {
+    title: constants.VERBALBAR,
+    path: '/verbal',
     cName: 'nav-text'
   },
   {
-    title: constants.STATS,
-    path: '/statistics',
-    // icon: <IoIcons.IoMdPeople />,
+    title: constants.VISUALBAR,
+    path: '/visual',
+    cName: 'nav-text'
+  },
+  {
+    title: constants.ATTENTIONBAR,
+    path: '/photographic',
     cName: 'nav-text'
   },
   {
     title: constants.LANGUAGE,
     path: '/',
-    // icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   }
-];
+]; 

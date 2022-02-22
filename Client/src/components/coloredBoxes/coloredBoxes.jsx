@@ -36,7 +36,6 @@ let arrayRandomColors = ["aqua", "blue", "red", "black", "green", "gold", "purpl
 
 
 export default function ClientComponent() {
-
   const cookies = new Cookies();
 
   const socket = useRef(new SockJS('/brainbright-websocket'));

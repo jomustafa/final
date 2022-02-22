@@ -254,7 +254,7 @@ export default function ClientComponent() {
           }</div>
           <div className="mt-3">{endResult}</div>
           <button
-            className="btn pl-5 pr-5 pt-2 pb-2 mt-3"
+            className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton"
             onClick={clearContent}
           >
             {constants.CLEAR_BTN}

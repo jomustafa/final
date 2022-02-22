@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as Stomp from "stompjs";
 import SockJS from "sockjs-client";
 import Player from "../player/player";
@@ -18,7 +18,7 @@ let level = Number(link.split("=")[1]);
 let subLevel = 0;
 let startTime;
 let times = [];
-let timeAllotted = [200,200,200,100,60];
+let timeAllotted = [200, 200, 200, 100, 60];
 let clicks = 1;
 // let correctSquares = 0;
 // let wrongSquares = 0;
@@ -55,29 +55,29 @@ export default function ClientComponent() {
     //const [correctWordsRender, setCorrectWordsRender] = useState([]);
 
     useEffect(() => {
-            stompClient.current.connect({}, function () {
-                getSequence(level);
+        stompClient.current.connect({}, function () {
+            getSequence(level);
 
-                this.subscribe('/user/topic/re_sequencelist', function (data) {
-                    
-                    //Store all the pattern objects, which have the size and the correct patterns
-                    let response = JSON.parse(data.body)[0];
-                    sequence = response.pattern;
-                    intervals = response.intervals;
-                    console.log(sequence);
-                    // setCurrentMatrix(allGames[subLevel]);
-                    let array = new Array(Math.pow(response.size, 2)).fill(" ");
-                    setMatrix(array);
+            this.subscribe('/user/topic/re_sequencelist', function (data) {
 
-                });
+                //Store all the pattern objects, which have the size and the correct patterns
+                let response = JSON.parse(data.body)[0];
+                sequence = response.pattern;
+                intervals = response.intervals;
+                console.log(sequence);
+                // setCurrentMatrix(allGames[subLevel]);
+                let array = new Array(Math.pow(response.size, 2)).fill(" ");
+                setMatrix(array);
+
             });
-    
+        });
+
     }, []);
 
     function getSequence(level) {
         stompClient.current.send("/app/re_getsequence", {}, level);
     }
-    
+
     useEffect(() => {
         if (stompClient.current.connected)
             setTimeout(() => {
@@ -146,43 +146,43 @@ export default function ClientComponent() {
             setPause(true);
             swal(
                 "",
-                constants.BEST_REACTION_LB +  " " +
-                    min / 1000 + "s \n"+
-                    constants.WORST_REACTION_LB +
-                    max / 1000 +
-                    "s \n " +
-                    constants.AVERAGE_REACTION_LB +
-                    "" +
-                    avg / 1000 +
-                    "s",
+                constants.BEST_REACTION_LB + " " +
+                min / 1000 + "s \n" +
+                constants.WORST_REACTION_LB +
+                max / 1000 +
+                "s \n " +
+                constants.AVERAGE_REACTION_LB +
+                "" +
+                avg / 1000 +
+                "s",
                 "success", {
-                    buttons: {
-                        retry: {
-                            text: constants.CONTINUE_BTN,
-                            value: "next",
-                        },
-                        goback: {
-                            text: constants.BACK_TO_MENU_BTN,
-                            value: "back",
-                        },
-                    }
+                buttons: {
+                    retry: {
+                        text: constants.CONTINUE_BTN,
+                        value: "next",
+                    },
+                    goback: {
+                        text: constants.BACK_TO_MENU_BTN,
+                        value: "back",
+                    },
                 }
-                ).then((value) => {
-                    console.log(value);
-                    switch (value) {
-                        case "back":
-                            window.location.replace("/photographic"); 
-                            break;
-        
-                        case "next":
-                            window.location.replace("/reaction?lvl="+(level+1));
-                            break;
-        
-                        default:
-                            window.location.replace("/photographic"); 
-                            break;
-                    }
-                });
+            }
+            ).then((value) => {
+                console.log(value);
+                switch (value) {
+                    case "back":
+                        window.location.replace("/photographic");
+                        break;
+
+                    case "next":
+                        window.location.replace("/reaction?lvl=" + (level + 1));
+                        break;
+
+                    default:
+                        window.location.replace("/photographic");
+                        break;
+                }
+            });
         }
 
         let buttons = document.getElementsByClassName("colored");
@@ -212,7 +212,7 @@ export default function ClientComponent() {
         }
         return [min, max, total / array.length];
     }
-    
+
     function timerOver() {
         swal(constants.UNFORTUNATELY_YOU_LOST, "", "error", {
             buttons: {
@@ -269,13 +269,13 @@ export default function ClientComponent() {
 
         stompClient.current.send(
             "/app/re_recordscore",
-            {},JSON.stringify(
-            {
-                name: cookies.get("currentUser"),
-                level: level,
-                missed: wrongCounter,
-                points: points,
-            })
+            {}, JSON.stringify(
+                {
+                    name: cookies.get("currentUser"),
+                    level: level,
+                    missed: wrongCounter,
+                    points: points,
+                })
         );
     }
 
@@ -289,7 +289,7 @@ export default function ClientComponent() {
                         level={levelRender}
                         playerName={cookies.get("username")}
                         instructions={constants.REACTION_INSTRUCTIONS}
-                        pause={()=>{setPause(value=>!value)}}
+                        pause={() => { setPause(value => !value) }}
                     ></Menu>
                 </div>
                 <div className="col-md-6 text-center all_words">
@@ -308,15 +308,16 @@ export default function ClientComponent() {
                                     style={{ height: "100%" }}
                                     className="btn btn-light mb-0 p-3 rounded border-0 fpbutton"
                                     id={index}
-                                    onClick={()=>{clicks++}}
+                                    onClick={() => { clicks++ }}
                                 ></button>
                             </div>
                         ))}
                     </div>
                 </div>
-                {matrix.length > 0 ?  <div className="col-md-3" id="timer"><br/><br/><br/><Timer timer={timeAllotted[level-1]} onTimerFinish={timerOver} pause={pause}/></div> : null}
+                {matrix.length > 0 ? <div className="col-md-3" id="timer"><br /><br /><br />
+                    <Timer timer={timeAllotted[level - 1]} onTimerFinish={timerOver} pause={pause} /></div> : null}
             </div>
-           
+
         </div>
     );
 }

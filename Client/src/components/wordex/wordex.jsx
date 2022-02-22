@@ -218,9 +218,9 @@ export default function ClientComponent() {
                     <div className="result p-3 mt-5 rounded">{wordRender}</div>
 
                     <div className="mt-2">
-                        <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3" onClick={clearAll}>{constants.CLEAR_BTN}</button>
-                        <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3" onClick={clearLast}>{constants.CORRECTION_BTN}</button>
-                        <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3" onClick={sendWord}>{constants.VALIDATION_BTN}</button>
+                        <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton" onClick={clearAll}>{constants.CLEAR_BTN}</button>
+                        <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton" onClick={clearLast}>{constants.CORRECTION_BTN}</button>
+                        <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton" onClick={sendWord}>{constants.VALIDATION_BTN}</button>
                     </div>
 
                 </div>

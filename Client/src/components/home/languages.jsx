@@ -41,12 +41,12 @@ export default function Languages() {
 
             </div>
             <div class="row justify-content-center mt-5">
-                <a href="/user">
+                <a href="/categories">
                     <button class="btn btn-secondary btn-lg mr-2 mt-5" value="en" style={{ height: "100px", width: "300px" }} onClick={chooseLng}>
                         ΕN
                     </button>
                 </a>
-                <a href="/user">
+                <a href="/categories">
                     <button class="btn btn-secondary btn-lg mt-5" value="gr" style={{ height: "100px", width: "300px" }} onClick={chooseLng}>
                         GR
                     </button>

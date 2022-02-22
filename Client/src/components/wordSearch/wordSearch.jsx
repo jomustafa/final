@@ -218,26 +218,26 @@ export default function ClientComponent() {
     }
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid" style={{height:"100vh"}}>
             <Navbar />
             <div className="row">
                 <div className="col-md-3">
                     <Menu level={levelRender} playerName={cookies.get("username")} instructions={constants.WORDSEARCH_INSTRUCTIONS} pause={() => { setPause(value => !value) }}></Menu>
                 </div>
-                <div className="col-md-6 text-center all_words">
+                <div className="col-md-6 text-center all_words" style={{height:"50%"}}>
                     <div className="row">
                         {
                             wordMatrix.map((item, index) =>
-                                <div style={{ width: 100 / Math.sqrt(wordMatrix.length) + "%" }} className={"col-xs-1"} key={index}>
+                                <div style={{ width: 100 / Math.sqrt(wordMatrix.length) + "%",height: 100 / Math.sqrt(wordMatrix.length) + "%" }} className={"col-xs-1"} key={index}>
 
-                                    <button className="btn btn-light mb-0 p-3 rounded border-0 wsbutton" onMouseDown={getButtonContent} onMouseUp={getButtonContent} id={index}>{item}</button>
+                                    <button style={{padding:0}} className="btn btn-light mb-0 rounded border-0 wsbutton" onMouseDown={getButtonContent} onMouseUp={getButtonContent} id={index}>{item}</button>
                                 </div>
                             )
                         }
 
                     </div>
                     <div className="mt-3">{userResponse}</div>
-                    <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3">{constants.CLEAR_BTN}</button>
+                    <button className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton">{constants.CLEAR_BTN}</button>
 
                 </div>
                 <div className="col-md-3">

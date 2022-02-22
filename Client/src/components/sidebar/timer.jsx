@@ -5,9 +5,9 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 let constants;
 if (cookies.get("language") === "en") {
-  constants = require("../../assets/metatext/constants");
+    constants = require("../../assets/metatext/constants");
 } else {
-  constants = require("../../assets/metatext/constantsgr");
+    constants = require("../../assets/metatext/constantsgr");
 }
 
 class Timer extends Component {
@@ -20,12 +20,12 @@ class Timer extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.pause != this.props.pause){
-            if(this.props.pause===true){
-               
+        if (prevProps.pause != this.props.pause) {
+            if (this.props.pause === true) {
+
                 clearInterval(this.myInterval);
-            }else{
-               
+            } else {
+
                 this.myInterval = setInterval(() => {
                     this.setState({
                         count: this.state.count - 1,
@@ -36,7 +36,7 @@ class Timer extends Component {
                     }
                 }, 1000);
             }
-            
+
         }
     }
 
@@ -59,7 +59,10 @@ class Timer extends Component {
     render() {
         const { count } = this.state;
         return (
-            <div>
+            <div style={{
+                margin: 'auto',
+                width: '50%',
+            }}>
                 <svg width="300" height="50">
                     <rect width={300} height={100} style={{ fill: "#fff" }} />
                 </svg>

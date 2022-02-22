@@ -1,3 +1,7 @@
+//languages
+export const ENGLISH = "ENGLISH";
+export const GREEK = "GREEK";
+
 //hangman
 export const ANIMALS_CATEGORY = "Animals";
 export const OCCUPATIONS_CATEGORY = "Occupations";  
@@ -14,22 +18,32 @@ export const EMAIL = "Email address";
 export const PASSWORD = "Password";
 export const INTRO = "Do you want to play?";
 export const START = "START PLAYING";
+export const VERBAL_BUTTON = "VERBAL GAMES";
+export const VISUAL_BUTTON = "VISUAL GAMES";
+export const PHOTOGRAPHIC_BUTTON = "ATTENTION GAMES";
 
 // nav bar data
 export const HOME = "Home";
 export const STATS = "Statistics";
 export const USER = "Player";
 export const LANGUAGE = "Language";
+export const CATEGORIESBAR = "Categories";
+export const VERBALBAR = "Verbal Games";
+export const VISUALBAR = "Visual Games";
+export const ATTENTIONBAR = "Attention Games";
 
 //supermarket
 export const SHOPPING_LIST = "Shopping List";
 
+//new words of wonders game
+export const WORD_OF_WONDERS = "WORDS OF WONDERS";
+
 export const CLICK_BTN_STR = "Click a button";
-export const VERBAL = "Verbal";
+export const VERBAL = "VERBAL GAMES";
 //memory or visual
-export const VISUAL = "Memory";
+export const VISUAL = "MEMORY GAMES";
 //photographic
-export const PHOTOGRAPHIC = "Attention";
+export const PHOTOGRAPHIC = "ATTENTION GAMES";
 export const PHOTOGRAPHIC1 = "";
 export const WORDEX = "GUESS THE WORD";
 export const WORD_SEARCH = "FIND THE WORD";

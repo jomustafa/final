@@ -7,11 +7,12 @@ import {
 } from "react-router-dom";
 import splitWordLogo from '../../../assets/images/splitword.jpg';
 import namesAnimalsPlantsLogo from '../../../assets/images/namesanimalsplants.jpg';
-import correctSpellingLogo from '../../../assets/images/correctspelling.jpg';
 import wordexLogo from '../../../assets/images/wordex.jpg';
 import wordSearchLogo from '../../../assets/images/wordsearch.jpg';
 import anagramLogo from '../../../assets/images/anagram.jpg';
 import hangmanLogo from '../../../assets/images/hangman.jpg';
+import wordsOfWondersLogo from '../../../assets/images/wordsofwonders.jpg';
+
 import style from "./verbal.css";
 import Navbar from "../../navigation/Navbar";
 import Cookies from "universal-cookie";
@@ -51,14 +52,7 @@ export default function Verbal() {
                                 <div className="card-body"><div className="title">{constants.NAMES_ANIMALS_PLANTS} </div></div>
                             </div>
                         </a>
-                        <a href="/levels?game=correctspelling">
-                            <div className="card p-3 mr-2 mb-3">
-                                <div className="card-header">
-                                    <img src={correctSpellingLogo} style={{width: "200px", height: "150px"}}/>
-                                </div>
-                                <div className="card-body"><div className="title">{constants.CORRECT_SPELLING}<br/></div></div>
-                            </div>
-                        </a>
+                
 
                         <a href="/levels?game=anagram">
                             <div className="card p-3 mr-2 mb-3">
@@ -91,6 +85,14 @@ export default function Verbal() {
                                     <img src={hangmanLogo} style={{width: "200px", height: "150px"}}/>
                                 </div>
                                 <div className="card-body"><div className="title">{constants.HANGMAN}</div></div>
+                            </div>
+                        </a>
+                        <a href="/levels?game=wordofwonders">
+                            <div className="card p-3 mr-2 mb-3">
+                                <div className="card-header">
+                                    <img src={wordsOfWondersLogo} style={{width: "200px", height: "150px"}}/>
+                                </div>
+                                <div className="card-body"><div className="title">{constants.WORD_OF_WONDERS}</div></div>
                             </div>
                         </a>
 

@@ -1,3 +1,7 @@
+//languages
+export const ENGLISH = "ΑΓΓΛΙΚΑ";
+export const GREEK = "ΕΛΛΗΝΙΚΑ";
+
 export const LEVEL_OF_DIFFICULTY = "Επιλέξτε Επίπεδο δυσκολίας: ";
 export const COUNT = "μετρώ";
 export const CLICK_IMG = "Κάντε κλικ στην εικόνα";
@@ -11,7 +15,10 @@ export const ADMIN = "Είστε διαχειριστής?";
 export const EMAIL = "Διεύθυνση ηλεκτρονικού ταχυδρομείου";
 export const PASSWORD = "Κωδικός πρόσβασης";
 export const INTRO = "Θέλετε να παίξετε?";
-export const START = "Ξεκινήστε να παίζετε"
+export const START = "Ξεκινήστε να παίζετε";
+export const VERBAL_BUTTON = "Λεκτικά Παιχνίδια";
+export const VISUAL_BUTTON = "Οπτικά Παιχνίδια";
+export const PHOTOGRAPHIC_BUTTON = "Παιχνίδια Προσοχής";
 
 // Feedback strings
 export const CLICK_BTN_STR = "ΚΛΙΚ ΕΝΑ ΚΟΥΜΠΙ";
@@ -21,12 +28,19 @@ export const HOME = "Σπίτι";
 export const STATS = "Στατιστική";
 export const USER = "Παίχτης";
 export const VERBAL = "ΑΣΚΗΣΕΙΣ ΛΟΓΟΥ";
+export const VERBALBAR = "Λεκτικά Παιχνίδια";
+export const VISUALBAR = "Οπτικά Παιχνίδια";
+export const ATTENTIONBAR = "Παιχνίδια Προσοχής";
 //memory or visual
 export const VISUAL = "ΑΣΚΗΣΕΙΣ ΜΝΗΜΗΣ";
 //photographic
-export const PHOTOGRAPHIC = "ΑΣΚΗΣΕΙΣ ΕΚΤΕΛΕΣΤΙΚΗΣ ΛΕΙΤΟΥΡΓΙΑΣ & ΠΡΟΣΟΧΗΣ";
+export const PHOTOGRAPHIC = "ΑΣΚΗΣΕΙΣ ΠΡΟΣΟΧΗΣ";
 //export const PHOTOGRAPHIC1 = " ΛΕΙΤΟΥΡΓΙΑΣ & ΠΡΟΣΟΧΗΣ";
 export const LANGUAGE = "Γλώσσα";
+export const CATEGORIESBAR = "Κατηγορίες";
+
+//new words of wonders game
+export const WORD_OF_WONDERS = "ΛΕΞΟΜΑΓΕΙΑ";
 
 //supermarket
 export const SHOPPING_LIST = "Λίστα με τα ψώνια";

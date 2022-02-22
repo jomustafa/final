@@ -295,6 +295,36 @@ export default function Home() {
                   {constants.START}
                 </button>
               )} */}
+
+
+                  {/* <button
+                  className="btn btn-secondary mr-2 col-md-6 mb-2"
+                  onClick={() => {
+                    window.location.replace("/verbal");
+                  }}
+                >
+                  {constants.VERBAL_BUTTON}
+                </button>
+
+                <button
+                  className="btn btn-secondary mr-2 col-md-6 mb-2"
+                  onClick={() => {
+                    window.location.replace("/visual");
+                  }}
+                >
+                  {constants.VISUAL_BUTTON}
+                </button>
+
+                <button
+                  className="btn btn-secondary mr-2 col-md-6 mb-2"
+                  onClick={() => {
+                    window.location.replace("/photographic");
+                  }}
+                >
+                  {constants.PHOTOGRAPHIC_BUTTON}
+                </button> */}
+              
+
                 <button
                   className="btn btn-secondary mr-2 col-md-6 mb-2"
                   onClick={() => {
@@ -304,14 +334,14 @@ export default function Home() {
                   {constants.START}
                 </button>
 
-                <button
+                {/* <button
                   className="btn btn-secondary mr-2 col-md-6 mb-2"
                   onClick={() => setModalIsOpen(true)}
                 >
                   {constants.NEW_PLAYER}
-                </button>
+                </button> */}
 
-                {user ? (
+                {/* {user ? (
                   <button
                     className="btn btn-secondary col-md-6 mr-2 mb-2"
                     onClick={deleteUser}
@@ -327,9 +357,9 @@ export default function Home() {
                     {" "}
                     {constants.DELETE_PLAYER}{" "}
                   </button>
-                )}
+                )} */}
 
-                {user ? (
+                {/* {user ? (
                   <button
                     className="btn btn-secondary col-md-6 mr-2 mb-2"
                     onClick={setRenameModalIsOpen}
@@ -345,7 +375,7 @@ export default function Home() {
                     {" "}
                     {constants.RENAME_BTN}{" "}
                   </button>
-                )}
+                )} */}
                 <button
                   className="btn btn-warning col-md-6 mr-2 mb-2"
                   onClick={setAdminModalIsOpen}

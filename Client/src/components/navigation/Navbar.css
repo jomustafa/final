@@ -104,3 +104,58 @@
   height: 70px;
   width: 120px;
 }
+.subcat{
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 14px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  
+}
+#verbal{
+  display: none;
+}
+.subcat_div:hover{
+  background-color: #1a83ff;
+  border-radius: 4px;
+
+}
+
+#verbal_div:hover + #verbal{
+  display:block;
+}
+#verbal:hover {
+  display:block;
+}
+#visual{
+  display: none;
+}
+#visual_div:hover + #visual{
+  display:block;
+}
+#visual:hover {
+  display:block;
+}
+
+#attention{
+  display: none;
+}
+#attention_div:hover + #attention{
+  display:block;
+}
+#attention:hover {
+  display:block;
+}
+
+#lang{
+  display: none;
+}
+#lang_div:hover + #lang{
+  display:block;
+}
+#lang:hover {
+  display:block;
+}

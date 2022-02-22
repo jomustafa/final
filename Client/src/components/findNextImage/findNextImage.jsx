@@ -292,7 +292,7 @@ export default function ClientComponent() {
           <br></br>
           <br></br>
           <button
-            className="btn pl-5 pr-5 pt-2 pb-2 mt-6"
+            className="btn pl-5 pr-5 pt-2 pb-2 mt-6 gamebutton"
             id="nextImage"
             onClick={nextButton}
           >

@@ -37,3 +37,14 @@
 .container-fluid{
     padding: 0 !important;
 }
+
+.gamebutton {
+    border-color: black;
+    border-width: 4px;
+}
+
+body {
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+

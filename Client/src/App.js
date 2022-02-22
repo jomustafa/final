@@ -9,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import SplitWord from '../src/components/splitWords/splitWords';
 import NamesAnimalsPlants from "../src/components/namesAnimalsPlants/namesAnimalsPlants"
-import CorrectSpelling from '../src/components/correctSpelling/correctSpelling';
 import ColoredBoxes from '../src/components/coloredBoxes/coloredBoxes';
 import Hangman from '../src/components/hangman/hangman';
 import Anagram from '../src/components/anagram/anagram';
@@ -30,7 +29,7 @@ import Reaction from './components/reaction/reaction'
 import Supermarket from '../src/components/supermarket/supermarket';
 import Languages from '../src/components/home/languages';
 import Levels from '../src/components/menu/levels';
-
+import Lexomagia from './components/lexomagia/Lexomagia';
 import FindTheObjects from './components/findTheObjects/findTheObjects'
 import Category from './components/findTheObjects/category';
 import CategoryHangman from './components/hangman/category-hangman';
@@ -41,7 +40,7 @@ const App = () => {
       <BrowserRouter>
         <div>
           <Switch>
-          <Route exact={true} path="/" component={Languages}></Route>
+            <Route exact={true} path="/" component={Languages}></Route>
             <Route path="/user" component={User}></Route>
             <Route path="/categories" component={Categories}></Route>
             <Route path="/spotDifferences" component={SpotDifferences}></Route>
@@ -50,7 +49,6 @@ const App = () => {
             <Route path="/photographic" component={Photographic}></Route>
             <Route path="/splitword" component={SplitWord}></Route>
             <Route path="/animals" component={NamesAnimalsPlants}></Route>
-            <Route path="/correctspelling" component={CorrectSpelling}></Route>
             <Route path="/coloredboxes" component={ColoredBoxes}></Route>
             <Route exact={true} path="/hangman/category" component={CategoryHangman}></Route>
             <Route exact={true} path="/hangman/:category" component={Hangman}></Route>
@@ -67,6 +65,7 @@ const App = () => {
             <Route path="/statistics" component={Stats}></Route>
             <Route path="/supermarket" component={Supermarket}></Route>
             <Route path="/levels" component={Levels}></Route>
+            <Route path="/wordofwonders" component={Lexomagia}></Route>
           </Switch>
         </div>
       </BrowserRouter>

@@ -41,6 +41,18 @@ function Navbar() {
     window.localStorage.removeItem('logged');
     window.location.href = "/"
   }
+  const greekLanguage=()=>{
+   //const v= document.getElementById("verbal")
+   //v.style.display="block"
+   cookies.set("language","gr")
+
+  }
+  const englishLanguage=()=>{
+    //const v= document.getElementById("verbal")
+    //v.style.display="block"
+    cookies.set("language","en")
+ 
+   }
 
   return (
     <>
@@ -75,14 +87,106 @@ function Navbar() {
             {SidebarData.map((item, index) => {
               if (window.localStorage.getItem('logged') === null) {
                 if(item.title !== 'Statistics') {
-                  return (
-                    <li key={index} className={item.cName}>
-                      <Link to={item.path}>
-                        {item.icon}
-                        <span>{item.title}</span>
-                      </Link>
-                    </li>
-                  );
+                  if(item.title===constants.VERBALBAR){
+                    return (
+                      <div>
+                        <div id="verbal_div">
+                            <li key={index} className={item.cName}>
+                              <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                              </Link>
+                            </li>
+                          </div>
+                          <div id="verbal">
+                            <div class="subcat_div"><a class="subcat" href="/levels?game=splitword">{constants.SPLIT_WORDS}</a></div>
+                            <div class="subcat_div"><a class="subcat" href="/levels?game=animals">{constants.NAMES_ANIMALS_PLANTS}</a></div>
+                            <div class="subcat_div"><a class="subcat" href="/levels?game=anagram">{constants.ANAGRAM}</a></div>
+                            <div class="subcat_div"><a class="subcat" href="/levels?game=wordex">{constants.WORDEX}</a></div>
+                            <div class="subcat_div"><a class="subcat" href="/levels?game=wordsearch">{constants.WORD_SEARCH}</a></div>
+                            <div class="subcat_div"><a class="subcat" href="/levels?game=hangman/category">{constants.HANGMAN}</a></div>
+                            <div class="subcat_div"><a class="subcat" href="/levels?game=wordofwonders">{constants.WORD_OF_WONDERS}</a></div>
+
+
+
+                          </div>
+                      </div>
+                    );
+                  }
+                  else if(item.title===constants.VISUALBAR){
+                    return (
+                      <div>
+                        <div id="visual_div">
+                        <li key={index} className={item.cName}>
+                          <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                          </Link>
+                        </li>
+                        </div>
+                        <div id="visual">
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=coloredboxes">{constants.COLORED_BOXES}</a></div>
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=findpairs">{constants.FIND_PAIRS}</a></div>
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=spotDifferences">{constants.SPOT_DIFFERENCES}</a></div>
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=findtheobjects/category">{constants.FIND_NEXT}</a></div>
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=supermarket">{constants.SUPERMARKET}</a></div>
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=findnextimages">{constants.FIND_NEXT_IMAGE}</a></div>
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=hiddenobjects">{constants.HIDDEN_OBJECTS}</a></div>
+
+                          
+                        </div>
+                      </div>
+                    );
+                  }
+                  else if(item.title===constants.ATTENTIONBAR){
+                    return (
+                      <div>
+                        <div id="attention_div">
+                        <li key={index} className={item.cName}>
+                          <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                          </Link>
+                        </li>
+                        </div>
+                        <div id="attention">
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=findpatterns">{constants.FIND_PATTERNS}</a></div>
+                          <div class="subcat_div"><a class="subcat" href="/levels?game=splitword">{constants.QUICK_REACTIONS}</a></div>
+
+                          
+                        </div>
+                      </div>
+                    );
+                  }
+                  else if(item.title===constants.LANGUAGE){
+                    return (
+                      <div>
+                        <div id="lang_div">
+                          <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                              {item.icon}
+                              <span>{item.title}</span>
+                            </Link>
+                          </li>
+                        </div>
+                        <div id="lang">
+                          <div class="subcat_div" onClick={englishLanguage}><a class="subcat" href="/categories">{constants.ENGLISH}</a></div>
+                          <div class="subcat_div" onClick={greekLanguage}><a class="subcat" href="/categories">{constants.GREEK}</a></div>
+                        </div>
+                      </div>
+                    );
+                  }
+                  else{
+                    return (
+                      <li key={index} className={item.cName}>
+                        <Link to={item.path}>
+                          {item.icon}
+                          <span>{item.title}</span>
+                        </Link>
+                      </li>
+                    );
+
+                  }
                 }
               } else {
                 return (

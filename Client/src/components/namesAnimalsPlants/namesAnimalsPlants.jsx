@@ -210,7 +210,7 @@ export default function ClientComponent() {
                         }
                     </div>
 
-                    <div id="keyboardInterface">
+                    <div>
                         {
                             alphabet.map((item) =>
                                 item != " " ?

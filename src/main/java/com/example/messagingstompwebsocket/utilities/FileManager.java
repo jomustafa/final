@@ -15,7 +15,6 @@ import com.example.messagingstompwebsocket.games.visual.memoryquest.Quest;
 import com.example.messagingstompwebsocket.games.visual.findTheObjects.QuestCollection;
 
 
-
 import org.nustaq.serialization.FSTConfiguration;
 
 public class FileManager {
@@ -26,13 +25,13 @@ public class FileManager {
 			simpleDict_gr, simpleDict_en, faces, houses, femaleNames_gr, femaleNames_en, maleNames_gr, maleNames_en,
 			faces2, facesSituations, situations, sayingsList_gr, sayingsList_en, anagramList_gr, anagramList_en,
 			hangmanPlants_gr, hangmanPlants_en, hangmanAnimals_gr, hangmanAnimals_en, hangmanOccupations_gr,
-			hangmanOccupations_en, spotdifferences;
+			hangmanOccupations_en, spotdifferences, wordsofwonders_gr, wordsofwonders_en;
 	private Map<String, List<Quest>> questMap;
-//    private Map<String, List<Quests>> questMaps;
+	//    private Map<String, List<Quests>> questMaps;
 	// sortedDictionary_en
 //    private static FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
 	private List<Color> colors;
-//    private String[] wordex_EN;
+	//    private String[] wordex_EN;
 	private QuestCollection questListCollection = new QuestCollection();
 	private String[] wordex_GR;
 	private static final String FACES = "lib/text/facenamehouse/faces.txt";
@@ -72,6 +71,8 @@ public class FileManager {
 	private static final String HANGMAN_OCCUPATIONS_GR = "lib/text/hangman/HANGMAN_OCCUPATIONS_GR.txt";
 	private static final String HANGMAN_OCCUPATIONS_EN = "lib/text/hangman/HANGMAN_OCCUPATIONS_EN.txt";
 	private static final String SPOTDIFFERENCES = "lib/text/spotdifferences/spotdifferences.txt";
+	private static final String WORDSOFWONDERS_GR = "lib/text/wordsofwonders/wordsofwonders_gr.txt";
+	private static final String WORDSOFWONDERS_EN = "lib/text/wordsofwonders/wordsofwonders_en.txt";
 	private static final List<String> FILES = new LinkedList<>();
 	private static Player player;
 	private static Integer level = 1;
@@ -114,6 +115,8 @@ public class FileManager {
 		FILES.add(HANGMAN_OCCUPATIONS_GR);
 		FILES.add(HANGMAN_OCCUPATIONS_EN);
 		FILES.add(SPOTDIFFERENCES);
+		FILES.add(WORDSOFWONDERS_EN);
+		FILES.add(WORDSOFWONDERS_GR);
 	}
 
 	public FileManager() {
@@ -205,7 +208,7 @@ public class FileManager {
 		return simpleShort_gr;
 	}
 
-//    public List<String> getSimpleDict() {
+	//    public List<String> getSimpleDict() {
 //        return simpleDict;
 //    }
 	public List<String> getSimpleDict_gr() {
@@ -284,6 +287,14 @@ public class FileManager {
 		return countries_en;
 	}
 
+	public List<String> getWords_gr() {
+		return wordsofwonders_gr;
+	}
+
+	public List<String> getWords_en() {
+		return wordsofwonders_en;
+	}
+
 	public List<String> getSortedDictionary_en() {
 		return sortedDictionary_en;
 	}
@@ -296,7 +307,7 @@ public class FileManager {
 		return spotdifferences;
 	}
 
-//    public String[] getWordex_en() {
+	//    public String[] getWordex_en() {
 //        return wordex_EN;
 //    }
 	public String[] getWordex_gr() {
@@ -375,123 +386,133 @@ public class FileManager {
 		hangmanOccupations_en = new LinkedList<>();
 		spotdifferences = new LinkedList<>();
 		questMap = new HashMap<>();
+		wordsofwonders_en = new LinkedList<>();
+		wordsofwonders_gr = new LinkedList<>();
 //        questMaps = new HashMap<>();
 		List<String> list;
 		for (String s : FILES) {
 			switch (s) {
-			case WORD_SEARCH_GR:
-				list = countries_gr;
-				break;
-			case WORD_SEARCH_EN:
-				list = countries_en;
-				break;
+				case WORD_SEARCH_GR:
+					list = countries_gr;
+					break;
+				case WORD_SEARCH_EN:
+					list = countries_en;
+					break;
 //                case WORDEX_EN:
 //                    list = sortedDictionary_en;
 //                    break;
-			case WORDEX_GR:
-				list = sortedDictionary_gr;
-				break;
-			case PLANTS_GR:
-				list = plantList_gr;
-				break;
-			case PLANTS_EN:
-				list = plantList_en;
-				break;
-			case COUNTRIES_GR:
-				list = countryList_gr;
-				break;
-			case COUNTRIES_EN:
-				list = countryList_en;
-				break;
-			case NAMES_GR:
-				list = nameList_gr;
-				break;
-			case NAMES_EN:
-				list = nameList_en;
-				break;
-			case OCCUPATIONS_GR:
-				list = occupationList_gr;
-				break;
-			case OCCUPATIONS_EN:
-				list = occupationList_en;
-				break;
-			case ANIMALS_GR:
-				list = animalList_gr;
-				break;
-			case ANIMALS_EN:
-				list = animalList_en;
-				break;
-			case SPLITWORDS_EN:
-				System.out.println("en case");
-				list = splitEasy_en;
-				break;
-			case SPLITWORDS_GR:
-				System.out.println("gr case");
-				list = splitEasy_gr;
-				break;
-			case FACES:
-				list = faces;
-				break;
-			case HOUSES:
-				list = houses;
-				break;
-			case FEMALE_NAMES_GR:
-				list = femaleNames_gr;
-				break;
-			case FEMALE_NAMES_EN:
-				list = femaleNames_en;
-				break;
-			case MALE_NAMES_GR:
-				list = maleNames_gr;
-				break;
-			case MALE_NAMES_EN:
-				list = maleNames_en;
-				break;
-			case SAYINGS_GR:
-				list = sayingsList_gr;
-				break;
-			case SAYINGS_EN:
-				list = sayingsList_en;
-				break;
-			case ANAGRAM_GR:
-				list = anagramList_gr;
-				break;
-			case ANAGRAM_EN:
-				list = anagramList_en;
-				break;
-			case HANGMAN_PLANTS_GR:
-				list = hangmanPlants_gr;
-				break;
-			case HANGMAN_PLANTS_EN:
-				list = hangmanPlants_en;
-				break;
-			case HANGMAN_ANIMALS_GR:
-				list = hangmanAnimals_gr;
-				break;
-			case HANGMAN_ANIMALS_EN:
-				list = hangmanAnimals_en;
-				break;
-			case HANGMAN_OCCUPATIONS_GR:
-				list = hangmanOccupations_gr;
-				break;
-			case HANGMAN_OCCUPATIONS_EN:
-				list = hangmanOccupations_en;
-				break;
-			case SPOTDIFFERENCES:
-				System.out.println("Heress");
-				list = spotdifferences;
-				break;
-
-			case SIMPLE_DICT_EN:
-				list = simpleDict_en;
-				break;
+				case WORDEX_GR:
+					list = sortedDictionary_gr;
+					break;
+				case PLANTS_GR:
+					list = plantList_gr;
+					break;
+				case PLANTS_EN:
+					list = plantList_en;
+					break;
+				case COUNTRIES_GR:
+					list = countryList_gr;
+					break;
+				case COUNTRIES_EN:
+					list = countryList_en;
+					break;
+				case NAMES_GR:
+					list = nameList_gr;
+					break;
+				case NAMES_EN:
+					list = nameList_en;
+					break;
+				case OCCUPATIONS_GR:
+					list = occupationList_gr;
+					break;
+				case OCCUPATIONS_EN:
+					list = occupationList_en;
+					break;
+				case ANIMALS_GR:
+					list = animalList_gr;
+					break;
+				case ANIMALS_EN:
+					list = animalList_en;
+					break;
+				case SPLITWORDS_EN:
+					System.out.println("en case");
+					list = splitEasy_en;
+					break;
+				case SPLITWORDS_GR:
+					System.out.println("gr case");
+					list = splitEasy_gr;
+					break;
+				case FACES:
+					list = faces;
+					break;
+				case HOUSES:
+					list = houses;
+					break;
+				case FEMALE_NAMES_GR:
+					list = femaleNames_gr;
+					break;
+				case FEMALE_NAMES_EN:
+					list = femaleNames_en;
+					break;
+				case MALE_NAMES_GR:
+					list = maleNames_gr;
+					break;
+				case MALE_NAMES_EN:
+					list = maleNames_en;
+					break;
+				case SAYINGS_GR:
+					list = sayingsList_gr;
+					break;
+				case SAYINGS_EN:
+					list = sayingsList_en;
+					break;
+				case ANAGRAM_GR:
+					list = anagramList_gr;
+					break;
+				case ANAGRAM_EN:
+					list = anagramList_en;
+					break;
+				case HANGMAN_PLANTS_GR:
+					list = hangmanPlants_gr;
+					break;
+				case HANGMAN_PLANTS_EN:
+					list = hangmanPlants_en;
+					break;
+				case HANGMAN_ANIMALS_GR:
+					list = hangmanAnimals_gr;
+					break;
+				case HANGMAN_ANIMALS_EN:
+					list = hangmanAnimals_en;
+					break;
+				case HANGMAN_OCCUPATIONS_GR:
+					list = hangmanOccupations_gr;
+					break;
+				case HANGMAN_OCCUPATIONS_EN:
+					list = hangmanOccupations_en;
+					break;
+				case SPOTDIFFERENCES:
+					System.out.println("Heress");
+					list = spotdifferences;
+					break;
+				case SIMPLE_DICT_EN:
+					list = simpleDict_en;
+					break;
 //                case SIMPLE_DICT_GR:
 //                    list = simpleDict_gr;
 //                break;
-			default:
-				System.out.println("default case");
-				list = simpleDict_gr;
-				break;
+				case WORDSOFWONDERS_GR:
+					list = wordsofwonders_gr;
+					System.out.println("in wow_gr");
+					break;
+				case WORDSOFWONDERS_EN:
+					list = wordsofwonders_en;
+					System.out.println("in wow_en");
+					break;
+				default:
+					System.out.println("default case");
+					list = simpleDict_gr;
+					break;
+
 
 			}
 
@@ -517,9 +538,11 @@ public class FileManager {
 					String nextToken;
 					while (st.hasMoreTokens()) {
 						nextToken = st.nextToken();
-
+						System.out.println(nextToken);
 						nextToken = removeAccent(nextToken.trim());
 						if (nextToken.length() != 0) {
+							System.out.println(list.toString());
+							System.out.println(nextToken.toString());
 							list.add(nextToken);
 						}
 
@@ -634,6 +657,8 @@ public class FileManager {
 		occupationList_gr = GreekLangUtils.latinToGreek(occupationList_gr);
 		animalList_gr = GreekLangUtils.latinToGreek(animalList_gr);
 		splitEasy_gr = GreekLangUtils.latinToGreek(splitEasy_gr);
+		wordsofwonders_gr = GreekLangUtils.latinToGreek(wordsofwonders_gr);
+
 //        simpleDict = GreekLangUtils.latinToGreek(simpleDict);
 
 		System.out.println("Optimised " + (System.currentTimeMillis() - time));
