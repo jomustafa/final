@@ -210,6 +210,8 @@ export default function ClientComponent() {
                         }
                     </div>
 
+                    <div className="guideComment rounded p-3 text-white" id="result" style={{ backgroundColor: "#6c757d" }}>{constants.PRESS_ENTER}</div>
+
                     <div>
                         {
                             alphabet.map((item) =>
@@ -235,7 +237,7 @@ export default function ClientComponent() {
 
                         }
                     </div>
-                    <div className="guideComment rounded p-3 text-white" id="result" style={{ backgroundColor: "#6c757d" }}>{constants.PRESS_ENTER}</div>
+
 
                 </div>
 

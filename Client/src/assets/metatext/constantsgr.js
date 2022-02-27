@@ -223,7 +223,7 @@ export const WORDS_FOUND_LABEL = "ΒΡΕΘΗΚΑΝ: ";
  */
 export const CLEAR_BTN = "ΕΚΚΑΘΑΡΙΣΗ";
 export const CLEAR_LAST_BTN = "ΚΑΘΑΡΙΣΤΕ ΤΕΛΕΥΤΑΙΑ"
-export const SPACE_BTN = "ΚΕΝΟ";
+export const SPACE= "ΚΕΝΟ";
 export const CORRECT_BTN = "ΔΙΟΡΘΩΣΗ";
 export const HELP_BTN = "ΒΟΗΘΕΙΑ";
 

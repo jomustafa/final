@@ -22,6 +22,7 @@ let missed = 0;
 let buttonArray = [];
 let anagramList = [];
 export default function ClientComponent() {
+
   const cookies = new Cookies();
 
   const socket = useRef(new SockJS('/brainbright-websocket'));
@@ -251,13 +252,13 @@ export default function ClientComponent() {
 
           <div className="row">
             <button
-              className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton"
+              className="btn pl-5 pr-5 pt-2 pb-2 mt-3"
               onClick={clearContent}
             >
               {constants.CLEAR_BTN}
             </button>
             <button
-              className="btn pl-5 pr-5 pt-2 pb-2 mt-3 gamebutton"
+              className="btn pl-5 pr-5 pt-2 pb-2 mt-3"
               onClick={checkValidity}
             >
               {constants.SUBMIT}
