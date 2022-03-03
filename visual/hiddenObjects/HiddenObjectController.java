@@ -63,10 +63,10 @@ public class HiddenObjectController {
 		//HIDDEN OBJECTS
 		String player = payload.get("name");
 		if(player!=null) {
-			int lvl = Integer.parseInt(payload.get("level"));
+			int level = Integer.parseInt(payload.get("level"));
 			int missedClicks = Integer.parseInt(payload.get("missed"));
 
-			DBManager.recordScore(player, "HIDDEN OBJECTS", 100, 0, lvl, 100, missedClicks);
+			DBManager.recordScore(player, "HIDDEN OBJECTS", 100, 0, level, 100, missedClicks);
 		}
 	}
 }

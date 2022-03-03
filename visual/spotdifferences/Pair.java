@@ -36,11 +36,14 @@ public class Pair {
         addDiffs();
         try {
 
-            parseCoords();
+          //  parseCoords();
         }catch (Exception exc){
             exc.printStackTrace();
        }
     }
+//    public void parseCoords(){}
+//    private void parseCoords() {
+//    }
 
     private void findPictures() {
         imgPath = "/photographs/spotdifferences/" + this.name + ".jpg";
